@@ -10,6 +10,11 @@ class Sommet
 
         Sommet(std::string, float, float);
         void ajouterVoisin(Sommet*, float, float);
+
+        double getX();
+        double getY();
+        std::string getId();
+
         ~Sommet();
 
     protected:

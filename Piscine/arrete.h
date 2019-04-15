@@ -1,6 +1,7 @@
 #ifndef ARRETE_H_INCLUDED
 #define ARRETE_H_INCLUDED
 #include "sommet.h"
+#include "SvgFile.h"
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
