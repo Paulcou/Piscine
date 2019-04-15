@@ -3,6 +3,9 @@
 
 int main()
 {
-    Graphe g{"files/cubetown.txt"};
+    SvgFile svgout;
+
+    Graphe g{"files/triville.txt"};
+    g.dessiner(&svgout);
     return 0;
 }

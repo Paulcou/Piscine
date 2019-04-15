@@ -20,24 +20,27 @@
 	<iostream>
 	"sommet.h"
 
-1555320578 source:c:\users\deshours\desktop\piscine\piscine\graphe.cpp
+1555342906 source:c:\users\deshours\desktop\piscine\piscine\graphe.cpp
 	<fstream>
 	<iostream>
 	"graphe.h"
 
-1555320578 c:\users\deshours\desktop\piscine\piscine\graphe.h
+1555336244 c:\users\deshours\desktop\piscine\piscine\graphe.h
 	"sommet.h"
+	"arrete.h"
+	"SvgFile.h"
 
-1555320578 c:\users\deshours\desktop\piscine\piscine\sommet.h
+1555341788 c:\users\deshours\desktop\piscine\piscine\sommet.h
+	"SvgFile.h"
 	<vector>
 	<unordered_map>
 	<unordered_set>
 
-1555320774 source:c:\users\deshours\desktop\piscine\piscine\main.cpp
+1555342906 source:c:\users\deshours\desktop\piscine\piscine\main.cpp
 	<iostream>
 	"graphe.h"
 
-1555320578 source:c:\users\deshours\desktop\piscine\piscine\sommet.cpp
+1555338494 source:c:\users\deshours\desktop\piscine\piscine\sommet.cpp
 	<iostream>
 	"sommet.h"
 
@@ -50,4 +53,24 @@
 	<string>
 	<fstream>
 	<set>
+
+1555321356 source:c:\users\deshours\desktop\piscine\piscine\svgfile.cpp
+	"SvgFile.h"
+	<iostream>
+	<sstream>
+
+1543702718 c:\users\deshours\desktop\piscine\piscine\svgfile.h
+	<string>
+	<fstream>
+	<set>
+
+1555341906 source:c:\users\deshours\desktop\piscine\piscine\arrete.cpp
+	<iostream>
+	"arrete.h"
+
+1555341829 c:\users\deshours\desktop\piscine\piscine\arrete.h
+	"sommet.h"
+	<vector>
+	<unordered_map>
+	<unordered_set>
 
