@@ -3,12 +3,13 @@
 #include "graphe.h"
 
 Graphe::Graphe(std::string nomFichier){
-
+    /// Nous cherchons si le fichier est de type weight ou non.
+    bool weightType;
     if (nomFichier.find('_') != std::string::npos){
-        std::cout<<"weight fichier"<<std::endl;
+        weightType = true;
     }
     else{
-        std::cout<<"non weight fichier"<<std::endl;
+        weightType = false;
     }
 
     /**std::ifstream ifs{nomFichier};
