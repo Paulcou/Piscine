@@ -10,7 +10,7 @@ class Arrete
 {
     public:
 
-        Arrete(Sommet dep, Sommet fin);
+        Arrete(std::string indice, Sommet dep, Sommet fin);
         void dessinerArrete(SvgFile* svg);
         ~Arrete();
 
@@ -19,18 +19,12 @@ class Arrete
     private:
 
         std::vector<std::pair<Arrete*, float>> m_voisins;
-        std::string m_id; // Identifiant
+        std::string m_indice; // Identifiant
 
         Sommet m_dep;
         Sommet m_fin;
 
-        std::string m_iddep;
-        std::string m_idfin;
-
-        double m_x1;
-        double m_y1;
-        double m_x2;
-        double m_y2;
+        float m_x1, m_y1, m_x2, m_y2;
 
 };
 

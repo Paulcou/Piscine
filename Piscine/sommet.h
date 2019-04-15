@@ -1,5 +1,6 @@
 #ifndef SOMMET_H_INCLUDED
 #define SOMMET_H_INCLUDED
+#include "SvgFile.h"
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
@@ -10,6 +11,8 @@ class Sommet
 
         Sommet(std::string, float, float);
         void ajouterVoisin(Sommet*, float, float);
+
+        void dessinerSommet(SvgFile* svg);
 
         double getX();
         double getY();

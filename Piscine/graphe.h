@@ -1,20 +1,25 @@
 #ifndef GRAPHE_H_INCLUDED
 #define GRAPHE_H_INCLUDED
 #include "sommet.h"
+#include "arrete.h"
 
 class Graphe
 {
     public:
 
         Graphe(std::string, std::string);
+        void dessinerGrapheChargement(SvgFile* svg);
         ~Graphe();
 
     protected:
 
     private:
 
-        std::unordered_map<std::string,Sommet*> m_sommets;
+        std::unordered_map<std::string, Sommet*> m_sommets;
         std::vector<std::pair<std::string, std::pair<std::string, std::string>>> m_aretes;
+
+        ///juste pour dessiner
+        std::unordered_map<std::string, Arrete*> m_arretesDessin;
 
 };
 

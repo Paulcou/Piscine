@@ -3,6 +3,11 @@
 
 int main()
 {
-    Graphe g{"files/cubetown.txt", "files/cubetown_weights_0.txt"};
+    SvgFile svgout;
+
+    Graphe g{"files/manhattan.txt", "files/manhattan_weights_0.txt"};
+    g.dessinerGrapheChargement(&svgout);
+
+
     return 0;
 }
