@@ -1,9 +1,8 @@
 #include <iostream>
-
-using namespace std;
+#include "graphe.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    Graphe g{"files/cubetown.txt"};
     return 0;
 }
