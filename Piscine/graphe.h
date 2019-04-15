@@ -6,7 +6,7 @@ class Graphe
 {
     public:
 
-        Graphe(std::string);
+        Graphe(std::string, std::string);
         ~Graphe();
 
     protected:
@@ -14,6 +14,7 @@ class Graphe
     private:
 
         std::unordered_map<std::string,Sommet*> m_sommets;
+        std::vector<std::pair<std::string, std::pair<std::string, std::string>>> m_aretes;
 
 };
 

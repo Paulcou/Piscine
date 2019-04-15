@@ -8,17 +8,19 @@ class Sommet
 {
     public:
 
-        Sommet(std::string);
-        void ajouterVoisin(Sommet*, float);
+        Sommet(std::string, float, float);
+        void ajouterVoisin(Sommet*, float, float);
         ~Sommet();
 
     protected:
 
     private:
 
-        std::vector<std::pair<Sommet*, float>> m_voisins;
+        std::vector<std::pair<Sommet*, std::pair<float, float>>> m_voisins;
 
         std::string m_id; // Identifiant
+        float m_x;
+        float m_y;
 
 };
 
