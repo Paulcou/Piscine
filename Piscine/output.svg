@@ -57,8 +57,8 @@
 <text x="293" y="207.5" fill="green" >6</text>
 <line x1="125" y1="255" x2="75" y2="340" stroke="black" />
 <text x="93" y="292.5" fill="green" >9</text>
-<line x1="725" y1="85" x2="675" y2="170" stroke="black" />
-<text x="693" y="122.5" fill="green" > </text>
+<line x1="725" y1="85" x2="775" y2="170" stroke="black" />
+<text x="743" y="122.5" fill="green" >1</text>
 <circle cx="875" cy="340" r="5" fill="black" />
 <text x="857" y="331" fill="purple" >9</text>
 <circle cx="775" cy="340" r="5" fill="black" />
@@ -79,8 +79,8 @@
 <text x="657" y="161" fill="purple" >1</text>
 <circle cx="775" cy="170" r="5" fill="black" />
 <text x="757" y="161" fill="purple" >2</text>
-<line x1="675" y1="170" x2="625" y2="255" stroke="black" />
-<text x="643" y="207.5" fill="green" > </text>
+<line x1="775" y1="170" x2="675" y2="170" stroke="black" />
+<text x="718" y="165" fill="green" >2</text>
 <circle cx="875" cy="340" r="5" fill="black" />
 <text x="857" y="331" fill="purple" >9</text>
 <circle cx="775" cy="340" r="5" fill="black" />
@@ -101,8 +101,8 @@
 <text x="657" y="161" fill="purple" >1</text>
 <circle cx="775" cy="170" r="5" fill="black" />
 <text x="757" y="161" fill="purple" >2</text>
-<line x1="625" y1="255" x2="725" y2="255" stroke="black" />
-<text x="668" y="250" fill="green" > </text>
+<line x1="775" y1="170" x2="725" y2="255" stroke="black" />
+<text x="743" y="207.5" fill="green" >5</text>
 <circle cx="875" cy="340" r="5" fill="black" />
 <text x="857" y="331" fill="purple" >9</text>
 <circle cx="775" cy="340" r="5" fill="black" />
@@ -123,8 +123,8 @@
 <text x="657" y="161" fill="purple" >1</text>
 <circle cx="775" cy="170" r="5" fill="black" />
 <text x="757" y="161" fill="purple" >2</text>
-<line x1="725" y1="255" x2="775" y2="170" stroke="black" />
-<text x="743" y="207.5" fill="green" > </text>
+<line x1="725" y1="255" x2="775" y2="340" stroke="black" />
+<text x="743" y="292.5" fill="green" >12</text>
 <circle cx="875" cy="340" r="5" fill="black" />
 <text x="857" y="331" fill="purple" >9</text>
 <circle cx="775" cy="340" r="5" fill="black" />
@@ -145,74 +145,8 @@
 <text x="657" y="161" fill="purple" >1</text>
 <circle cx="775" cy="170" r="5" fill="black" />
 <text x="757" y="161" fill="purple" >2</text>
-<line x1="625" y1="255" x2="575" y2="340" stroke="black" />
-<text x="593" y="292.5" fill="green" > </text>
-<circle cx="875" cy="340" r="5" fill="black" />
-<text x="857" y="331" fill="purple" >9</text>
-<circle cx="775" cy="340" r="5" fill="black" />
-<text x="757" y="331" fill="purple" >8</text>
-<circle cx="675" cy="340" r="5" fill="black" />
-<text x="657" y="331" fill="purple" >7</text>
-<circle cx="575" cy="340" r="5" fill="black" />
-<text x="557" y="331" fill="purple" >6</text>
-<circle cx="825" cy="255" r="5" fill="black" />
-<text x="807" y="246" fill="purple" >5</text>
-<circle cx="725" cy="255" r="5" fill="black" />
-<text x="707" y="246" fill="purple" >4</text>
-<circle cx="725" cy="85" r="5" fill="black" />
-<text x="707" y="76" fill="purple" >0</text>
-<circle cx="625" cy="255" r="5" fill="black" />
-<text x="607" y="246" fill="purple" >3</text>
-<circle cx="675" cy="170" r="5" fill="black" />
-<text x="657" y="161" fill="purple" >1</text>
-<circle cx="775" cy="170" r="5" fill="black" />
-<text x="757" y="161" fill="purple" >2</text>
-<line x1="725" y1="255" x2="675" y2="340" stroke="black" />
-<text x="693" y="292.5" fill="green" > </text>
-<circle cx="875" cy="340" r="5" fill="black" />
-<text x="857" y="331" fill="purple" >9</text>
-<circle cx="775" cy="340" r="5" fill="black" />
-<text x="757" y="331" fill="purple" >8</text>
-<circle cx="675" cy="340" r="5" fill="black" />
-<text x="657" y="331" fill="purple" >7</text>
-<circle cx="575" cy="340" r="5" fill="black" />
-<text x="557" y="331" fill="purple" >6</text>
-<circle cx="825" cy="255" r="5" fill="black" />
-<text x="807" y="246" fill="purple" >5</text>
-<circle cx="725" cy="255" r="5" fill="black" />
-<text x="707" y="246" fill="purple" >4</text>
-<circle cx="725" cy="85" r="5" fill="black" />
-<text x="707" y="76" fill="purple" >0</text>
-<circle cx="625" cy="255" r="5" fill="black" />
-<text x="607" y="246" fill="purple" >3</text>
-<circle cx="675" cy="170" r="5" fill="black" />
-<text x="657" y="161" fill="purple" >1</text>
-<circle cx="775" cy="170" r="5" fill="black" />
-<text x="757" y="161" fill="purple" >2</text>
-<line x1="775" y1="170" x2="825" y2="255" stroke="black" />
-<text x="793" y="207.5" fill="green" > </text>
-<circle cx="875" cy="340" r="5" fill="black" />
-<text x="857" y="331" fill="purple" >9</text>
-<circle cx="775" cy="340" r="5" fill="black" />
-<text x="757" y="331" fill="purple" >8</text>
-<circle cx="675" cy="340" r="5" fill="black" />
-<text x="657" y="331" fill="purple" >7</text>
-<circle cx="575" cy="340" r="5" fill="black" />
-<text x="557" y="331" fill="purple" >6</text>
-<circle cx="825" cy="255" r="5" fill="black" />
-<text x="807" y="246" fill="purple" >5</text>
-<circle cx="725" cy="255" r="5" fill="black" />
-<text x="707" y="246" fill="purple" >4</text>
-<circle cx="725" cy="85" r="5" fill="black" />
-<text x="707" y="76" fill="purple" >0</text>
-<circle cx="625" cy="255" r="5" fill="black" />
-<text x="607" y="246" fill="purple" >3</text>
-<circle cx="675" cy="170" r="5" fill="black" />
-<text x="657" y="161" fill="purple" >1</text>
-<circle cx="775" cy="170" r="5" fill="black" />
-<text x="757" y="161" fill="purple" >2</text>
-<line x1="825" y1="255" x2="775" y2="340" stroke="black" />
-<text x="793" y="292.5" fill="green" > </text>
+<line x1="775" y1="340" x2="825" y2="255" stroke="black" />
+<text x="793" y="292.5" fill="green" >13</text>
 <circle cx="875" cy="340" r="5" fill="black" />
 <text x="857" y="331" fill="purple" >9</text>
 <circle cx="775" cy="340" r="5" fill="black" />
@@ -234,7 +168,73 @@
 <circle cx="775" cy="170" r="5" fill="black" />
 <text x="757" y="161" fill="purple" >2</text>
 <line x1="825" y1="255" x2="875" y2="340" stroke="black" />
-<text x="843" y="292.5" fill="green" > </text>
+<text x="843" y="292.5" fill="green" >14</text>
+<circle cx="875" cy="340" r="5" fill="black" />
+<text x="857" y="331" fill="purple" >9</text>
+<circle cx="775" cy="340" r="5" fill="black" />
+<text x="757" y="331" fill="purple" >8</text>
+<circle cx="675" cy="340" r="5" fill="black" />
+<text x="657" y="331" fill="purple" >7</text>
+<circle cx="575" cy="340" r="5" fill="black" />
+<text x="557" y="331" fill="purple" >6</text>
+<circle cx="825" cy="255" r="5" fill="black" />
+<text x="807" y="246" fill="purple" >5</text>
+<circle cx="725" cy="255" r="5" fill="black" />
+<text x="707" y="246" fill="purple" >4</text>
+<circle cx="725" cy="85" r="5" fill="black" />
+<text x="707" y="76" fill="purple" >0</text>
+<circle cx="625" cy="255" r="5" fill="black" />
+<text x="607" y="246" fill="purple" >3</text>
+<circle cx="675" cy="170" r="5" fill="black" />
+<text x="657" y="161" fill="purple" >1</text>
+<circle cx="775" cy="170" r="5" fill="black" />
+<text x="757" y="161" fill="purple" >2</text>
+<line x1="725" y1="255" x2="675" y2="340" stroke="black" />
+<text x="693" y="292.5" fill="green" >11</text>
+<circle cx="875" cy="340" r="5" fill="black" />
+<text x="857" y="331" fill="purple" >9</text>
+<circle cx="775" cy="340" r="5" fill="black" />
+<text x="757" y="331" fill="purple" >8</text>
+<circle cx="675" cy="340" r="5" fill="black" />
+<text x="657" y="331" fill="purple" >7</text>
+<circle cx="575" cy="340" r="5" fill="black" />
+<text x="557" y="331" fill="purple" >6</text>
+<circle cx="825" cy="255" r="5" fill="black" />
+<text x="807" y="246" fill="purple" >5</text>
+<circle cx="725" cy="255" r="5" fill="black" />
+<text x="707" y="246" fill="purple" >4</text>
+<circle cx="725" cy="85" r="5" fill="black" />
+<text x="707" y="76" fill="purple" >0</text>
+<circle cx="625" cy="255" r="5" fill="black" />
+<text x="607" y="246" fill="purple" >3</text>
+<circle cx="675" cy="170" r="5" fill="black" />
+<text x="657" y="161" fill="purple" >1</text>
+<circle cx="775" cy="170" r="5" fill="black" />
+<text x="757" y="161" fill="purple" >2</text>
+<line x1="675" y1="340" x2="575" y2="340" stroke="black" />
+<text x="618" y="335" fill="green" >15</text>
+<circle cx="875" cy="340" r="5" fill="black" />
+<text x="857" y="331" fill="purple" >9</text>
+<circle cx="775" cy="340" r="5" fill="black" />
+<text x="757" y="331" fill="purple" >8</text>
+<circle cx="675" cy="340" r="5" fill="black" />
+<text x="657" y="331" fill="purple" >7</text>
+<circle cx="575" cy="340" r="5" fill="black" />
+<text x="557" y="331" fill="purple" >6</text>
+<circle cx="825" cy="255" r="5" fill="black" />
+<text x="807" y="246" fill="purple" >5</text>
+<circle cx="725" cy="255" r="5" fill="black" />
+<text x="707" y="246" fill="purple" >4</text>
+<circle cx="725" cy="85" r="5" fill="black" />
+<text x="707" y="76" fill="purple" >0</text>
+<circle cx="625" cy="255" r="5" fill="black" />
+<text x="607" y="246" fill="purple" >3</text>
+<circle cx="675" cy="170" r="5" fill="black" />
+<text x="657" y="161" fill="purple" >1</text>
+<circle cx="775" cy="170" r="5" fill="black" />
+<text x="757" y="161" fill="purple" >2</text>
+<line x1="575" y1="340" x2="625" y2="255" stroke="black" />
+<text x="593" y="292.5" fill="green" >9</text>
 <circle cx="875" cy="340" r="5" fill="black" />
 <text x="857" y="331" fill="purple" >9</text>
 <circle cx="775" cy="340" r="5" fill="black" />

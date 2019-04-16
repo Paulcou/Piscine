@@ -182,6 +182,7 @@ void Graphe::codePrim(std::string id, SvgFile* svg)
                 if((elem.second.first == tmp.second)&&(x!=1))
                 {
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
+                    indice = rechercheIndice(elem.first, tmp.first);
                     arretesDessin.insert({indice, new Arrete{indice, elem.first, tmp.first}}); ///elem predecesseur ///tmp en cours de traitement
                     x=1;
                 }
@@ -263,6 +264,7 @@ void Graphe::codePrimC2(std::string id, SvgFile* svg)
                 if((elem.second.second == tmp.second)&&(x!=1))
                 {
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
+                    indice = rechercheIndice(elem.first, tmp.first);
                     arretesDessin.insert({indice, new Arrete{indice, elem.first, tmp.first}});
                     x=1;
                 }
@@ -282,6 +284,18 @@ void Graphe::codePrimC2(std::string id, SvgFile* svg)
     }
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids<<std::endl;
+}
+
+std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
+{
+    for(auto elem : m_aretes)
+    {
+        if((s1->getId()==elem.second.first && s2->getId()==elem.second.second)||
+           (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
+        {
+            return elem.first;
+        }
+    }
 }
 
 Graphe::~Graphe()

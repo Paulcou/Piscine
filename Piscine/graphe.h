@@ -11,6 +11,7 @@ class Graphe
         void dessinerGrapheChargement(SvgFile* svg);
         void codePrim(std::string ,SvgFile* svg);
         void codePrimC2(std::string, SvgFile *svg);
+        std::string rechercheIndice(Sommet*, Sommet*);
         ~Graphe();
 
     protected:
