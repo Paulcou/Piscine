@@ -73,7 +73,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 y2 = d.second->getY();
             }
         }
-        m_arretesDessin.insert({indice, new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}}});
+        m_arretesDessin.insert({indice, new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0}});
         ///
 
     }
@@ -111,6 +111,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 (m_sommets.find(elem.second.first))->second->ajouterVoisin(m_sommets.find(elem.second.second)->second, cout1, cout2);
                 (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
             }
+
         }
     }
 }
@@ -124,7 +125,7 @@ void Graphe::dessinerGrapheChargement(SvgFile* svg)
         a.second->dessinerArrete(svg);
 }
 
-void Graphe::codePrim(std::string id, SvgFile* svg)
+void Graphe::codePrim(std::string id)
 {
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
@@ -168,7 +169,6 @@ void Graphe::codePrim(std::string id, SvgFile* svg)
         poids+=tmp.second;
 
         x=0;
-        std::unordered_map<std::string, Arrete*> arretesDessin;
         std::string indice= " "; ///a modifier si on veux afficher le poids des aretes
 
         for(auto elem : tmp.first->getVoisins())
@@ -183,30 +183,18 @@ void Graphe::codePrim(std::string id, SvgFile* svg)
                 {
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
-                    arretesDessin.insert({indice, new Arrete{indice, elem.first, tmp.first}}); ///elem predecesseur ///tmp en cours de traitement
+                    m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0,0.0}}); ///elem predecesseur ///tmp en cours de traitement
                     x=1;
                 }
             }
-
         }
-
-        ///appel dessin direct
-
-        for(auto m : arretesDessin)
-            {
-                m.second->dessinerPrime(svg);
-            }
-            for(auto s : m_sommets)
-            {
-                s.second->dessinerSommetPrime(svg);
-            }
 
     }
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids<<std::endl;
 }
 
-void Graphe::codePrimC2(std::string id, SvgFile* svg)
+void Graphe::codePrimC2(std::string id)
 {
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
@@ -250,7 +238,7 @@ void Graphe::codePrimC2(std::string id, SvgFile* svg)
         poids+=tmp.second;
 
         x=0;
-        std::unordered_map<std::string, Arrete*> arretesDessin;
+        //std::unordered_map<std::string, Arrete*> arretesDessin;
         std::string indice= " ";
 
         for(auto elem : tmp.first->getVoisins())
@@ -265,14 +253,22 @@ void Graphe::codePrimC2(std::string id, SvgFile* svg)
                 {
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
-                    arretesDessin.insert({indice, new Arrete{indice, elem.first, tmp.first}});
+                    m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0, 0.0}});
                     x=1;
                 }
             }
 
         }
-         ///Appel dessin direct
-         for(auto m : arretesDessin)
+    }
+    std::cout<<std::endl;
+    std::cout<<"Poids : "<<poids<<std::endl;
+}
+
+void Graphe::afficherPrime(SvgFile* svg)
+{
+    ///appel dessin direct
+
+        for(auto m : m_arretesDessinprime1)
             {
                 m.second->dessinerPrime(svg);
             }
@@ -280,10 +276,6 @@ void Graphe::codePrimC2(std::string id, SvgFile* svg)
             {
                 s.second->dessinerSommetPrime(svg);
             }
-
-    }
-    std::cout<<std::endl;
-    std::cout<<"Poids : "<<poids<<std::endl;
 }
 
 std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)

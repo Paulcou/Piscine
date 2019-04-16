@@ -8,9 +8,13 @@ class Graphe
     public:
 
         Graphe(std::string, std::string);
+
         void dessinerGrapheChargement(SvgFile* svg);
-        void codePrim(std::string ,SvgFile* svg);
-        void codePrimC2(std::string, SvgFile *svg);
+
+        void codePrim(std::string);
+        void codePrimC2(std::string);
+        void afficherPrime(SvgFile* svg);
+
         std::string rechercheIndice(Sommet*, Sommet*);
         ~Graphe();
 
@@ -23,6 +27,7 @@ class Graphe
 
         ///juste pour dessiner
         std::unordered_map<std::string, Arrete*> m_arretesDessin;
+        std::unordered_map<std::string, Arrete*> m_arretesDessinprime1;
         int m_ordre;
 
 };

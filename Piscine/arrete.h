@@ -10,7 +10,7 @@ class Arrete
 {
     public:
 
-        Arrete(std::string indice, Sommet* dep, Sommet* fin);
+        Arrete(std::string indice, Sommet* dep, Sommet* fin, float p1, float p2);
         void dessinerArrete(SvgFile* svg);
         void dessinerPrime(SvgFile* svg);
         ~Arrete();
@@ -26,6 +26,7 @@ class Arrete
         Sommet *m_fin;
 
         float m_x1, m_y1, m_x2, m_y2;
+        float m_p1, m_p2;
 
 };
 
