@@ -136,6 +136,7 @@ void Graphe::codePrim(std::string id)
     int tour = 0;
     int x;
     float poids=0;
+    float poids2=0;
 
     std::cout<<std::endl;
     std::cout<<"Voici le tableau obtenu avec l'algorithme de Prim (cout1) en commencant par le sommet suivant : "
@@ -193,6 +194,7 @@ void Graphe::codePrim(std::string id)
                         if(item.first == indice)
                         {
                             (m_arretesDessinprime1.find(indice))->second->ajouterPoids(item.second->getP1(), item.second->getP2());
+                            poids2+=item.second->getP2();
                         }
                     }
                     x=1;
@@ -202,7 +204,7 @@ void Graphe::codePrim(std::string id)
 
     }
     std::cout<<std::endl;
-    std::cout<<"Poids : "<<poids<<std::endl;
+    std::cout<<"Poids : "<<poids<<", "<<poids2<<std::endl;
 }
 
 void Graphe::codePrimC2(std::string id)
@@ -212,6 +214,7 @@ void Graphe::codePrimC2(std::string id)
     int tour = 0;
     int x;
     float poids=0;
+    float poids2=0;
 
     std::cout<<std::endl;
     std::cout<<"Voici le tableau obtenu avec l'algorithme de Prim (cout2) en commencant par le sommet suivant : "
@@ -269,6 +272,7 @@ void Graphe::codePrimC2(std::string id)
                         if(item.first == indice)
                         {
                             (m_arretesDessinprime1.find(indice))->second->ajouterPoids(item.second->getP1(), item.second->getP2());
+                            poids2+=item.second->getP1();
                         }
                     }
                     x=1;
@@ -278,7 +282,7 @@ void Graphe::codePrimC2(std::string id)
         }
     }
     std::cout<<std::endl;
-    std::cout<<"Poids : "<<poids<<std::endl;
+    std::cout<<"Poids : "<<poids<<", "<<poids2<<std::endl;
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
