@@ -17,6 +17,7 @@ class Sommet
         double getX();
         double getY();
         std::string getId();
+        std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
 
         ~Sommet();
 

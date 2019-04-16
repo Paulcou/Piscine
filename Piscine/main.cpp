@@ -7,6 +7,7 @@ int main()
 
     Graphe g{"files/manhattan.txt", "files/manhattan_weights_0.txt"};
     g.dessinerGrapheChargement(&svgout);
+    g.codePrim("0");
 
 
     return 0;

@@ -30,6 +30,10 @@ std::string Sommet::getId()
     return m_id;
 }
 
+std::vector<std::pair<Sommet*, std::pair<float, float>>> Sommet::getVoisins(){
+    return m_voisins;
+}
+
 Sommet::~Sommet()
 {
     //dtor

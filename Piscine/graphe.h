@@ -9,6 +9,7 @@ class Graphe
 
         Graphe(std::string, std::string);
         void dessinerGrapheChargement(SvgFile* svg);
+        void codePrim(std::string);
         ~Graphe();
 
     protected:
@@ -20,6 +21,7 @@ class Graphe
 
         ///juste pour dessiner
         std::unordered_map<std::string, Arrete*> m_arretesDessin;
+        int m_ordre;
 
 };
 
