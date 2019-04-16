@@ -73,7 +73,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 y2 = d.second->getY();
             }
         }
-        m_arretesDessin.insert({indice, new Arrete{indice, Sommet{id2,x1,y1}, Sommet{id_voisin,x2, y2}}});
+        m_arretesDessin.insert({indice, new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}}});
         ///
 
     }
@@ -124,7 +124,8 @@ void Graphe::dessinerGrapheChargement(SvgFile* svg)
         a.second->dessinerArrete(svg);
 }
 
-void Graphe::codePrim(std::string id){
+void Graphe::codePrim(std::string id, SvgFile* svg)
+{
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
     int tour = 0;
@@ -136,17 +137,22 @@ void Graphe::codePrim(std::string id){
              <<id<<std::endl<<std::endl;
     Sommet*s0=(m_sommets.find(id))->second;
     marque.insert(s0);
-    for(auto elem : s0->getVoisins()){
+    for(auto elem : s0->getVoisins())
+    {
         liste.push_back({elem.first, elem.second.first}); /// cout1
     }
 
-    while((!liste.empty())&&(tour != m_ordre-1)){
+    while((!liste.empty())&&(tour != m_ordre-1))
+    {
         std::pair<Sommet *, float> tmp;
         float a = 100;
         int index = 100;
-        for(int i=0; i<liste.size(); ++i){
-            if(liste[i].second < a){
-                if(marque.find(liste[i].first) == marque.end()){
+        for(int i=0; i<liste.size(); ++i)
+        {
+            if(liste[i].second < a)
+            {
+                if(marque.find(liste[i].first) == marque.end())
+                {
                     a = liste[i].second;
                     tmp = liste[i];
                     index = i;
@@ -162,22 +168,45 @@ void Graphe::codePrim(std::string id){
         poids+=tmp.second;
 
         x=0;
-        for(auto elem : tmp.first->getVoisins()){
-            if(marque.find(elem.first) == marque.end()){
+        std::unordered_map<std::string, Arrete*> arretesDessin;
+        std::string indice= " "; ///a modifier si on veux afficher le poids des aretes
+
+        for(auto elem : tmp.first->getVoisins())
+        {
+            if(marque.find(elem.first) == marque.end())
+            {
                 liste.push_back({elem.first, elem.second.first});
-            }else{
-                if((elem.second.first == tmp.second)&&(x!=1)){
+            }
+            else
+            {
+                if((elem.second.first == tmp.second)&&(x!=1))
+                {
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
+                    arretesDessin.insert({indice, new Arrete{indice, elem.first, tmp.first}}); ///elem predecesseur ///tmp en cours de traitement
                     x=1;
                 }
             }
+
         }
+
+        ///appel dessin direct
+
+        for(auto m : arretesDessin)
+            {
+                m.second->dessinerPrime(svg);
+            }
+            for(auto s : m_sommets)
+            {
+                s.second->dessinerSommetPrime(svg);
+            }
+
     }
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids<<std::endl;
 }
 
-void Graphe::codePrimC2(std::string id){
+void Graphe::codePrimC2(std::string id, SvgFile* svg)
+{
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
     int tour = 0;
@@ -189,17 +218,22 @@ void Graphe::codePrimC2(std::string id){
              <<id<<std::endl<<std::endl;
     Sommet*s0=(m_sommets.find(id))->second;
     marque.insert(s0);
-    for(auto elem : s0->getVoisins()){
+    for(auto elem : s0->getVoisins())
+    {
         liste.push_back({elem.first, elem.second.second});
     }
 
-    while((!liste.empty())&&(tour != m_ordre-1)){
+    while((!liste.empty())&&(tour != m_ordre-1))
+    {
         std::pair<Sommet *, float> tmp;
         float a = 100;
         int index = 100;
-        for(int i=0; i<liste.size(); ++i){
-            if(liste[i].second < a){
-                if(marque.find(liste[i].first) == marque.end()){
+        for(int i=0; i<liste.size(); ++i)
+        {
+            if(liste[i].second < a)
+            {
+                if(marque.find(liste[i].first) == marque.end())
+                {
                     a = liste[i].second;
                     tmp = liste[i];
                     index = i;
@@ -215,16 +249,36 @@ void Graphe::codePrimC2(std::string id){
         poids+=tmp.second;
 
         x=0;
-        for(auto elem : tmp.first->getVoisins()){
-            if(marque.find(elem.first) == marque.end()){
+        std::unordered_map<std::string, Arrete*> arretesDessin;
+        std::string indice= " ";
+
+        for(auto elem : tmp.first->getVoisins())
+        {
+            if(marque.find(elem.first) == marque.end())
+            {
                 liste.push_back({elem.first, elem.second.second});
-            }else{
-                if((elem.second.second == tmp.second)&&(x!=1)){
+            }
+            else
+            {
+                if((elem.second.second == tmp.second)&&(x!=1))
+                {
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
+                    arretesDessin.insert({indice, new Arrete{indice, elem.first, tmp.first}});
                     x=1;
                 }
             }
+
         }
+         ///Appel dessin direct
+         for(auto m : arretesDessin)
+            {
+                m.second->dessinerPrime(svg);
+            }
+            for(auto s : m_sommets)
+            {
+                s.second->dessinerSommetPrime(svg);
+            }
+
     }
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids<<std::endl;

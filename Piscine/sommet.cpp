@@ -15,6 +15,12 @@ void Sommet::dessinerSommet(SvgFile* svg)
     svg->addText(m_x - 18, m_y - 9, m_id, "purple");
 }
 
+void Sommet::dessinerSommetPrime(SvgFile* svg)
+{
+    svg->addDisk(m_x + 500, m_y, 5);
+    svg->addText(m_x - 18 + 500, m_y - 9, m_id, "purple");
+}
+
 double Sommet::getX()
 {
    return m_x;

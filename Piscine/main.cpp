@@ -5,10 +5,12 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/broadway.txt", "files/broadway_weights_0.txt"};
+    Graphe g{"files/triville.txt", "files/triville_weights_0.txt"};
+
+    ///modifier ici pour gerer l'affiche
     g.dessinerGrapheChargement(&svgout);
-    g.codePrim("0");
-    g.codePrimC2("0");
+    //g.codePrim("0", &svgout);
+    g.codePrimC2("0", &svgout);
 
 
     return 0;

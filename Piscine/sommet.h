@@ -13,6 +13,7 @@ class Sommet
         void ajouterVoisin(Sommet*, float, float);
 
         void dessinerSommet(SvgFile* svg);
+        void dessinerSommetPrime(SvgFile* svg);
 
         double getX();
         double getY();
