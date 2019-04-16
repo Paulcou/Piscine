@@ -10,6 +10,7 @@ class Graphe
         Graphe(std::string, std::string);
         void dessinerGrapheChargement(SvgFile* svg);
         void codePrim(std::string);
+        void codePrimC2(std::string);
         ~Graphe();
 
     protected:

@@ -5,9 +5,10 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/manhattan.txt", "files/manhattan_weights_0.txt"};
+    Graphe g{"files/broadway.txt", "files/broadway_weights_0.txt"};
     g.dessinerGrapheChargement(&svgout);
     g.codePrim("0");
+    g.codePrimC2("0");
 
 
     return 0;

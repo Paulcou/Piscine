@@ -49,7 +49,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
     {
         ifs>>indice;
         if(ifs.fail())
-            throw std::runtime_error("Probleme lecture ineice arete");
+            throw std::runtime_error("Probleme lecture indice arete");
         ifs>>id2;
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture arete sommet 1");
@@ -132,7 +132,7 @@ void Graphe::codePrim(std::string id){
     float poids=0;
 
     std::cout<<std::endl;
-    std::cout<<"Voici le tableau obtenu avec l'algorithme de Prim en commençant par le sommet suivant : "
+    std::cout<<"Voici le tableau obtenu avec l'algorithme de Prim (cout1) en commencant par le sommet suivant : "
              <<id<<std::endl<<std::endl;
     Sommet*s0=(m_sommets.find(id))->second;
     marque.insert(s0);
@@ -167,6 +167,59 @@ void Graphe::codePrim(std::string id){
                 liste.push_back({elem.first, elem.second.first});
             }else{
                 if((elem.second.first == tmp.second)&&(x!=1)){
+                    std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
+                    x=1;
+                }
+            }
+        }
+    }
+    std::cout<<std::endl;
+    std::cout<<"Poids : "<<poids<<std::endl;
+}
+
+void Graphe::codePrimC2(std::string id){
+    std::vector<std::pair<Sommet*, float>> liste;
+    std::unordered_set<Sommet*> marque;
+    int tour = 0;
+    int x;
+    float poids=0;
+
+    std::cout<<std::endl;
+    std::cout<<"Voici le tableau obtenu avec l'algorithme de Prim (cout2) en commencant par le sommet suivant : "
+             <<id<<std::endl<<std::endl;
+    Sommet*s0=(m_sommets.find(id))->second;
+    marque.insert(s0);
+    for(auto elem : s0->getVoisins()){
+        liste.push_back({elem.first, elem.second.second});
+    }
+
+    while((!liste.empty())&&(tour != m_ordre-1)){
+        std::pair<Sommet *, float> tmp;
+        float a = 100;
+        int index = 100;
+        for(int i=0; i<liste.size(); ++i){
+            if(liste[i].second < a){
+                if(marque.find(liste[i].first) == marque.end()){
+                    a = liste[i].second;
+                    tmp = liste[i];
+                    index = i;
+                }
+            }
+        }
+
+        std::cout<<tmp.first->getId()<<"("<<tmp.second<<"), ";
+
+        liste.erase(liste.begin()+index);
+        marque.insert(tmp.first);
+        tour+=1;
+        poids+=tmp.second;
+
+        x=0;
+        for(auto elem : tmp.first->getVoisins()){
+            if(marque.find(elem.first) == marque.end()){
+                liste.push_back({elem.first, elem.second.second});
+            }else{
+                if((elem.second.second == tmp.second)&&(x!=1)){
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     x=1;
                 }
