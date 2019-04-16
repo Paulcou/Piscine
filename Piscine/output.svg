@@ -19,99 +19,99 @@
 <text x="182" y="191" fill="purple" >2</text>
 <line x1="100" y1="400" x2="400" y2="400" stroke="black" />
 <text x="243" y="395" fill="green" >11</text>
-<text x="260" y="395" fill="red" >0</text>
+<text x="260" y="395" fill="red" >4</text>
 <text x="267.5" y="395" fill="red" >;</text>
-<text x="271" y="395" fill="red" >0</text>
+<text x="271" y="395" fill="red" >4</text>
 <line x1="100" y1="100" x2="200" y2="200" stroke="black" />
 <text x="143" y="145" fill="green" >2</text>
-<text x="160" y="145" fill="red" >0</text>
+<text x="160" y="145" fill="red" >9</text>
 <text x="167.5" y="145" fill="red" >;</text>
-<text x="171" y="145" fill="red" >0</text>
+<text x="171" y="145" fill="red" >4</text>
 <line x1="100" y1="100" x2="100" y2="400" stroke="black" />
 <text x="93" y="245" fill="green" >1</text>
-<text x="110" y="245" fill="red" >0</text>
+<text x="110" y="245" fill="red" >2</text>
 <text x="117.5" y="245" fill="red" >;</text>
-<text x="121" y="245" fill="red" >0</text>
+<text x="121" y="245" fill="red" >3</text>
 <line x1="400" y1="100" x2="300" y2="200" stroke="black" />
 <text x="343" y="145" fill="green" >4</text>
-<text x="360" y="145" fill="red" >0</text>
+<text x="360" y="145" fill="red" >7</text>
 <text x="367.5" y="145" fill="red" >;</text>
-<text x="371" y="145" fill="red" >0</text>
+<text x="371" y="145" fill="red" >2</text>
 <line x1="400" y1="100" x2="400" y2="400" stroke="black" />
 <text x="393" y="245" fill="green" >5</text>
-<text x="410" y="245" fill="red" >0</text>
+<text x="410" y="245" fill="red" >6</text>
 <text x="417.5" y="245" fill="red" >;</text>
-<text x="421" y="245" fill="red" >0</text>
+<text x="421" y="245" fill="red" >3</text>
 <line x1="300" y1="300" x2="400" y2="400" stroke="black" />
 <text x="343" y="345" fill="green" >10</text>
-<text x="360" y="345" fill="red" >0</text>
+<text x="360" y="345" fill="red" >3</text>
 <text x="367.5" y="345" fill="red" >;</text>
-<text x="371" y="345" fill="red" >0</text>
+<text x="371" y="345" fill="red" >4</text>
 <line x1="300" y1="200" x2="300" y2="300" stroke="black" />
 <text x="293" y="245" fill="green" >7</text>
-<text x="310" y="245" fill="red" >0</text>
+<text x="310" y="245" fill="red" >1</text>
 <text x="317.5" y="245" fill="red" >;</text>
-<text x="321" y="245" fill="red" >0</text>
+<text x="321" y="245" fill="red" >2</text>
 <line x1="200" y1="200" x2="300" y2="200" stroke="black" />
 <text x="243" y="195" fill="green" >3</text>
-<text x="260" y="195" fill="red" >0</text>
+<text x="260" y="195" fill="red" >6</text>
 <text x="267.5" y="195" fill="red" >;</text>
-<text x="271" y="195" fill="red" >0</text>
+<text x="271" y="195" fill="red" >4</text>
 <line x1="200" y1="300" x2="100" y2="400" stroke="black" />
 <text x="143" y="345" fill="green" >8</text>
-<text x="160" y="345" fill="red" >0</text>
+<text x="160" y="345" fill="red" >2</text>
 <text x="167.5" y="345" fill="red" >;</text>
-<text x="171" y="345" fill="red" >0</text>
+<text x="171" y="345" fill="red" >7</text>
 <line x1="100" y1="100" x2="400" y2="100" stroke="black" />
 <text x="243" y="95" fill="green" >0</text>
-<text x="260" y="95" fill="red" >0</text>
+<text x="260" y="95" fill="red" >5</text>
 <text x="267.5" y="95" fill="red" >;</text>
-<text x="271" y="95" fill="red" >0</text>
+<text x="271" y="95" fill="red" >5</text>
 <line x1="200" y1="200" x2="200" y2="300" stroke="black" />
 <text x="193" y="245" fill="green" >6</text>
-<text x="210" y="245" fill="red" >0</text>
+<text x="210" y="245" fill="red" >9</text>
 <text x="217.5" y="245" fill="red" >;</text>
-<text x="221" y="245" fill="red" >0</text>
+<text x="221" y="245" fill="red" >7</text>
 <line x1="200" y1="300" x2="300" y2="300" stroke="black" />
 <text x="243" y="295" fill="green" >9</text>
-<text x="260" y="295" fill="red" >0</text>
+<text x="260" y="295" fill="red" >5</text>
 <text x="267.5" y="295" fill="red" >;</text>
-<text x="271" y="295" fill="red" >0</text>
-<line x1="600" y1="100" x2="900" y2="100" stroke="black" />
-<text x="743" y="95" fill="green" >0</text>
-<text x="760" y="95" fill="red" >0</text>
-<text x="767.5" y="95" fill="red" >;</text>
-<text x="771" y="95" fill="red" >0</text>
-<line x1="800" y1="300" x2="800" y2="200" stroke="black" />
+<text x="271" y="295" fill="red" >9</text>
+<line x1="800" y1="200" x2="800" y2="300" stroke="black" />
 <text x="793" y="245" fill="green" >7</text>
-<text x="810" y="245" fill="red" >0</text>
+<text x="810" y="245" fill="red" >1</text>
 <text x="817.5" y="245" fill="red" >;</text>
-<text x="821" y="245" fill="red" >0</text>
-<line x1="800" y1="200" x2="700" y2="200" stroke="black" />
-<text x="743" y="195" fill="green" >3</text>
-<text x="760" y="195" fill="red" >0</text>
-<text x="767.5" y="195" fill="red" >;</text>
-<text x="771" y="195" fill="red" >0</text>
+<text x="821" y="245" fill="red" >2</text>
+<line x1="900" y1="100" x2="800" y2="200" stroke="black" />
+<text x="843" y="145" fill="green" >4</text>
+<text x="860" y="145" fill="red" >7</text>
+<text x="867.5" y="145" fill="red" >;</text>
+<text x="871" y="145" fill="red" >2</text>
 <line x1="600" y1="100" x2="600" y2="400" stroke="black" />
 <text x="593" y="245" fill="green" >1</text>
-<text x="610" y="245" fill="red" >0</text>
+<text x="610" y="245" fill="red" >2</text>
 <text x="617.5" y="245" fill="red" >;</text>
-<text x="621" y="245" fill="red" >0</text>
-<line x1="600" y1="400" x2="700" y2="300" stroke="black" />
-<text x="643" y="345" fill="green" >8</text>
-<text x="660" y="345" fill="red" >0</text>
-<text x="667.5" y="345" fill="red" >;</text>
-<text x="671" y="345" fill="red" >0</text>
+<text x="621" y="245" fill="red" >3</text>
+<line x1="600" y1="100" x2="700" y2="200" stroke="black" />
+<text x="643" y="145" fill="green" >2</text>
+<text x="660" y="145" fill="red" >9</text>
+<text x="667.5" y="145" fill="red" >;</text>
+<text x="671" y="145" fill="red" >4</text>
+<line x1="700" y1="200" x2="700" y2="300" stroke="black" />
+<text x="693" y="245" fill="green" >6</text>
+<text x="710" y="245" fill="red" >9</text>
+<text x="717.5" y="245" fill="red" >;</text>
+<text x="721" y="245" fill="red" >7</text>
 <line x1="600" y1="400" x2="900" y2="400" stroke="black" />
 <text x="743" y="395" fill="green" >11</text>
-<text x="760" y="395" fill="red" >0</text>
+<text x="760" y="395" fill="red" >4</text>
 <text x="767.5" y="395" fill="red" >;</text>
-<text x="771" y="395" fill="red" >0</text>
-<line x1="900" y1="400" x2="800" y2="300" stroke="black" />
-<text x="843" y="345" fill="green" >10</text>
-<text x="860" y="345" fill="red" >0</text>
-<text x="867.5" y="345" fill="red" >;</text>
-<text x="871" y="345" fill="red" >0</text>
+<text x="771" y="395" fill="red" >4</text>
+<line x1="900" y1="400" x2="900" y2="100" stroke="black" />
+<text x="893" y="245" fill="green" >5</text>
+<text x="910" y="245" fill="red" >6</text>
+<text x="917.5" y="245" fill="red" >;</text>
+<text x="921" y="245" fill="red" >3</text>
 <circle cx="900" cy="400" r="5" fill="black" />
 <text x="882" y="391" fill="purple" >7</text>
 <circle cx="600" cy="400" r="5" fill="black" />

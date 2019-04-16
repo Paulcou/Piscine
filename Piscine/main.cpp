@@ -9,8 +9,8 @@ int main()
 
     ///modifier ici pour gerer l'affiche
     g.dessinerGrapheChargement(&svgout);
-    g.codePrim("0");
-    //g.codePrimC2("0");
+    //g.codePrim("0");
+    g.codePrimC2("0");
 
     ///Affichage prime
     g.afficherPrime(&svgout);

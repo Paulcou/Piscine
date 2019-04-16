@@ -74,8 +74,6 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
             }
         }
         m_arretesDessin.insert({indice, new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0}});
-        ///
-
     }
 
     std::ifstream ifs2{nomFichier2};
@@ -111,7 +109,13 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 (m_sommets.find(elem.second.first))->second->ajouterVoisin(m_sommets.find(elem.second.second)->second, cout1, cout2);
                 (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
             }
-
+        }
+        for(auto item : m_arretesDessin)
+        {
+            if(item.first == indice2)
+            {
+                item.second->ajouterPoids(cout1, cout2);
+            }
         }
     }
 }
@@ -184,6 +188,13 @@ void Graphe::codePrim(std::string id)
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0,0.0}}); ///elem predecesseur ///tmp en cours de traitement
+                    for(auto item : m_arretesDessin)
+                    {
+                        if(item.first == indice)
+                        {
+                            (m_arretesDessinprime1.find(indice))->second->ajouterPoids(item.second->getP1(), item.second->getP2());
+                        }
+                    }
                     x=1;
                 }
             }
@@ -238,7 +249,6 @@ void Graphe::codePrimC2(std::string id)
         poids+=tmp.second;
 
         x=0;
-        //std::unordered_map<std::string, Arrete*> arretesDessin;
         std::string indice= " ";
 
         for(auto elem : tmp.first->getVoisins())
@@ -254,6 +264,13 @@ void Graphe::codePrimC2(std::string id)
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0, 0.0}});
+                    for(auto item : m_arretesDessin)
+                    {
+                        if(item.first == indice)
+                        {
+                            (m_arretesDessinprime1.find(indice))->second->ajouterPoids(item.second->getP1(), item.second->getP2());
+                        }
+                    }
                     x=1;
                 }
             }
