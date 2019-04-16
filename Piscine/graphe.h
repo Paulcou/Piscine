@@ -28,6 +28,8 @@ class Graphe
         ///juste pour dessiner
         std::unordered_map<std::string, Arrete*> m_arretesDessin;
         std::unordered_map<std::string, Arrete*> m_arretesDessinprime1;
+        float m_poid1;
+        float m_poid2;
         int m_ordre;
 
 };

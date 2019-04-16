@@ -203,6 +203,8 @@ void Graphe::codePrim(std::string id)
         }
 
     }
+    m_poid1 = poids;
+    m_poid2 = poids2;
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids<<", "<<poids2<<std::endl;
 }
@@ -281,8 +283,10 @@ void Graphe::codePrimC2(std::string id)
 
         }
     }
+    m_poid1 = poids2;
+    m_poid2 = poids;
     std::cout<<std::endl;
-    std::cout<<"Poids : "<<poids<<", "<<poids2<<std::endl;
+    std::cout<<"Poids : "<<poids2<<", "<<poids<<std::endl; ///on a inverse
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
@@ -293,10 +297,16 @@ void Graphe::afficherPrime(SvgFile* svg)
             {
                 m.second->dessinerPrime(svg);
             }
-            for(auto s : m_sommets)
+        for(auto s : m_sommets)
             {
                 s.second->dessinerSommetPrime(svg);
             }
+
+            svg->addText(650, 45, "(");
+            svg->addText(660, 45, m_poid1);
+            svg->addText(695, 45, ";");
+            svg->addText(710, 45, m_poid2);
+            svg->addText(730, 45, ")");
 }
 
 std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
