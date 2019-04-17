@@ -23,7 +23,6 @@ int main()
     ///PARTIE 2
     g.codePareto();
     g.dessinerGrapheChargementPareto(&svgout);
-    g.codePareto();
 
 
 
