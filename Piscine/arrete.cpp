@@ -29,9 +29,9 @@ void Arrete::dessinerPrime(SvgFile* svg)
 void Arrete::dessinerArreteChargementPareto(SvgFile* svg)
 {
  svg->addLine(m_dep->getX(), m_dep->getY(), m_fin->getX(), m_fin->getY());
- svg->addText((m_fin->getX() + m_dep->getX())/2, (m_fin->getY() + m_dep->getY())/2 - 5, m_p1, "red");
- svg->addText((m_fin->getX() + m_dep->getX())/2 + 7.5, (m_fin->getY() + m_dep->getY())/2 - 5, ";", "red");
- svg->addText((m_fin->getX() + m_dep->getX())/2 + 11, (m_fin->getY() + m_dep->getY())/2 - 5, m_p2, "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 2, (m_fin->getY() + m_dep->getY())/2 - 5, m_p1, "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 11, (m_fin->getY() + m_dep->getY())/2 - 5, ";", "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 16, (m_fin->getY() + m_dep->getY())/2 - 5, m_p2, "red");
 
 }
 
