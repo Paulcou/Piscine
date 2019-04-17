@@ -410,14 +410,14 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         {
             if(elem[i]=='1')
             {
-                cout1 += 5*m_arretesDessin.find(std::to_string(i))->second->getP1();
-                cout2 += 5*m_arretesDessin.find(std::to_string(i))->second->getP2();
+                cout1 += 3*m_arretesDessin.find(std::to_string(i))->second->getP1();
+                cout2 += 3*m_arretesDessin.find(std::to_string(i))->second->getP2();
             }
         }
-        std::cout << "(" << cout1/5 << "," << cout2/5 << ")" << std::endl;
+        //std::cout << "(" << cout1/5 << "," << cout2/5 << ")" << std::endl;
         ///dessin avec cout1 et cout2
 
-        svg->addDisk(650 + cout1 , 400 - cout2, 1.5, "green");
+        svg->addDisk(650 + cout1 , 400 - cout2, 1, "green");
     }
         svg->addLine(650, 400, 650, 50);
         svg->addLine(650, 400, 1000, 400);

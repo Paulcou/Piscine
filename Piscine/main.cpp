@@ -5,7 +5,7 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/broadway.txt", "files/broadway_weights_0.txt"};
+    Graphe g{"files/cubetown.txt", "files/cubetown_weights_0.txt"};
 
     ///PARTIE 1
     //svgout.addText(75, 45, "Chargement du graphe");
