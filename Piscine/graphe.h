@@ -14,6 +14,7 @@ class Graphe
         void codePrim(std::string);
         void codePrimC2(std::string);
         void afficherPrime(SvgFile* svg);
+        void codePareto();
 
         std::string rechercheIndice(Sommet*, Sommet*);
         ~Graphe();
@@ -31,6 +32,7 @@ class Graphe
         float m_poid1;
         float m_poid2;
         int m_ordre;
+        int m_taille;
 
 };
 

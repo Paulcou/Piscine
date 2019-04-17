@@ -1,7 +1,10 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <string>
+#include <typeinfo>
 #include "graphe.h"
+#include "math.h"
 
 Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
 {
@@ -35,6 +38,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
 
     int taille;
     ifs >> taille;
+    m_taille = taille;
     if ( ifs.fail() )
         throw std::runtime_error("Probleme lecture taille du graphe");
 
@@ -287,6 +291,55 @@ void Graphe::codePrimC2(std::string id)
     m_poid2 = poids;
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids2<<", "<<poids<<std::endl; ///on a inverse
+}
+
+void Graphe::codePareto()
+{
+    std::vector<std::string> liste1;
+
+    ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
+    for(int count = 1; count < pow(2,m_taille); count++)
+    {
+        ///On va transformer le binaire (int) en chaine de caractère
+        std::string suit="";
+        for(int offset = m_taille-1; offset >= 0; offset--)
+        {
+            std::string s = std::to_string(((count & (1 << offset)) >> offset));
+            suit += s;
+        }
+
+        ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
+        int counter1 = 0;
+        for(char elem : suit)
+        {
+            if(elem == '1')
+            {
+                counter1 += 1;
+            }
+        }
+        ///Nous tirons donc notre première liste composées d'éléments comprenants ordre-1 arêtes
+        if(counter1 == m_ordre-1)
+        {
+            liste1.push_back(suit);
+        }
+    }
+
+    std::vector<std::vector<Arrete*>> liste2;
+    for(auto elem : liste1)
+    {
+        ///ici on tire une nouvelle liste qui contient les aretes associées aux indices des 1 des chaines de caractères
+        std::vector<Arrete*> liste;
+        std::cout<<elem<<std::endl;
+        for(int j = 0; j < elem.size(); ++j)
+        {
+            if(elem[j] == '1')
+            {
+                liste.push_back((m_arretesDessin.find(std::to_string(j)))->second);
+            }
+        }
+        liste2.push_back(liste);
+    }
+    std::cout<<"liste 2 size :"<<liste2.size()<<std::endl;
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
