@@ -20,6 +20,7 @@ class Graphe
         ///PARTIE 2
         void codePareto();
         void dessinerGrapheChargementPareto(SvgFile* svg);
+        void dessinCalculGraphePareto();
 
 
         ~Graphe();
@@ -38,6 +39,7 @@ class Graphe
         float m_poid2;
         int m_ordre;
         int m_taille;
+        std::vector<std::string> m_solPossibles;
 
 };
 

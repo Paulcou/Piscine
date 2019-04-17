@@ -349,11 +349,12 @@ void Graphe::codePareto()
             }
         }
     }
-    std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
-    for(auto elem : liste1)
+    m_solPossibles = liste1;
+    //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
+    /**for(auto elem : liste1)
     {
         std::cout<<elem<<std::endl;
-    }
+    }**/
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
@@ -397,6 +398,24 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
 
     for(auto a : m_arretesDessin)
         a.second->dessinerArreteChargementPareto(svg);
+}
+
+void Graphe::dessinCalculGraphePareto()
+{
+    for(auto elem: m_solPossibles)
+    {
+        float cout1=0;
+        float cout2=0;
+        for(int i=0; i<elem.size(); i++)
+        {
+            if(elem[i]=='1')
+            {
+                cout1 += m_arretesDessin.find(std::to_string(i))->second->getP1();
+                cout2 += m_arretesDessin.find(std::to_string(i))->second->getP2();
+            }
+        }
+        ///dessin avec cout1 et cout2
+    }
 }
 
 Graphe::~Graphe()
