@@ -9,14 +9,19 @@ class Graphe
 
         Graphe(std::string, std::string);
 
+        ///PARTIE 1
         void dessinerGrapheChargement(SvgFile* svg);
-
         void codePrim(std::string);
         void codePrimC2(std::string);
         void afficherPrime(SvgFile* svg);
         void codePareto();
 
         std::string rechercheIndice(Sommet*, Sommet*);
+
+        ///PARTIE 2
+        void dessinerGrapheChargementPareto(SvgFile* svg);
+
+
         ~Graphe();
 
     protected:
