@@ -5,7 +5,7 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/broadway.txt", "files/broadway_weights_0.txt"};
+    Graphe g{"files/cubetown.txt", "files/cubetown_weights_0.txt"};
 
     ///PARTIE 1
     //svgout.addText(75, 45, "Chargement du graphe");
@@ -13,7 +13,7 @@ int main()
 
 
     ///modifier ici pour gerer l'affiche
-    //g.dessinerGrapheChargement(&svgout);
+    g.dessinerGrapheChargement(&svgout);
     //g.codePrim("0");
     //g.codePrimC2("0");
 
@@ -22,7 +22,7 @@ int main()
 
     ///PARTIE 2
     g.codePareto();
-    g.dessinerGrapheChargementPareto(&svgout);
+    //g.dessinerGrapheChargementPareto(&svgout);
 
 
 

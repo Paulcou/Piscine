@@ -326,27 +326,27 @@ void Graphe::codePareto()
             {
                 if(suit[i] == '1')
                 {
-                    if(( marque.find((m_arretesDessin.find(std::to_string(i)))->second->getDep()->getId()) != marque.end() )&&
-                       ( marque.find((m_arretesDessin.find(std::to_string(i)))->second->getFin()->getId()) != marque.end() ))
-                    {
-                        //std::cout<<"Ici : "<<counter1<<std::endl;
-                        //liste1.push_back(suit);
-                        ok = false;
-
-                    }
-                    else
+                    if( marque.find((m_arretesDessin.find(std::to_string(i)))->second->getDep()->getId()) == marque.end() )
                     {
                         marque.insert((m_arretesDessin.find(std::to_string(i)))->second->getDep()->getId());
+                    }
+                    if( marque.find((m_arretesDessin.find(std::to_string(i)))->second->getFin()->getId()) == marque.end() )
+                    {
                         marque.insert((m_arretesDessin.find(std::to_string(i)))->second->getFin()->getId());
                     }
+                }
+            }
+            for(int j=0; j<m_ordre; j++)
+            {
+                if(marque.find(std::to_string(j))==marque.end())
+                {
+                    ok = false;
                 }
             }
             if(ok)
             {
                 liste1.push_back(suit);
             }
-
-            //liste1.push_back(suit);
         }
     }
     std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
@@ -354,23 +354,6 @@ void Graphe::codePareto()
     {
         std::cout<<elem<<std::endl;
     }
-
-    /*std::vector<std::vector<Arrete*>> liste2;
-    for(auto elem : liste1)
-    {
-        ///ici on tire une nouvelle liste qui contient les aretes associées aux indices des 1 des chaines de caractères
-        std::vector<Arrete*> liste;
-        //std::cout<<elem<<std::endl;
-        for(int j = 0; j < elem.size(); ++j)
-        {
-            if(elem[j] == '1')
-            {
-                liste.push_back((m_arretesDessin.find(std::to_string(j)))->second);
-            }
-        }
-        liste2.push_back(liste);
-    }
-    std::cout<<"liste 2 size :"<<liste2.size()<<std::endl;*/
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
