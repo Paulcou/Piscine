@@ -51,6 +51,16 @@ void Arrete::ajouterPoids(float poids1, float poids2)
     m_p2 = poids2;
 }
 
+Sommet* Arrete::getDep()
+{
+    return m_dep;
+}
+
+Sommet* Arrete::getFin()
+{
+    return m_fin;
+}
+
 Arrete::~Arrete()
 {
 //dtor

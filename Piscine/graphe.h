@@ -14,11 +14,11 @@ class Graphe
         void codePrim(std::string);
         void codePrimC2(std::string);
         void afficherPrime(SvgFile* svg);
-        void codePareto();
 
         std::string rechercheIndice(Sommet*, Sommet*);
 
         ///PARTIE 2
+        void codePareto();
         void dessinerGrapheChargementPareto(SvgFile* svg);
 
 

@@ -17,6 +17,8 @@ class Arrete
         float getP1();
         float getP2();
         void ajouterPoids(float, float);
+        Sommet* getDep();
+        Sommet* getFin();
         ~Arrete();
 
     protected:
