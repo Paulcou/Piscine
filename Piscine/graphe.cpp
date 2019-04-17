@@ -315,7 +315,7 @@ void Graphe::codePareto()
             std::string s = std::to_string(((count & (1 << offset)) >> offset));
             suit += s;
         }
-        std::cout<<suit<<std::endl;
+        //std::cout<<suit<<std::endl;
 
         ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
         int counter1 = 0;
@@ -411,6 +411,15 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
 
 void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 {
+
+    ///pointilles
+    for(int i = 550; i < 900; i += 30)
+        for(int j = 70; j < 430; j += 30)
+        {
+            svg->addLine(i-5, j, i + 5, j, "grey");
+            svg->addLine(i, j-5, i, j+5, "grey");
+        }
+
     svg->addLine(550, 400, 550, 50);
     svg->addLine(550, 400, 900, 400);
     ///fleches du graphe
@@ -419,15 +428,6 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     svg->addLine(900, 400, 895, 395);
     svg->addLine(900, 400, 895, 405);
 
-    ///pointilles
-    for(int i = 550; i < 900; i += 30)
-        for(int j = 70; j < 430; j += 30)
-        {
-            svg->addLine(i-5, j, i + 5, j, "grey");
-            svg->addLine(i, j-5 , i, j+5, "grey");
-        }
-
-    ///graduations
     int grad = -10;
     for(int i = 550; i < 900; i +=30)
     {
@@ -442,14 +442,11 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         svg->addText(515, i + 5, grad2 +10);
         grad2-=10;
     }
-
-
-            ///Text
-            svg->addText(565, 50, "Cout 2");
-    svg->addText(850, 385, "Cout 1");
+    ///Text
+    svg->addText(565, 50, "Cout 2");
+    svg->addText(915, 405, "Cout 1");
 
     ///on affiche avant puis points
-
     for(auto elem: m_solPossibles)
     {
         float cout1=0;
