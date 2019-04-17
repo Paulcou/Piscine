@@ -1,7 +1,7 @@
 #include <iostream>
 #include "sommet.h"
 
-Sommet::Sommet(std::string id, float x, float y): m_id{id}, m_x{x}, m_y{y}
+Sommet::Sommet(int id, float x, float y): m_id{id}, m_x{x}, m_y{y}
 {
 }
 void Sommet::ajouterVoisin(Sommet *voisin, float cout1, float cout2)
@@ -36,7 +36,7 @@ double Sommet::getY()
     return m_y;
 }
 
-std::string Sommet::getId()
+int Sommet::getId()
 {
     return m_id;
 }

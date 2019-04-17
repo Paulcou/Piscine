@@ -9,7 +9,7 @@ class Sommet
 {
     public:
 
-        Sommet(std::string, float, float);
+        Sommet(int, float, float);
         void ajouterVoisin(Sommet*, float, float);
 
         void dessinerSommet(SvgFile* svg);
@@ -18,9 +18,8 @@ class Sommet
 
         double getX();
         double getY();
-        std::string getId();
+        int getId();
         std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
-
 
         ~Sommet();
 
@@ -30,7 +29,7 @@ class Sommet
 
         std::vector<std::pair<Sommet*, std::pair<float, float>>> m_voisins;
 
-        std::string m_id; // Identifiant
+        int m_id; // Identifiant
         float m_x;
         float m_y;
 

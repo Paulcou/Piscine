@@ -11,7 +11,7 @@ class Graphe
 
         ///PARTIE 1
         void dessinerGrapheChargement(SvgFile* svg);
-        void codePrim(std::string);
+        /**void codePrim(std::string);
         void codePrimC2(std::string);
         void afficherPrime(SvgFile* svg);
 
@@ -20,7 +20,7 @@ class Graphe
         ///PARTIE 2
         void codePareto();
         void dessinerGrapheChargementPareto(SvgFile* svg);
-        void dessinCalculGraphePareto(SvgFile* svg);
+        void dessinCalculGraphePareto(SvgFile* svg);**/
 
 
         ~Graphe();
@@ -29,11 +29,11 @@ class Graphe
 
     private:
 
-        std::unordered_map<std::string, Sommet*> m_sommets;
-        std::vector<std::pair<std::string, std::pair<std::string, std::string>>> m_aretes;
+        std::vector<Sommet*> m_sommets;
+        std::vector<std::pair<int, int>> m_aretes;
 
         ///juste pour dessiner
-        std::unordered_map<std::string, Arrete*> m_arretesDessin;
+        std::vector<Arrete*> m_arretesDessin;
         std::unordered_map<std::string, Arrete*> m_arretesDessinprime1;
         float m_poid1;
         float m_poid2;

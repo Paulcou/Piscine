@@ -18,7 +18,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         throw std::runtime_error("Probleme lecture ordre du graphe");
     m_ordre = ordre;
 
-    std::string id;
+    int id;
     float x, y;
 
     for (int i=0; i<ordre; ++i)
@@ -33,7 +33,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture données sommet");
 
-        m_sommets.insert({id,new Sommet{id,x,y}});
+        m_sommets.push_back(new Sommet{id,x,y});
     }
 
     int taille;
@@ -42,9 +42,9 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
     if ( ifs.fail() )
         throw std::runtime_error("Probleme lecture taille du graphe");
 
-    std::string id_voisin;
-    std::string id2;
-    std::string indice;
+    int id_voisin;
+    int id2;
+    int indice;
 
     ///Pour dessin
     float x1, x2, y1, y2;
@@ -61,23 +61,23 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture arete sommet 2");
 
-        (m_aretes.push_back({indice,{id2, id_voisin}}));
+        m_aretes.push_back({id2, id_voisin});
 
         ///Dessin direct du graphe avec classe aretes
         for(auto d : m_sommets)
         {
-            if(d.second->getId() == id2)
+            if(d->getId() == id2)
             {
-                x1 = d.second->getX();
-                y1 = d.second->getY();
+                x1 = d->getX();
+                y1 = d->getY();
             }
-            else if(d.second->getId() == id_voisin)
+            else if(d->getId() == id_voisin)
             {
-                x2 = d.second->getX();
-                y2 = d.second->getY();
+                x2 = d->getX();
+                y2 = d->getY();
             }
         }
-        m_arretesDessin.insert({indice, new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0}});
+        m_arretesDessin.push_back(new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, {0.0,0.0}});
     }
 
     std::ifstream ifs2{nomFichier2};
@@ -91,34 +91,34 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         throw std::runtime_error("Probleme lecture taille du graphe2");
     ifs2 >> nbre;
 
-    std::string indice2;
-    float cout1, cout2;
+    int indice2;
+    std::vector<float> poids;
 
     for(int j=0; j<taille2; j++)
     {
         ifs2 >> indice2;
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture indice2 arete");
-        ifs2 >> cout1;
+        ifs2 >> poids[0];
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture cout1 arete");
-        ifs2 >> cout2;
+        ifs2 >> poids[1];
         if(ifs.fail())
             throw std::runtime_error("Probleme lecture cout2 arete");
 
-        for(auto elem : m_aretes)
+        for(size_t i=0; i<m_aretes.size(); i++)
         {
-            if(elem.first == indice2)
+            if(i == indice2)
             {
-                (m_sommets.find(elem.second.first))->second->ajouterVoisin(m_sommets.find(elem.second.second)->second, cout1, cout2);
-                (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
+                (m_sommets[m_aretes[i].first]->ajouterVoisin(m_sommets[m_aretes[i].second], poids[0], poids[1]));
+                (m_sommets[m_aretes[i].second]->ajouterVoisin(m_sommets[m_aretes[i].first], poids[0], poids[1]));
             }
         }
-        for(auto item : m_arretesDessin)
+        for(size_t i=0; i<m_arretesDessin.size(); i++)
         {
-            if(item.first == indice2)
+            if(i == indice2)
             {
-                item.second->ajouterPoids(cout1, cout2);
+                m_arretesDessin[i]->ajouterPoids(poids[0], poids[1]);
             }
         }
     }
@@ -126,14 +126,15 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
 
 void Graphe::dessinerGrapheChargement(SvgFile* svg)
 {
+    std::cout<<"wesh";
     for(auto s : m_sommets)
-        s.second->dessinerSommet(svg);
+        s->dessinerSommet(svg);
 
     for(auto a : m_arretesDessin)
-        a.second->dessinerArrete(svg);
+        a->dessinerArrete(svg);
 }
 
-void Graphe::codePrim(std::string id)
+/**void Graphe::codePrim(std::string id)
 {
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
@@ -363,10 +364,10 @@ void Graphe::codePareto()
     /**for(auto elem : liste1)
     {
         std::cout<<elem<<std::endl;
-    }**/
-}
+    }
+}**/
 
-void Graphe::afficherPrime(SvgFile* svg)
+/**void Graphe::afficherPrime(SvgFile* svg)
 {
     ///appel dessin direct
 
@@ -461,11 +462,10 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         }
         //std::cout << "(" << cout1/3 << "," << cout2/3 << ")" << std::endl;
         ///dessin avec cout1 et cout2
-
         svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
     }
 
-}
+}**/
 
 Graphe::~Graphe()
 {
