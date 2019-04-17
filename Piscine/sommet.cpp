@@ -21,6 +21,11 @@ void Sommet::dessinerSommetPrime(SvgFile* svg)
     svg->addText(m_x - 18 + 500, m_y - 9, m_id, "purple");
 }
 
+void Sommet::dessinerSommetChargementPareto(SvgFile* svg)
+{
+    svg->addDisk(m_x, m_y, 5);
+}
+
 double Sommet::getX()
 {
    return m_x;

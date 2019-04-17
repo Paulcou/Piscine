@@ -321,6 +321,17 @@ std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
     }
 }
 
+
+///PARTIE 2
+void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
+{
+    for(auto s : m_sommets)
+        s.second->dessinerSommetChargementPareto(svg);
+
+    for(auto a : m_arretesDessin)
+        a.second->dessinerArreteChargementPareto(svg);
+}
+
 Graphe::~Graphe()
 {
     //dtor
