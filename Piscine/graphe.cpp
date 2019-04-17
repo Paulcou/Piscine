@@ -361,20 +361,20 @@ void Graphe::afficherPrime(SvgFile* svg)
 {
     ///appel dessin direct
 
-        for(auto m : m_arretesDessinprime1)
-            {
-                m.second->dessinerPrime(svg);
-            }
-        for(auto s : m_sommets)
-            {
-                s.second->dessinerSommetPrime(svg);
-            }
+    for(auto m : m_arretesDessinprime1)
+    {
+        m.second->dessinerPrime(svg);
+    }
+    for(auto s : m_sommets)
+    {
+        s.second->dessinerSommetPrime(svg);
+    }
 
-            svg->addText(650, 45, "(");
-            svg->addText(660, 45, m_poid1);
-            svg->addText(695, 45, ";");
-            svg->addText(710, 45, m_poid2);
-            svg->addText(730, 45, ")");
+    svg->addText(650, 45, "(");
+    svg->addText(660, 45, m_poid1);
+    svg->addText(695, 45, ";");
+    svg->addText(710, 45, m_poid2);
+    svg->addText(730, 45, ")");
 }
 
 std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
@@ -382,7 +382,7 @@ std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
     for(auto elem : m_aretes)
     {
         if((s1->getId()==elem.second.first && s2->getId()==elem.second.second)||
-           (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
+                (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
         {
             return elem.first;
         }
@@ -402,6 +402,45 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
 
 void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 {
+    svg->addLine(550, 400, 550, 50);
+    svg->addLine(550, 400, 900, 400);
+    ///fleches du graphe
+    svg->addLine(550, 50, 545, 55);
+    svg->addLine(550, 50, 555, 55);
+    svg->addLine(900, 400, 895, 395);
+    svg->addLine(900, 400, 895, 405);
+
+    ///pointilles
+    for(int i = 550; i < 900; i += 30)
+        for(int j = 70; j < 430; j += 30)
+        {
+            svg->addLine(i-5, j, i + 5, j, "grey");
+            svg->addLine(i, j-5 , i, j+5, "grey");
+        }
+
+    ///graduations
+    int grad = -10;
+    for(int i = 550; i < 900; i +=30)
+    {
+        svg->addLine(i, 400, i, 405);
+        svg->addText(i - 5, 420, grad + 10);
+        grad+=10;
+    }
+    int grad2 = 100;
+    for(int i = 70; i < 420; i +=30)
+    {
+        svg->addLine(545, i, 550, i);
+        svg->addText(515, i + 5, grad2 +10);
+        grad2-=10;
+    }
+
+
+            ///Text
+            svg->addText(565, 50, "Cout 2");
+    svg->addText(850, 385, "Cout 1");
+
+    ///on affiche avant puis points
+
     for(auto elem: m_solPossibles)
     {
         float cout1=0;
@@ -414,18 +453,12 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
                 cout2 += 3*m_arretesDessin.find(std::to_string(i))->second->getP2();
             }
         }
-        //std::cout << "(" << cout1/5 << "," << cout2/5 << ")" << std::endl;
+        //std::cout << "(" << cout1/3 << "," << cout2/3 << ")" << std::endl;
         ///dessin avec cout1 et cout2
 
-        svg->addDisk(650 + cout1 , 400 - cout2, 1, "green");
+        svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
     }
-        svg->addLine(650, 400, 650, 50);
-        svg->addLine(650, 400, 1000, 400);
-        ///fleches du graphe
-        svg->addLine(650, 50, 645, 55);
-        svg->addLine(650, 50, 655, 55);
-        svg->addLine(1000, 400, 995, 395);
-        svg->addLine(1000, 400, 995, 405);
+
 }
 
 Graphe::~Graphe()
