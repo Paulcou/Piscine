@@ -13,7 +13,7 @@ int main()
 
 
     ///modifier ici pour gerer l'affiche
-    g.dessinerGrapheChargement(&svgout);
+    //g.dessinerGrapheChargement(&svgout);
     //g.codePrim("0");
     //g.codePrimC2("0");
 
@@ -21,9 +21,9 @@ int main()
     //g.afficherPrime(&svgout);
 
     ///PARTIE 2
+    g.dessinerGrapheChargementPareto(&svgout);
     g.codePareto();
-    g.dessinCalculGraphePareto();
-    //g.dessinerGrapheChargementPareto(&svgout);
+    g.dessinCalculGraphePareto(&svgout);
 
 
 

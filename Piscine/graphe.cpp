@@ -157,7 +157,7 @@ void Graphe::codePrim(std::string id)
         std::pair<Sommet *, float> tmp;
         float a = 100;
         int index = 100;
-        for(int i=0; i<liste.size(); ++i)
+        for(size_t i=0; i<liste.size(); ++i)
         {
             if(liste[i].second < a)
             {
@@ -237,7 +237,7 @@ void Graphe::codePrimC2(std::string id)
         std::pair<Sommet *, float> tmp;
         float a = 100;
         int index = 100;
-        for(int i=0; i<liste.size(); ++i)
+        for(size_t i=0; i<liste.size(); ++i)
         {
             if(liste[i].second < a)
             {
@@ -322,7 +322,7 @@ void Graphe::codePareto()
         if(counter1 == m_ordre-1)
         {
             std::unordered_set<std::string> marque;
-            for(int i=0; i<suit.size(); i++)
+            for(size_t i=0; i<suit.size(); i++)
             {
                 if(suit[i] == '1')
                 {
@@ -400,22 +400,32 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
         a.second->dessinerArreteChargementPareto(svg);
 }
 
-void Graphe::dessinCalculGraphePareto()
+void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 {
     for(auto elem: m_solPossibles)
     {
         float cout1=0;
         float cout2=0;
-        for(int i=0; i<elem.size(); i++)
+        for(size_t i=0; i<elem.size(); i++)
         {
             if(elem[i]=='1')
             {
-                cout1 += m_arretesDessin.find(std::to_string(i))->second->getP1();
-                cout2 += m_arretesDessin.find(std::to_string(i))->second->getP2();
+                cout1 += 5*m_arretesDessin.find(std::to_string(i))->second->getP1();
+                cout2 += 5*m_arretesDessin.find(std::to_string(i))->second->getP2();
             }
         }
+        std::cout << "(" << cout1/5 << "," << cout2/5 << ")" << std::endl;
         ///dessin avec cout1 et cout2
+
+        svg->addDisk(650 + cout1 , 400 - cout2, 1.5, "green");
     }
+        svg->addLine(650, 400, 650, 50);
+        svg->addLine(650, 400, 1000, 400);
+        ///fleches du graphe
+        svg->addLine(650, 50, 645, 55);
+        svg->addLine(650, 50, 655, 55);
+        svg->addLine(1000, 400, 995, 395);
+        svg->addLine(1000, 400, 995, 405);
 }
 
 Graphe::~Graphe()

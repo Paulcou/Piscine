@@ -20,7 +20,7 @@ class Graphe
         ///PARTIE 2
         void codePareto();
         void dessinerGrapheChargementPareto(SvgFile* svg);
-        void dessinCalculGraphePareto();
+        void dessinCalculGraphePareto(SvgFile* svg);
 
 
         ~Graphe();
