@@ -298,7 +298,15 @@ void Graphe::codePareto()
     std::vector<std::string> liste1;
 
     ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
-    for(int count = 1; count < pow(2,m_taille); count++)
+    int depart = pow(2, m_ordre-1) -1;
+    int arrivee = 1;
+    int n = m_taille - 1;
+    while(n != (m_taille-m_ordre))
+    {
+        arrivee+=pow(2,n);
+        n -= 1;
+    }
+    for(int count = depart; count < arrivee; count++)
     {
         ///On va transformer le binaire (int) en chaine de caractère
         std::string suit="";
@@ -307,6 +315,7 @@ void Graphe::codePareto()
             std::string s = std::to_string(((count & (1 << offset)) >> offset));
             suit += s;
         }
+        std::cout<<suit<<std::endl;
 
         ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
         int counter1 = 0;
@@ -350,7 +359,7 @@ void Graphe::codePareto()
         }
     }
     m_solPossibles = liste1;
-    //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
+    std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
     /**for(auto elem : liste1)
     {
         std::cout<<elem<<std::endl;
