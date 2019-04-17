@@ -14,11 +14,13 @@ class Sommet
 
         void dessinerSommet(SvgFile* svg);
         void dessinerSommetPrime(SvgFile* svg);
+        void dessinerSommetChargementPareto(SvgFile* svg);
 
         double getX();
         double getY();
         std::string getId();
         std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
+
 
         ~Sommet();
 

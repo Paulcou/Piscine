@@ -13,6 +13,7 @@ class Arrete
         Arrete(std::string indice, Sommet* dep, Sommet* fin, float p1, float p2);
         void dessinerArrete(SvgFile* svg);
         void dessinerPrime(SvgFile* svg);
+        void dessinerArreteChargementPareto(SvgFile* svg);
         float getP1();
         float getP2();
         void ajouterPoids(float, float);
