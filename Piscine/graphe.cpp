@@ -211,6 +211,7 @@ void Graphe::codePrim(std::string id)
     m_poid2 = poids2;
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids<<", "<<poids2<<std::endl;
+    m_resultPrim1 = {poids, poids2};
 }
 
 void Graphe::codePrimC2(std::string id)
@@ -291,6 +292,7 @@ void Graphe::codePrimC2(std::string id)
     m_poid2 = poids;
     std::cout<<std::endl;
     std::cout<<"Poids : "<<poids2<<", "<<poids<<std::endl; ///on a inverse
+    m_resultPrim2 = {poids2, poids};
 }
 
 void Graphe::codePareto()
@@ -359,7 +361,7 @@ void Graphe::codePareto()
         }
     }
     m_solPossibles = liste1;
-    std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
+    //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
     /**for(auto elem : liste1)
     {
         std::cout<<elem<<std::endl;
@@ -448,10 +450,12 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
     ///on affiche avant puis points
     std::vector<std::pair<float, float>> couts;
-    for(auto elem : m_solPossibles)
+    std::vector<std::pair<std::string, std::pair<float, float>>> opti;
+    for(int j=0; j<m_solPossibles.size(); j++)
     {
         float cout1=0;
         float cout2=0;
+        std::string elem = m_solPossibles[j];
         for(size_t i=0; i<elem.size(); i++)
         {
             if(elem[i]=='1')
@@ -461,31 +465,52 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
             }
         }
+
+        svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
+
         couts.push_back({cout1/3, cout2/3});
         //std::cout << "(" << cout1/3 << "," << cout2/3 << ")" << std::endl;
         ///dessin avec cout1 et cout2
 
-        svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
+        /**svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");**/
     }
-
-    for(size_t i=0; i<couts.size(); ++i)
+    opti=rechercheOpti(couts);
+    std::cout<<"opti"<<std::endl;
+    for(auto elem : opti)
     {
-        for(size_t j=0; j<couts.size(); ++j)
-        {
-            if((couts[i].first <= couts[j].first) && (couts[i].second <= couts[j].second))
-            {
-                couts[j].first = couts[i].first;
-                couts[j].second = couts[i].second;
+        std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
+        std::cout<<elem.first<<std::endl;
+        svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
+    }
+}
 
+std::vector<std::pair<std::string, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
+{
+    std::vector<std::pair<std::string, std::pair<float, float>>> opti;
+    std::vector<std::pair<float, float>> coutsComparaison;
+    coutsComparaison = couts;
+
+
+    for(int i = 0; i<couts.size(); i++)
+    {
+        bool ok = true;
+        for(auto item : coutsComparaison)
+        {
+            if(couts[i]!=item)
+            {
+                if((item.first <= couts[i].first)&&(item.second <= couts[i].second))
+                {
+                    ok = false;
+                }
             }
         }
-    }
-     for(size_t i=0; i<couts.size(); ++i)
-    {
-        //std::cout << "solutions optimales: " << couts[i].first << " " <<couts[i].second << std::endl;
-        svg->addDisk(550 + 3*couts[i].first, 400 - 3*couts[i].second, 2, "red");
+        if(ok)
+        {
+            opti.push_back({m_solPossibles[i],couts[i]});
+        }
     }
 
+    return opti;
 }
 
 Graphe::~Graphe()
