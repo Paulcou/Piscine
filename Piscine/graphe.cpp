@@ -485,9 +485,22 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         {
             if(item[i]=='1')
             {
-                ///tu récupères l'arete d'indice 1 avec m_arreteDessin[i]
+                for(int j = 0; j<1000; j+=100)
+                {
+
+                   for(s : m_sommets)
+                    {
+                        s.second->dessinerPareto(svg, (0+j)*5, 500*5);
+                    }
+                    ///tu récupères l'arete d'indice 1 avec m_arreteDessin[i]
+
+                    m_arretesDessin[i]->dessinerArretePrime(svg, (0+j)*5, 500*5);
+                }
+
+
             }
         }
+
     }
 }
 

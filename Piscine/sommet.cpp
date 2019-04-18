@@ -26,6 +26,11 @@ void Sommet::dessinerSommetChargementPareto(SvgFile* svg)
     svg->addDisk(m_x, m_y, 5);
 }
 
+void Sommet::dessinerPareto(SvgFile* svg, int decx, int decy)
+{
+    svg->addDisk((m_x + decx)/5, (m_y + decy)/5, 2);
+}
+
 double Sommet::getX()
 {
    return m_x;

@@ -15,6 +15,7 @@ class Sommet
         void dessinerSommet(SvgFile* svg);
         void dessinerSommetPrime(SvgFile* svg);
         void dessinerSommetChargementPareto(SvgFile* svg);
+        void dessinerPareto(SvgFile* svg, int decx, int decy);
 
         double getX();
         double getY();
