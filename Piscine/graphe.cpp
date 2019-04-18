@@ -520,7 +520,7 @@ int Graphe::rechercheCC(std::string suit)
     std::unordered_set<std::string> pairesComp;
     pairesComp.insert(paires[0].first);
     pairesComp.insert(paires[0].second);
-    for(int j=0; j<m_ordre-1; j++)
+    for(int j=0; j<m_ordre-2; j++)
     {
         for(int i = 1; i<paires.size(); i++)
         {
