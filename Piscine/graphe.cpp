@@ -462,18 +462,15 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
             {
                 cout1 += 3*m_arretesDessin[i]->getP1();
                 cout2 += 3*m_arretesDessin[i]->getP2();
-
             }
         }
 
         svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
 
         couts.push_back({cout1/3, cout2/3});
-        //std::cout << "(" << cout1/3 << "," << cout2/3 << ")" << std::endl;
-        ///dessin avec cout1 et cout2
-
-        /**svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");**/
     }
+
+    ///On recherche la frontière de Pareto et on l'affiche
     opti=rechercheOpti(couts);
     std::cout<<"opti"<<std::endl;
     for(auto elem : opti)
@@ -481,6 +478,16 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
         std::cout<<elem.first<<std::endl;
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
+
+        std::string item;
+        item = elem.first;
+        for(int i=0; i<item.size(); i++)
+        {
+            if(item[i]=='1')
+            {
+                ///tu récupères l'arete d'indice 1 avec m_arreteDessin[i]
+            }
+        }
     }
 }
 
@@ -489,7 +496,6 @@ std::vector<std::pair<std::string, std::pair<float, float>>> Graphe::rechercheOp
     std::vector<std::pair<std::string, std::pair<float, float>>> opti;
     std::vector<std::pair<float, float>> coutsComparaison;
     coutsComparaison = couts;
-
 
     for(int i = 0; i<couts.size(); i++)
     {
