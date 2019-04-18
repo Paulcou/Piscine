@@ -33,7 +33,7 @@ class Graphe
         std::vector<std::pair<std::string, std::pair<std::string, std::string>>> m_aretes;
 
         ///juste pour dessiner
-        std::unordered_map<std::string, Arrete*> m_arretesDessin;
+        std::vector<Arrete*> m_arretesDessin;
         std::unordered_map<std::string, Arrete*> m_arretesDessinprime1;
         float m_poid1;
         float m_poid2;

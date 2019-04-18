@@ -77,7 +77,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 y2 = d.second->getY();
             }
         }
-        m_arretesDessin.insert({indice, new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0}});
+        m_arretesDessin.push_back(new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0});
     }
 
     std::ifstream ifs2{nomFichier2};
@@ -114,11 +114,11 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
             }
         }
-        for(auto item : m_arretesDessin)
+        for(int i=0; i<m_arretesDessin.size(); i++)
         {
-            if(item.first == indice2)
+            if(std::to_string(i) == indice2)
             {
-                item.second->ajouterPoids(cout1, cout2);
+                m_arretesDessin[i]->ajouterPoids(cout1, cout2);
             }
         }
     }
@@ -130,7 +130,7 @@ void Graphe::dessinerGrapheChargement(SvgFile* svg)
         s.second->dessinerSommet(svg);
 
     for(auto a : m_arretesDessin)
-        a.second->dessinerArrete(svg);
+        a->dessinerArrete(svg);
 }
 
 void Graphe::codePrim(std::string id)
@@ -193,12 +193,12 @@ void Graphe::codePrim(std::string id)
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0,0.0}}); ///elem predecesseur ///tmp en cours de traitement
-                    for(auto item : m_arretesDessin)
+                    for(int i=0; i<m_arretesDessin.size(); i++)
                     {
-                        if(item.first == indice)
+                        if(std::to_string(i) == indice)
                         {
-                            (m_arretesDessinprime1.find(indice))->second->ajouterPoids(item.second->getP1(), item.second->getP2());
-                            poids2+=item.second->getP2();
+                            (m_arretesDessinprime1.find(indice))->second->ajouterPoids(m_arretesDessin[i]->getP1(), m_arretesDessin[i]->getP2());
+                            poids2+=m_arretesDessin[i]->getP2();
                         }
                     }
                     x=1;
@@ -273,12 +273,12 @@ void Graphe::codePrimC2(std::string id)
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0, 0.0}});
-                    for(auto item : m_arretesDessin)
+                    for(int i=0; i<m_arretesDessin.size(); i++)
                     {
-                        if(item.first == indice)
+                        if(std::to_string(i) == indice)
                         {
-                            (m_arretesDessinprime1.find(indice))->second->ajouterPoids(item.second->getP1(), item.second->getP2());
-                            poids2+=item.second->getP1();
+                            (m_arretesDessinprime1.find(indice))->second->ajouterPoids(m_arretesDessin[i]->getP1(), m_arretesDessin[i]->getP2());
+                            poids2+=m_arretesDessin[i]->getP1();
                         }
                     }
                     x=1;
@@ -335,13 +335,13 @@ void Graphe::codePareto()
             {
                 if(suit[i] == '1')
                 {
-                    if( marque.find((m_arretesDessin.find(std::to_string(i)))->second->getDep()->getId()) == marque.end() )
+                    if( marque.find((m_arretesDessin[i]->getDep()->getId())) == marque.end() )
                     {
-                        marque.insert((m_arretesDessin.find(std::to_string(i)))->second->getDep()->getId());
+                        marque.insert((m_arretesDessin[i]->getDep()->getId()));
                     }
-                    if( marque.find((m_arretesDessin.find(std::to_string(i)))->second->getFin()->getId()) == marque.end() )
+                    if( marque.find((m_arretesDessin[i]->getFin()->getId())) == marque.end() )
                     {
-                        marque.insert((m_arretesDessin.find(std::to_string(i)))->second->getFin()->getId());
+                        marque.insert((m_arretesDessin[i]->getFin()->getId()));
                     }
                 }
             }
@@ -406,7 +406,7 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
         s.second->dessinerSommetChargementPareto(svg);
 
     for(auto a : m_arretesDessin)
-        a.second->dessinerArreteChargementPareto(svg);
+        a->dessinerArreteChargementPareto(svg);
 }
 
 void Graphe::dessinCalculGraphePareto(SvgFile* svg)
@@ -455,8 +455,8 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         {
             if(elem[i]=='1')
             {
-                cout1 += 3*m_arretesDessin.find(std::to_string(i))->second->getP1();
-                cout2 += 3*m_arretesDessin.find(std::to_string(i))->second->getP2();
+                cout1 += 3*m_arretesDessin[i]->getP1();
+                cout2 += 3*m_arretesDessin[i]->getP2();
             }
         }
         //std::cout << "(" << cout1/3 << "," << cout2/3 << ")" << std::endl;
