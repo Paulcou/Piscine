@@ -5,7 +5,7 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/broadway.txt", "files/broadway_weights_0.txt"};
+    Graphe g{"files/cubetown.txt", "files/cubetown_weights_0.txt"};
 
     ///PARTIE 1
     //svgout.addText(75, 45, "Chargement du graphe");
@@ -17,7 +17,7 @@ int main()
     //g.codePrim("0");
     //g.codePrimC2("0");
 
-    ///Affichage primeC:\Users\paulc\Desktop\Piscine\Piscine\graphe.cpp
+    ///Affichage prime
     //g.afficherPrime(&svgout);
 
     ///PARTIE 2

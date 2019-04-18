@@ -1,30 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1000" height="800">
 
-<circle cx="100" cy="200" r="5" fill="black" />
-<circle cx="200" cy="100" r="5" fill="black" />
-<circle cx="200" cy="200" r="5" fill="black" />
+<circle cx="400" cy="400" r="5" fill="black" />
+<circle cx="100" cy="400" r="5" fill="black" />
+<circle cx="300" cy="300" r="5" fill="black" />
+<circle cx="200" cy="300" r="5" fill="black" />
 <circle cx="100" cy="100" r="5" fill="black" />
-<line x1="100" y1="100" x2="200" y2="100" stroke="black" />
-<text x="152" y="95" fill="red" >8</text>
-<text x="161" y="95" fill="red" >;</text>
-<text x="166" y="95" fill="red" >5</text>
-<line x1="100" y1="100" x2="100" y2="200" stroke="black" />
-<text x="102" y="145" fill="red" >2</text>
-<text x="111" y="145" fill="red" >;</text>
-<text x="116" y="145" fill="red" >5</text>
-<line x1="200" y1="100" x2="100" y2="200" stroke="black" />
-<text x="152" y="145" fill="red" >3</text>
+<circle cx="300" cy="200" r="5" fill="black" />
+<circle cx="400" cy="100" r="5" fill="black" />
+<circle cx="200" cy="200" r="5" fill="black" />
+<line x1="100" y1="100" x2="400" y2="100" stroke="black" />
+<text x="252" y="95" fill="red" >5</text>
+<text x="261" y="95" fill="red" >;</text>
+<text x="266" y="95" fill="red" >5</text>
+<line x1="100" y1="100" x2="100" y2="400" stroke="black" />
+<text x="102" y="245" fill="red" >2</text>
+<text x="111" y="245" fill="red" >;</text>
+<text x="116" y="245" fill="red" >3</text>
+<line x1="100" y1="100" x2="200" y2="200" stroke="black" />
+<text x="152" y="145" fill="red" >9</text>
 <text x="161" y="145" fill="red" >;</text>
-<text x="166" y="145" fill="red" >6</text>
-<line x1="200" y1="100" x2="200" y2="200" stroke="black" />
-<text x="202" y="145" fill="red" >8</text>
-<text x="211" y="145" fill="red" >;</text>
-<text x="216" y="145" fill="red" >4</text>
-<line x1="100" y1="200" x2="200" y2="200" stroke="black" />
-<text x="152" y="195" fill="red" >6</text>
-<text x="161" y="195" fill="red" >;</text>
-<text x="166" y="195" fill="red" >9</text>
+<text x="166" y="145" fill="red" >4</text>
+<line x1="200" y1="200" x2="300" y2="200" stroke="black" />
+<text x="252" y="195" fill="red" >6</text>
+<text x="261" y="195" fill="red" >;</text>
+<text x="266" y="195" fill="red" >4</text>
+<line x1="400" y1="100" x2="300" y2="200" stroke="black" />
+<text x="352" y="145" fill="red" >7</text>
+<text x="361" y="145" fill="red" >;</text>
+<text x="366" y="145" fill="red" >2</text>
+<line x1="400" y1="100" x2="400" y2="400" stroke="black" />
+<text x="402" y="245" fill="red" >6</text>
+<text x="411" y="245" fill="red" >;</text>
+<text x="416" y="245" fill="red" >3</text>
+<line x1="200" y1="200" x2="200" y2="300" stroke="black" />
+<text x="202" y="245" fill="red" >9</text>
+<text x="211" y="245" fill="red" >;</text>
+<text x="216" y="245" fill="red" >7</text>
+<line x1="300" y1="200" x2="300" y2="300" stroke="black" />
+<text x="302" y="245" fill="red" >1</text>
+<text x="311" y="245" fill="red" >;</text>
+<text x="316" y="245" fill="red" >2</text>
+<line x1="200" y1="300" x2="100" y2="400" stroke="black" />
+<text x="152" y="345" fill="red" >2</text>
+<text x="161" y="345" fill="red" >;</text>
+<text x="166" y="345" fill="red" >7</text>
+<line x1="200" y1="300" x2="300" y2="300" stroke="black" />
+<text x="252" y="295" fill="red" >5</text>
+<text x="261" y="295" fill="red" >;</text>
+<text x="266" y="295" fill="red" >9</text>
+<line x1="300" y1="300" x2="400" y2="400" stroke="black" />
+<text x="352" y="345" fill="red" >3</text>
+<text x="361" y="345" fill="red" >;</text>
+<text x="366" y="345" fill="red" >4</text>
+<line x1="100" y1="400" x2="400" y2="400" stroke="black" />
+<text x="252" y="395" fill="red" >4</text>
+<text x="261" y="395" fill="red" >;</text>
+<text x="266" y="395" fill="red" >4</text>
 <line x1="545" y1="70" x2="555" y2="70" stroke="grey" />
 <line x1="550" y1="65" x2="550" y2="75" stroke="grey" />
 <line x1="545" y1="100" x2="555" y2="100" stroke="grey" />
@@ -369,227 +401,590 @@
 <text x="515" y="405" fill="black" >0</text>
 <text x="565" y="50" fill="black" >Cout 2</text>
 <text x="915" y="405" fill="black" >Cout 1</text>
-<circle cx="598" cy="346" r="1.25" fill="green" />
-<circle cx="583" cy="340" r="1.25" fill="green" />
-<circle cx="589" cy="355" r="1.25" fill="green" />
-<circle cx="616" cy="346" r="1.25" fill="green" />
-<circle cx="601" cy="340" r="1.25" fill="green" />
-<circle cx="607" cy="355" r="1.25" fill="green" />
-<circle cx="598" cy="343" r="1.25" fill="green" />
-<circle cx="604" cy="358" r="1.25" fill="green" />
-<circle cx="583" cy="340" r="2" fill="red" />
-<circle cx="20" cy="540" r="2" fill="black" />
-<circle cx="40" cy="520" r="2" fill="black" />
-<circle cx="40" cy="540" r="2" fill="black" />
+<circle cx="640" cy="301" r="1.25" fill="green" />
+<circle cx="661" cy="301" r="1.25" fill="green" />
+<circle cx="652" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="292" r="1.25" fill="green" />
+<circle cx="655" cy="292" r="1.25" fill="green" />
+<circle cx="643" cy="304" r="1.25" fill="green" />
+<circle cx="667" cy="289" r="1.25" fill="green" />
+<circle cx="664" cy="304" r="1.25" fill="green" />
+<circle cx="655" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="295" r="1.25" fill="green" />
+<circle cx="658" cy="295" r="1.25" fill="green" />
+<circle cx="658" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="316" r="1.25" fill="green" />
+<circle cx="646" cy="322" r="1.25" fill="green" />
+<circle cx="652" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="307" r="1.25" fill="green" />
+<circle cx="679" cy="301" r="1.25" fill="green" />
+<circle cx="670" cy="307" r="1.25" fill="green" />
+<circle cx="676" cy="292" r="1.25" fill="green" />
+<circle cx="673" cy="292" r="1.25" fill="green" />
+<circle cx="667" cy="322" r="1.25" fill="green" />
+<circle cx="673" cy="307" r="1.25" fill="green" />
+<circle cx="664" cy="313" r="1.25" fill="green" />
+<circle cx="661" cy="313" r="1.25" fill="green" />
+<circle cx="667" cy="298" r="1.25" fill="green" />
+<circle cx="655" cy="295" r="1.25" fill="green" />
+<circle cx="652" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="316" r="1.25" fill="green" />
+<circle cx="649" cy="301" r="1.25" fill="green" />
+<circle cx="646" cy="301" r="1.25" fill="green" />
+<circle cx="676" cy="295" r="1.25" fill="green" />
+<circle cx="667" cy="301" r="1.25" fill="green" />
+<circle cx="673" cy="286" r="1.25" fill="green" />
+<circle cx="670" cy="286" r="1.25" fill="green" />
+<circle cx="664" cy="316" r="1.25" fill="green" />
+<circle cx="670" cy="301" r="1.25" fill="green" />
+<circle cx="661" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="664" cy="292" r="1.25" fill="green" />
+<circle cx="658" cy="298" r="1.25" fill="green" />
+<circle cx="655" cy="313" r="1.25" fill="green" />
+<circle cx="646" cy="319" r="1.25" fill="green" />
+<circle cx="652" cy="304" r="1.25" fill="green" />
+<circle cx="649" cy="304" r="1.25" fill="green" />
+<circle cx="679" cy="298" r="1.25" fill="green" />
+<circle cx="670" cy="304" r="1.25" fill="green" />
+<circle cx="676" cy="289" r="1.25" fill="green" />
+<circle cx="673" cy="289" r="1.25" fill="green" />
+<circle cx="667" cy="319" r="1.25" fill="green" />
+<circle cx="673" cy="304" r="1.25" fill="green" />
+<circle cx="664" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="310" r="1.25" fill="green" />
+<circle cx="670" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="316" r="1.25" fill="green" />
+<circle cx="667" cy="301" r="1.25" fill="green" />
+<circle cx="664" cy="301" r="1.25" fill="green" />
+<circle cx="664" cy="316" r="1.25" fill="green" />
+<circle cx="655" cy="322" r="1.25" fill="green" />
+<circle cx="652" cy="322" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="682" cy="316" r="1.25" fill="green" />
+<circle cx="688" cy="301" r="1.25" fill="green" />
+<circle cx="676" cy="307" r="1.25" fill="green" />
+<circle cx="682" cy="292" r="1.25" fill="green" />
+<circle cx="676" cy="322" r="1.25" fill="green" />
+<circle cx="670" cy="313" r="1.25" fill="green" />
+<circle cx="640" cy="304" r="1.25" fill="green" />
+<circle cx="631" cy="310" r="1.25" fill="green" />
+<circle cx="637" cy="295" r="1.25" fill="green" />
+<circle cx="634" cy="295" r="1.25" fill="green" />
+<circle cx="646" cy="292" r="1.25" fill="green" />
+<circle cx="643" cy="307" r="1.25" fill="green" />
+<circle cx="634" cy="313" r="1.25" fill="green" />
+<circle cx="640" cy="298" r="1.25" fill="green" />
+<circle cx="637" cy="298" r="1.25" fill="green" />
+<circle cx="658" cy="304" r="1.25" fill="green" />
+<circle cx="649" cy="310" r="1.25" fill="green" />
+<circle cx="655" cy="295" r="1.25" fill="green" />
+<circle cx="652" cy="295" r="1.25" fill="green" />
+<circle cx="646" cy="325" r="1.25" fill="green" />
+<circle cx="652" cy="310" r="1.25" fill="green" />
+<circle cx="649" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="316" r="1.25" fill="green" />
+<circle cx="640" cy="316" r="1.25" fill="green" />
+<circle cx="646" cy="301" r="1.25" fill="green" />
+<circle cx="634" cy="298" r="1.25" fill="green" />
+<circle cx="631" cy="313" r="1.25" fill="green" />
+<circle cx="622" cy="319" r="1.25" fill="green" />
+<circle cx="628" cy="304" r="1.25" fill="green" />
+<circle cx="625" cy="304" r="1.25" fill="green" />
+<circle cx="655" cy="298" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="289" r="1.25" fill="green" />
+<circle cx="649" cy="289" r="1.25" fill="green" />
+<circle cx="643" cy="319" r="1.25" fill="green" />
+<circle cx="649" cy="304" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="640" cy="310" r="1.25" fill="green" />
+<circle cx="637" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="295" r="1.25" fill="green" />
+<circle cx="637" cy="301" r="1.25" fill="green" />
+<circle cx="634" cy="316" r="1.25" fill="green" />
+<circle cx="625" cy="322" r="1.25" fill="green" />
+<circle cx="631" cy="307" r="1.25" fill="green" />
+<circle cx="628" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="301" r="1.25" fill="green" />
+<circle cx="649" cy="307" r="1.25" fill="green" />
+<circle cx="655" cy="292" r="1.25" fill="green" />
+<circle cx="652" cy="292" r="1.25" fill="green" />
+<circle cx="646" cy="322" r="1.25" fill="green" />
+<circle cx="652" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="307" r="1.25" fill="green" />
+<circle cx="643" cy="313" r="1.25" fill="green" />
+<circle cx="640" cy="313" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="640" cy="319" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="643" cy="304" r="1.25" fill="green" />
+<circle cx="643" cy="319" r="1.25" fill="green" />
+<circle cx="640" cy="319" r="1.25" fill="green" />
+<circle cx="634" cy="325" r="1.25" fill="green" />
+<circle cx="631" cy="325" r="1.25" fill="green" />
+<circle cx="637" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="319" r="1.25" fill="green" />
+<circle cx="667" cy="304" r="1.25" fill="green" />
+<circle cx="664" cy="304" r="1.25" fill="green" />
+<circle cx="655" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="295" r="1.25" fill="green" />
+<circle cx="655" cy="325" r="1.25" fill="green" />
+<circle cx="652" cy="325" r="1.25" fill="green" />
+<circle cx="658" cy="310" r="1.25" fill="green" />
+<circle cx="649" cy="316" r="1.25" fill="green" />
+<circle cx="640" cy="313" r="1.25" fill="green" />
+<circle cx="631" cy="319" r="1.25" fill="green" />
+<circle cx="637" cy="304" r="1.25" fill="green" />
+<circle cx="634" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="319" r="1.25" fill="green" />
+<circle cx="658" cy="304" r="1.25" fill="green" />
+<circle cx="655" cy="304" r="1.25" fill="green" />
+<circle cx="649" cy="310" r="1.25" fill="green" />
+<circle cx="646" cy="310" r="1.25" fill="green" />
+<circle cx="652" cy="295" r="1.25" fill="green" />
+<circle cx="646" cy="301" r="1.25" fill="green" />
+<circle cx="643" cy="316" r="1.25" fill="green" />
+<circle cx="634" cy="322" r="1.25" fill="green" />
+<circle cx="640" cy="307" r="1.25" fill="green" />
+<circle cx="637" cy="307" r="1.25" fill="green" />
+<circle cx="667" cy="301" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="664" cy="292" r="1.25" fill="green" />
+<circle cx="661" cy="292" r="1.25" fill="green" />
+<circle cx="655" cy="322" r="1.25" fill="green" />
+<circle cx="661" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="652" cy="313" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="658" cy="313" r="1.25" fill="green" />
+<circle cx="649" cy="319" r="1.25" fill="green" />
+<circle cx="655" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="319" r="1.25" fill="green" />
+<circle cx="649" cy="319" r="1.25" fill="green" />
+<circle cx="643" cy="325" r="1.25" fill="green" />
+<circle cx="640" cy="325" r="1.25" fill="green" />
+<circle cx="646" cy="310" r="1.25" fill="green" />
+<circle cx="670" cy="319" r="1.25" fill="green" />
+<circle cx="676" cy="304" r="1.25" fill="green" />
+<circle cx="673" cy="304" r="1.25" fill="green" />
+<circle cx="664" cy="310" r="1.25" fill="green" />
+<circle cx="670" cy="295" r="1.25" fill="green" />
+<circle cx="664" cy="325" r="1.25" fill="green" />
+<circle cx="661" cy="325" r="1.25" fill="green" />
+<circle cx="667" cy="310" r="1.25" fill="green" />
+<circle cx="658" cy="316" r="1.25" fill="green" />
+<circle cx="655" cy="307" r="1.25" fill="green" />
+<circle cx="646" cy="313" r="1.25" fill="green" />
+<circle cx="652" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="646" cy="313" r="1.25" fill="green" />
+<circle cx="640" cy="319" r="1.25" fill="green" />
+<circle cx="637" cy="319" r="1.25" fill="green" />
+<circle cx="643" cy="304" r="1.25" fill="green" />
+<circle cx="667" cy="313" r="1.25" fill="green" />
+<circle cx="673" cy="298" r="1.25" fill="green" />
+<circle cx="670" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="304" r="1.25" fill="green" />
+<circle cx="667" cy="289" r="1.25" fill="green" />
+<circle cx="661" cy="319" r="1.25" fill="green" />
+<circle cx="658" cy="319" r="1.25" fill="green" />
+<circle cx="664" cy="304" r="1.25" fill="green" />
+<circle cx="655" cy="310" r="1.25" fill="green" />
+<circle cx="658" cy="310" r="1.25" fill="green" />
+<circle cx="649" cy="316" r="1.25" fill="green" />
+<circle cx="655" cy="301" r="1.25" fill="green" />
+<circle cx="652" cy="301" r="1.25" fill="green" />
+<circle cx="652" cy="316" r="1.25" fill="green" />
+<circle cx="649" cy="316" r="1.25" fill="green" />
+<circle cx="643" cy="322" r="1.25" fill="green" />
+<circle cx="640" cy="322" r="1.25" fill="green" />
+<circle cx="670" cy="316" r="1.25" fill="green" />
+<circle cx="676" cy="301" r="1.25" fill="green" />
+<circle cx="673" cy="301" r="1.25" fill="green" />
+<circle cx="664" cy="307" r="1.25" fill="green" />
+<circle cx="664" cy="322" r="1.25" fill="green" />
+<circle cx="661" cy="322" r="1.25" fill="green" />
+<circle cx="667" cy="313" r="1.25" fill="green" />
+<circle cx="664" cy="313" r="1.25" fill="green" />
+<circle cx="655" cy="319" r="1.25" fill="green" />
+<circle cx="661" cy="304" r="1.25" fill="green" />
+<circle cx="658" cy="319" r="1.25" fill="green" />
+<circle cx="649" cy="325" r="1.25" fill="green" />
+<circle cx="676" cy="319" r="1.25" fill="green" />
+<circle cx="682" cy="304" r="1.25" fill="green" />
+<circle cx="670" cy="325" r="1.25" fill="green" />
+<circle cx="637" cy="286" r="1.25" fill="green" />
+<circle cx="649" cy="298" r="1.25" fill="green" />
+<circle cx="640" cy="304" r="1.25" fill="green" />
+<circle cx="646" cy="289" r="1.25" fill="green" />
+<circle cx="643" cy="289" r="1.25" fill="green" />
+<circle cx="655" cy="286" r="1.25" fill="green" />
+<circle cx="652" cy="301" r="1.25" fill="green" />
+<circle cx="643" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="292" r="1.25" fill="green" />
+<circle cx="646" cy="292" r="1.25" fill="green" />
+<circle cx="667" cy="298" r="1.25" fill="green" />
+<circle cx="658" cy="304" r="1.25" fill="green" />
+<circle cx="664" cy="289" r="1.25" fill="green" />
+<circle cx="661" cy="289" r="1.25" fill="green" />
+<circle cx="655" cy="319" r="1.25" fill="green" />
+<circle cx="661" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="310" r="1.25" fill="green" />
+<circle cx="649" cy="310" r="1.25" fill="green" />
+<circle cx="655" cy="295" r="1.25" fill="green" />
+<circle cx="628" cy="295" r="1.25" fill="green" />
+<circle cx="652" cy="280" r="1.25" fill="green" />
+<circle cx="649" cy="295" r="1.25" fill="green" />
+<circle cx="640" cy="301" r="1.25" fill="green" />
+<circle cx="646" cy="286" r="1.25" fill="green" />
+<circle cx="643" cy="286" r="1.25" fill="green" />
+<circle cx="643" cy="292" r="1.25" fill="green" />
+<circle cx="640" cy="307" r="1.25" fill="green" />
+<circle cx="631" cy="313" r="1.25" fill="green" />
+<circle cx="637" cy="298" r="1.25" fill="green" />
+<circle cx="634" cy="298" r="1.25" fill="green" />
+<circle cx="664" cy="292" r="1.25" fill="green" />
+<circle cx="655" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="283" r="1.25" fill="green" />
+<circle cx="658" cy="283" r="1.25" fill="green" />
+<circle cx="652" cy="313" r="1.25" fill="green" />
+<circle cx="658" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="304" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="289" r="1.25" fill="green" />
+<circle cx="646" cy="295" r="1.25" fill="green" />
+<circle cx="643" cy="310" r="1.25" fill="green" />
+<circle cx="634" cy="316" r="1.25" fill="green" />
+<circle cx="640" cy="301" r="1.25" fill="green" />
+<circle cx="637" cy="301" r="1.25" fill="green" />
+<circle cx="667" cy="295" r="1.25" fill="green" />
+<circle cx="658" cy="301" r="1.25" fill="green" />
+<circle cx="664" cy="286" r="1.25" fill="green" />
+<circle cx="661" cy="286" r="1.25" fill="green" />
+<circle cx="655" cy="316" r="1.25" fill="green" />
+<circle cx="661" cy="301" r="1.25" fill="green" />
+<circle cx="652" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="655" cy="298" r="1.25" fill="green" />
+<circle cx="652" cy="298" r="1.25" fill="green" />
+<circle cx="652" cy="313" r="1.25" fill="green" />
+<circle cx="643" cy="319" r="1.25" fill="green" />
+<circle cx="640" cy="319" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="670" cy="313" r="1.25" fill="green" />
+<circle cx="676" cy="298" r="1.25" fill="green" />
+<circle cx="664" cy="304" r="1.25" fill="green" />
+<circle cx="670" cy="289" r="1.25" fill="green" />
+<circle cx="664" cy="319" r="1.25" fill="green" />
+<circle cx="658" cy="310" r="1.25" fill="green" />
+<circle cx="637" cy="295" r="1.25" fill="green" />
+<circle cx="658" cy="295" r="1.25" fill="green" />
+<circle cx="649" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="286" r="1.25" fill="green" />
+<circle cx="652" cy="286" r="1.25" fill="green" />
+<circle cx="649" cy="307" r="1.25" fill="green" />
+<circle cx="640" cy="313" r="1.25" fill="green" />
+<circle cx="646" cy="298" r="1.25" fill="green" />
+<circle cx="643" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="313" r="1.25" fill="green" />
+<circle cx="667" cy="298" r="1.25" fill="green" />
+<circle cx="658" cy="304" r="1.25" fill="green" />
+<circle cx="655" cy="304" r="1.25" fill="green" />
+<circle cx="661" cy="289" r="1.25" fill="green" />
+<circle cx="655" cy="295" r="1.25" fill="green" />
+<circle cx="652" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="316" r="1.25" fill="green" />
+<circle cx="649" cy="301" r="1.25" fill="green" />
+<circle cx="646" cy="301" r="1.25" fill="green" />
+<circle cx="676" cy="295" r="1.25" fill="green" />
+<circle cx="667" cy="301" r="1.25" fill="green" />
+<circle cx="673" cy="286" r="1.25" fill="green" />
+<circle cx="670" cy="286" r="1.25" fill="green" />
+<circle cx="664" cy="316" r="1.25" fill="green" />
+<circle cx="670" cy="301" r="1.25" fill="green" />
+<circle cx="661" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="667" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="313" r="1.25" fill="green" />
+<circle cx="664" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="313" r="1.25" fill="green" />
+<circle cx="652" cy="319" r="1.25" fill="green" />
+<circle cx="649" cy="319" r="1.25" fill="green" />
+<circle cx="655" cy="304" r="1.25" fill="green" />
+<circle cx="679" cy="313" r="1.25" fill="green" />
+<circle cx="685" cy="298" r="1.25" fill="green" />
+<circle cx="673" cy="304" r="1.25" fill="green" />
+<circle cx="679" cy="289" r="1.25" fill="green" />
+<circle cx="673" cy="319" r="1.25" fill="green" />
+<circle cx="667" cy="310" r="1.25" fill="green" />
+<circle cx="652" cy="289" r="1.25" fill="green" />
+<circle cx="649" cy="304" r="1.25" fill="green" />
+<circle cx="640" cy="310" r="1.25" fill="green" />
+<circle cx="646" cy="295" r="1.25" fill="green" />
+<circle cx="643" cy="295" r="1.25" fill="green" />
+<circle cx="673" cy="289" r="1.25" fill="green" />
+<circle cx="664" cy="295" r="1.25" fill="green" />
+<circle cx="670" cy="280" r="1.25" fill="green" />
+<circle cx="667" cy="280" r="1.25" fill="green" />
+<circle cx="661" cy="310" r="1.25" fill="green" />
+<circle cx="667" cy="295" r="1.25" fill="green" />
+<circle cx="658" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="301" r="1.25" fill="green" />
+<circle cx="664" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="307" r="1.25" fill="green" />
+<circle cx="661" cy="292" r="1.25" fill="green" />
+<circle cx="658" cy="292" r="1.25" fill="green" />
+<circle cx="658" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="646" cy="313" r="1.25" fill="green" />
+<circle cx="652" cy="298" r="1.25" fill="green" />
+<circle cx="676" cy="307" r="1.25" fill="green" />
+<circle cx="682" cy="292" r="1.25" fill="green" />
+<circle cx="670" cy="298" r="1.25" fill="green" />
+<circle cx="676" cy="283" r="1.25" fill="green" />
+<circle cx="670" cy="313" r="1.25" fill="green" />
+<circle cx="664" cy="304" r="1.25" fill="green" />
+<circle cx="667" cy="304" r="1.25" fill="green" />
+<circle cx="658" cy="310" r="1.25" fill="green" />
+<circle cx="664" cy="295" r="1.25" fill="green" />
+<circle cx="661" cy="295" r="1.25" fill="green" />
+<circle cx="661" cy="310" r="1.25" fill="green" />
+<circle cx="652" cy="316" r="1.25" fill="green" />
+<circle cx="649" cy="316" r="1.25" fill="green" />
+<circle cx="679" cy="310" r="1.25" fill="green" />
+<circle cx="685" cy="295" r="1.25" fill="green" />
+<circle cx="673" cy="301" r="1.25" fill="green" />
+<circle cx="673" cy="316" r="1.25" fill="green" />
+<circle cx="676" cy="307" r="1.25" fill="green" />
+<circle cx="664" cy="313" r="1.25" fill="green" />
+<circle cx="670" cy="298" r="1.25" fill="green" />
+<circle cx="658" cy="319" r="1.25" fill="green" />
+<circle cx="637" cy="298" r="1.25" fill="green" />
+<circle cx="628" cy="304" r="1.25" fill="green" />
+<circle cx="634" cy="289" r="1.25" fill="green" />
+<circle cx="631" cy="289" r="1.25" fill="green" />
+<circle cx="640" cy="316" r="1.25" fill="green" />
+<circle cx="646" cy="301" r="1.25" fill="green" />
+<circle cx="643" cy="301" r="1.25" fill="green" />
+<circle cx="637" cy="307" r="1.25" fill="green" />
+<circle cx="634" cy="307" r="1.25" fill="green" />
+<circle cx="640" cy="292" r="1.25" fill="green" />
+<circle cx="655" cy="298" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="289" r="1.25" fill="green" />
+<circle cx="649" cy="289" r="1.25" fill="green" />
+<circle cx="643" cy="319" r="1.25" fill="green" />
+<circle cx="649" cy="304" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="640" cy="310" r="1.25" fill="green" />
+<circle cx="637" cy="310" r="1.25" fill="green" />
+<circle cx="658" cy="316" r="1.25" fill="green" />
+<circle cx="664" cy="301" r="1.25" fill="green" />
+<circle cx="661" cy="301" r="1.25" fill="green" />
+<circle cx="652" cy="307" r="1.25" fill="green" />
+<circle cx="658" cy="292" r="1.25" fill="green" />
+<circle cx="652" cy="322" r="1.25" fill="green" />
+<circle cx="649" cy="322" r="1.25" fill="green" />
+<circle cx="655" cy="307" r="1.25" fill="green" />
+<circle cx="646" cy="313" r="1.25" fill="green" />
+<circle cx="631" cy="292" r="1.25" fill="green" />
+<circle cx="628" cy="307" r="1.25" fill="green" />
+<circle cx="619" cy="313" r="1.25" fill="green" />
+<circle cx="625" cy="298" r="1.25" fill="green" />
+<circle cx="622" cy="298" r="1.25" fill="green" />
+<circle cx="652" cy="292" r="1.25" fill="green" />
+<circle cx="643" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="283" r="1.25" fill="green" />
+<circle cx="646" cy="283" r="1.25" fill="green" />
+<circle cx="640" cy="313" r="1.25" fill="green" />
+<circle cx="646" cy="298" r="1.25" fill="green" />
+<circle cx="643" cy="298" r="1.25" fill="green" />
+<circle cx="637" cy="304" r="1.25" fill="green" />
+<circle cx="634" cy="304" r="1.25" fill="green" />
+<circle cx="643" cy="304" r="1.25" fill="green" />
+<circle cx="634" cy="310" r="1.25" fill="green" />
+<circle cx="640" cy="295" r="1.25" fill="green" />
+<circle cx="637" cy="295" r="1.25" fill="green" />
+<circle cx="637" cy="310" r="1.25" fill="green" />
+<circle cx="634" cy="310" r="1.25" fill="green" />
+<circle cx="628" cy="316" r="1.25" fill="green" />
+<circle cx="625" cy="316" r="1.25" fill="green" />
+<circle cx="631" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="295" r="1.25" fill="green" />
+<circle cx="658" cy="295" r="1.25" fill="green" />
+<circle cx="649" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="286" r="1.25" fill="green" />
+<circle cx="649" cy="316" r="1.25" fill="green" />
+<circle cx="646" cy="316" r="1.25" fill="green" />
+<circle cx="652" cy="301" r="1.25" fill="green" />
+<circle cx="643" cy="307" r="1.25" fill="green" />
+<circle cx="646" cy="307" r="1.25" fill="green" />
+<circle cx="637" cy="313" r="1.25" fill="green" />
+<circle cx="643" cy="298" r="1.25" fill="green" />
+<circle cx="640" cy="298" r="1.25" fill="green" />
+<circle cx="640" cy="313" r="1.25" fill="green" />
+<circle cx="637" cy="313" r="1.25" fill="green" />
+<circle cx="631" cy="319" r="1.25" fill="green" />
+<circle cx="628" cy="319" r="1.25" fill="green" />
+<circle cx="658" cy="313" r="1.25" fill="green" />
+<circle cx="664" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="298" r="1.25" fill="green" />
+<circle cx="652" cy="304" r="1.25" fill="green" />
+<circle cx="652" cy="319" r="1.25" fill="green" />
+<circle cx="649" cy="319" r="1.25" fill="green" />
+<circle cx="655" cy="310" r="1.25" fill="green" />
+<circle cx="652" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="316" r="1.25" fill="green" />
+<circle cx="649" cy="301" r="1.25" fill="green" />
+<circle cx="646" cy="316" r="1.25" fill="green" />
+<circle cx="637" cy="322" r="1.25" fill="green" />
+<circle cx="664" cy="316" r="1.25" fill="green" />
+<circle cx="670" cy="301" r="1.25" fill="green" />
+<circle cx="658" cy="322" r="1.25" fill="green" />
+<circle cx="637" cy="307" r="1.25" fill="green" />
+<circle cx="628" cy="313" r="1.25" fill="green" />
+<circle cx="634" cy="298" r="1.25" fill="green" />
+<circle cx="631" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="655" cy="298" r="1.25" fill="green" />
+<circle cx="652" cy="298" r="1.25" fill="green" />
+<circle cx="646" cy="304" r="1.25" fill="green" />
+<circle cx="643" cy="304" r="1.25" fill="green" />
+<circle cx="646" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="310" r="1.25" fill="green" />
+<circle cx="637" cy="316" r="1.25" fill="green" />
+<circle cx="634" cy="316" r="1.25" fill="green" />
+<circle cx="640" cy="301" r="1.25" fill="green" />
+<circle cx="658" cy="316" r="1.25" fill="green" />
+<circle cx="655" cy="316" r="1.25" fill="green" />
+<circle cx="661" cy="301" r="1.25" fill="green" />
+<circle cx="652" cy="307" r="1.25" fill="green" />
+<circle cx="655" cy="307" r="1.25" fill="green" />
+<circle cx="646" cy="313" r="1.25" fill="green" />
+<circle cx="652" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="298" r="1.25" fill="green" />
+<circle cx="649" cy="313" r="1.25" fill="green" />
+<circle cx="646" cy="313" r="1.25" fill="green" />
+<circle cx="640" cy="319" r="1.25" fill="green" />
+<circle cx="637" cy="319" r="1.25" fill="green" />
+<circle cx="667" cy="313" r="1.25" fill="green" />
+<circle cx="673" cy="298" r="1.25" fill="green" />
+<circle cx="670" cy="298" r="1.25" fill="green" />
+<circle cx="661" cy="304" r="1.25" fill="green" />
+<circle cx="661" cy="319" r="1.25" fill="green" />
+<circle cx="658" cy="319" r="1.25" fill="green" />
+<circle cx="664" cy="310" r="1.25" fill="green" />
+<circle cx="661" cy="310" r="1.25" fill="green" />
+<circle cx="652" cy="316" r="1.25" fill="green" />
+<circle cx="658" cy="301" r="1.25" fill="green" />
+<circle cx="655" cy="316" r="1.25" fill="green" />
+<circle cx="646" cy="322" r="1.25" fill="green" />
+<circle cx="673" cy="316" r="1.25" fill="green" />
+<circle cx="679" cy="301" r="1.25" fill="green" />
+<circle cx="667" cy="322" r="1.25" fill="green" />
+<circle cx="652" cy="301" r="1.25" fill="green" />
+<circle cx="643" cy="307" r="1.25" fill="green" />
+<circle cx="649" cy="292" r="1.25" fill="green" />
+<circle cx="646" cy="292" r="1.25" fill="green" />
+<circle cx="646" cy="307" r="1.25" fill="green" />
+<circle cx="643" cy="307" r="1.25" fill="green" />
+<circle cx="637" cy="313" r="1.25" fill="green" />
+<circle cx="634" cy="313" r="1.25" fill="green" />
+<circle cx="664" cy="307" r="1.25" fill="green" />
+<circle cx="670" cy="292" r="1.25" fill="green" />
+<circle cx="667" cy="292" r="1.25" fill="green" />
+<circle cx="658" cy="298" r="1.25" fill="green" />
+<circle cx="658" cy="313" r="1.25" fill="green" />
+<circle cx="655" cy="313" r="1.25" fill="green" />
+<circle cx="661" cy="304" r="1.25" fill="green" />
+<circle cx="658" cy="304" r="1.25" fill="green" />
+<circle cx="649" cy="310" r="1.25" fill="green" />
+<circle cx="655" cy="295" r="1.25" fill="green" />
+<circle cx="652" cy="310" r="1.25" fill="green" />
+<circle cx="643" cy="316" r="1.25" fill="green" />
+<circle cx="670" cy="310" r="1.25" fill="green" />
+<circle cx="676" cy="295" r="1.25" fill="green" />
+<circle cx="664" cy="316" r="1.25" fill="green" />
+<circle cx="664" cy="307" r="1.25" fill="green" />
+<circle cx="661" cy="307" r="1.25" fill="green" />
+<circle cx="652" cy="313" r="1.25" fill="green" />
+<circle cx="673" cy="313" r="1.25" fill="green" />
+<circle cx="670" cy="310" r="1.25" fill="green" />
+<circle cx="622" cy="319" r="2" fill="red" />
+<text x="612" y="331" fill="black" >1</text>
+<circle cx="80" cy="580" r="2" fill="black" />
+<circle cx="20" cy="580" r="2" fill="black" />
+<circle cx="60" cy="560" r="2" fill="black" />
+<circle cx="40" cy="560" r="2" fill="black" />
 <circle cx="20" cy="520" r="2" fill="black" />
-<line x1="20" y1="520" x2="20" y2="540" stroke="black" />
-<line x1="40" y1="520" x2="20" y2="540" stroke="black" />
-<line x1="20" y1="540" x2="40" y2="540" stroke="black" />
-<circle cx="120" cy="540" r="2" fill="black" />
-<circle cx="140" cy="520" r="2" fill="black" />
-<circle cx="140" cy="540" r="2" fill="black" />
-<circle cx="120" cy="520" r="2" fill="black" />
-<line x1="120" y1="520" x2="120" y2="540" stroke="black" />
-<line x1="140" y1="520" x2="120" y2="540" stroke="black" />
-<line x1="120" y1="540" x2="140" y2="540" stroke="black" />
-<circle cx="220" cy="540" r="2" fill="black" />
-<circle cx="240" cy="520" r="2" fill="black" />
-<circle cx="240" cy="540" r="2" fill="black" />
-<circle cx="220" cy="520" r="2" fill="black" />
-<line x1="220" y1="520" x2="220" y2="540" stroke="black" />
-<line x1="240" y1="520" x2="220" y2="540" stroke="black" />
-<line x1="220" y1="540" x2="240" y2="540" stroke="black" />
-<circle cx="320" cy="540" r="2" fill="black" />
-<circle cx="340" cy="520" r="2" fill="black" />
-<circle cx="340" cy="540" r="2" fill="black" />
-<circle cx="320" cy="520" r="2" fill="black" />
-<line x1="320" y1="520" x2="320" y2="540" stroke="black" />
-<line x1="340" y1="520" x2="320" y2="540" stroke="black" />
-<line x1="320" y1="540" x2="340" y2="540" stroke="black" />
-<circle cx="420" cy="540" r="2" fill="black" />
-<circle cx="440" cy="520" r="2" fill="black" />
-<circle cx="440" cy="540" r="2" fill="black" />
-<circle cx="420" cy="520" r="2" fill="black" />
-<line x1="420" y1="520" x2="420" y2="540" stroke="black" />
-<line x1="440" y1="520" x2="420" y2="540" stroke="black" />
-<line x1="420" y1="540" x2="440" y2="540" stroke="black" />
-<circle cx="520" cy="540" r="2" fill="black" />
-<circle cx="540" cy="520" r="2" fill="black" />
-<circle cx="540" cy="540" r="2" fill="black" />
-<circle cx="520" cy="520" r="2" fill="black" />
-<line x1="520" y1="520" x2="520" y2="540" stroke="black" />
-<line x1="540" y1="520" x2="520" y2="540" stroke="black" />
-<line x1="520" y1="540" x2="540" y2="540" stroke="black" />
-<circle cx="620" cy="540" r="2" fill="black" />
-<circle cx="640" cy="520" r="2" fill="black" />
-<circle cx="640" cy="540" r="2" fill="black" />
-<circle cx="620" cy="520" r="2" fill="black" />
-<line x1="620" y1="520" x2="620" y2="540" stroke="black" />
-<line x1="640" y1="520" x2="620" y2="540" stroke="black" />
-<line x1="620" y1="540" x2="640" y2="540" stroke="black" />
-<circle cx="720" cy="540" r="2" fill="black" />
-<circle cx="740" cy="520" r="2" fill="black" />
-<circle cx="740" cy="540" r="2" fill="black" />
-<circle cx="720" cy="520" r="2" fill="black" />
-<line x1="720" y1="520" x2="720" y2="540" stroke="black" />
-<line x1="740" y1="520" x2="720" y2="540" stroke="black" />
-<line x1="720" y1="540" x2="740" y2="540" stroke="black" />
-<circle cx="820" cy="540" r="2" fill="black" />
-<circle cx="840" cy="520" r="2" fill="black" />
-<circle cx="840" cy="540" r="2" fill="black" />
-<circle cx="820" cy="520" r="2" fill="black" />
-<line x1="820" y1="520" x2="820" y2="540" stroke="black" />
-<line x1="840" y1="520" x2="820" y2="540" stroke="black" />
-<line x1="820" y1="540" x2="840" y2="540" stroke="black" />
-<circle cx="920" cy="540" r="2" fill="black" />
-<circle cx="940" cy="520" r="2" fill="black" />
-<circle cx="940" cy="540" r="2" fill="black" />
-<circle cx="920" cy="520" r="2" fill="black" />
-<line x1="920" y1="520" x2="920" y2="540" stroke="black" />
-<line x1="940" y1="520" x2="920" y2="540" stroke="black" />
-<line x1="920" y1="540" x2="940" y2="540" stroke="black" />
-<circle cx="589" cy="355" r="2" fill="red" />
-<circle cx="20" cy="540" r="2" fill="black" />
-<circle cx="40" cy="520" r="2" fill="black" />
+<circle cx="60" cy="540" r="2" fill="black" />
+<circle cx="80" cy="520" r="2" fill="black" />
 <circle cx="40" cy="540" r="2" fill="black" />
-<circle cx="20" cy="520" r="2" fill="black" />
-<line x1="20" y1="520" x2="20" y2="540" stroke="black" />
-<line x1="40" y1="520" x2="20" y2="540" stroke="black" />
-<line x1="40" y1="520" x2="40" y2="540" stroke="black" />
-<circle cx="120" cy="540" r="2" fill="black" />
-<circle cx="140" cy="520" r="2" fill="black" />
-<circle cx="140" cy="540" r="2" fill="black" />
+<line x1="20" y1="520" x2="20" y2="580" stroke="black" />
+<line x1="40" y1="540" x2="60" y2="540" stroke="black" />
+<line x1="80" y1="520" x2="80" y2="580" stroke="black" />
+<line x1="60" y1="540" x2="60" y2="560" stroke="black" />
+<line x1="40" y1="560" x2="20" y2="580" stroke="black" />
+<line x1="60" y1="560" x2="80" y2="580" stroke="black" />
+<line x1="20" y1="580" x2="80" y2="580" stroke="black" />
+<circle cx="625" cy="322" r="2" fill="red" />
+<text x="615" y="334" fill="black" >2</text>
+<circle cx="180" cy="580" r="2" fill="black" />
+<circle cx="120" cy="580" r="2" fill="black" />
+<circle cx="160" cy="560" r="2" fill="black" />
+<circle cx="140" cy="560" r="2" fill="black" />
 <circle cx="120" cy="520" r="2" fill="black" />
-<line x1="120" y1="520" x2="120" y2="540" stroke="black" />
-<line x1="140" y1="520" x2="120" y2="540" stroke="black" />
-<line x1="140" y1="520" x2="140" y2="540" stroke="black" />
-<circle cx="220" cy="540" r="2" fill="black" />
-<circle cx="240" cy="520" r="2" fill="black" />
-<circle cx="240" cy="540" r="2" fill="black" />
-<circle cx="220" cy="520" r="2" fill="black" />
-<line x1="220" y1="520" x2="220" y2="540" stroke="black" />
-<line x1="240" y1="520" x2="220" y2="540" stroke="black" />
-<line x1="240" y1="520" x2="240" y2="540" stroke="black" />
-<circle cx="320" cy="540" r="2" fill="black" />
-<circle cx="340" cy="520" r="2" fill="black" />
-<circle cx="340" cy="540" r="2" fill="black" />
-<circle cx="320" cy="520" r="2" fill="black" />
-<line x1="320" y1="520" x2="320" y2="540" stroke="black" />
-<line x1="340" y1="520" x2="320" y2="540" stroke="black" />
-<line x1="340" y1="520" x2="340" y2="540" stroke="black" />
-<circle cx="420" cy="540" r="2" fill="black" />
-<circle cx="440" cy="520" r="2" fill="black" />
-<circle cx="440" cy="540" r="2" fill="black" />
-<circle cx="420" cy="520" r="2" fill="black" />
-<line x1="420" y1="520" x2="420" y2="540" stroke="black" />
-<line x1="440" y1="520" x2="420" y2="540" stroke="black" />
-<line x1="440" y1="520" x2="440" y2="540" stroke="black" />
-<circle cx="520" cy="540" r="2" fill="black" />
-<circle cx="540" cy="520" r="2" fill="black" />
-<circle cx="540" cy="540" r="2" fill="black" />
-<circle cx="520" cy="520" r="2" fill="black" />
-<line x1="520" y1="520" x2="520" y2="540" stroke="black" />
-<line x1="540" y1="520" x2="520" y2="540" stroke="black" />
-<line x1="540" y1="520" x2="540" y2="540" stroke="black" />
-<circle cx="620" cy="540" r="2" fill="black" />
-<circle cx="640" cy="520" r="2" fill="black" />
-<circle cx="640" cy="540" r="2" fill="black" />
-<circle cx="620" cy="520" r="2" fill="black" />
-<line x1="620" y1="520" x2="620" y2="540" stroke="black" />
-<line x1="640" y1="520" x2="620" y2="540" stroke="black" />
-<line x1="640" y1="520" x2="640" y2="540" stroke="black" />
-<circle cx="720" cy="540" r="2" fill="black" />
-<circle cx="740" cy="520" r="2" fill="black" />
-<circle cx="740" cy="540" r="2" fill="black" />
-<circle cx="720" cy="520" r="2" fill="black" />
-<line x1="720" y1="520" x2="720" y2="540" stroke="black" />
-<line x1="740" y1="520" x2="720" y2="540" stroke="black" />
-<line x1="740" y1="520" x2="740" y2="540" stroke="black" />
-<circle cx="820" cy="540" r="2" fill="black" />
-<circle cx="840" cy="520" r="2" fill="black" />
-<circle cx="840" cy="540" r="2" fill="black" />
-<circle cx="820" cy="520" r="2" fill="black" />
-<line x1="820" y1="520" x2="820" y2="540" stroke="black" />
-<line x1="840" y1="520" x2="820" y2="540" stroke="black" />
-<line x1="840" y1="520" x2="840" y2="540" stroke="black" />
-<circle cx="920" cy="540" r="2" fill="black" />
-<circle cx="940" cy="520" r="2" fill="black" />
-<circle cx="940" cy="540" r="2" fill="black" />
-<circle cx="920" cy="520" r="2" fill="black" />
-<line x1="920" y1="520" x2="920" y2="540" stroke="black" />
-<line x1="940" y1="520" x2="920" y2="540" stroke="black" />
-<line x1="940" y1="520" x2="940" y2="540" stroke="black" />
-<circle cx="604" cy="358" r="2" fill="red" />
-<circle cx="20" cy="540" r="2" fill="black" />
-<circle cx="40" cy="520" r="2" fill="black" />
-<circle cx="40" cy="540" r="2" fill="black" />
-<circle cx="20" cy="520" r="2" fill="black" />
-<line x1="20" y1="520" x2="40" y2="520" stroke="black" />
-<line x1="20" y1="520" x2="20" y2="540" stroke="black" />
-<line x1="40" y1="520" x2="40" y2="540" stroke="black" />
-<circle cx="120" cy="540" r="2" fill="black" />
-<circle cx="140" cy="520" r="2" fill="black" />
+<circle cx="160" cy="540" r="2" fill="black" />
+<circle cx="180" cy="520" r="2" fill="black" />
 <circle cx="140" cy="540" r="2" fill="black" />
-<circle cx="120" cy="520" r="2" fill="black" />
-<line x1="120" y1="520" x2="140" y2="520" stroke="black" />
-<line x1="120" y1="520" x2="120" y2="540" stroke="black" />
-<line x1="140" y1="520" x2="140" y2="540" stroke="black" />
-<circle cx="220" cy="540" r="2" fill="black" />
-<circle cx="240" cy="520" r="2" fill="black" />
-<circle cx="240" cy="540" r="2" fill="black" />
+<line x1="120" y1="520" x2="120" y2="580" stroke="black" />
+<line x1="140" y1="540" x2="160" y2="540" stroke="black" />
+<line x1="180" y1="520" x2="160" y2="540" stroke="black" />
+<line x1="160" y1="540" x2="160" y2="560" stroke="black" />
+<line x1="140" y1="560" x2="120" y2="580" stroke="black" />
+<line x1="160" y1="560" x2="180" y2="580" stroke="black" />
+<line x1="120" y1="580" x2="180" y2="580" stroke="black" />
+<circle cx="631" cy="325" r="2" fill="red" />
+<text x="621" y="337" fill="black" >3</text>
+<circle cx="280" cy="580" r="2" fill="black" />
+<circle cx="220" cy="580" r="2" fill="black" />
+<circle cx="260" cy="560" r="2" fill="black" />
+<circle cx="240" cy="560" r="2" fill="black" />
 <circle cx="220" cy="520" r="2" fill="black" />
-<line x1="220" y1="520" x2="240" y2="520" stroke="black" />
-<line x1="220" y1="520" x2="220" y2="540" stroke="black" />
-<line x1="240" y1="520" x2="240" y2="540" stroke="black" />
-<circle cx="320" cy="540" r="2" fill="black" />
-<circle cx="340" cy="520" r="2" fill="black" />
-<circle cx="340" cy="540" r="2" fill="black" />
+<circle cx="260" cy="540" r="2" fill="black" />
+<circle cx="280" cy="520" r="2" fill="black" />
+<circle cx="240" cy="540" r="2" fill="black" />
+<line x1="220" y1="520" x2="220" y2="580" stroke="black" />
+<line x1="240" y1="540" x2="260" y2="540" stroke="black" />
+<line x1="280" y1="520" x2="260" y2="540" stroke="black" />
+<line x1="280" y1="520" x2="280" y2="580" stroke="black" />
+<line x1="260" y1="540" x2="260" y2="560" stroke="black" />
+<line x1="240" y1="560" x2="220" y2="580" stroke="black" />
+<line x1="260" y1="560" x2="280" y2="580" stroke="black" />
+<circle cx="619" cy="313" r="2" fill="red" />
+<text x="609" y="325" fill="black" >4</text>
+<circle cx="380" cy="580" r="2" fill="black" />
+<circle cx="320" cy="580" r="2" fill="black" />
+<circle cx="360" cy="560" r="2" fill="black" />
+<circle cx="340" cy="560" r="2" fill="black" />
 <circle cx="320" cy="520" r="2" fill="black" />
-<line x1="320" y1="520" x2="340" y2="520" stroke="black" />
-<line x1="320" y1="520" x2="320" y2="540" stroke="black" />
-<line x1="340" y1="520" x2="340" y2="540" stroke="black" />
-<circle cx="420" cy="540" r="2" fill="black" />
-<circle cx="440" cy="520" r="2" fill="black" />
-<circle cx="440" cy="540" r="2" fill="black" />
-<circle cx="420" cy="520" r="2" fill="black" />
-<line x1="420" y1="520" x2="440" y2="520" stroke="black" />
-<line x1="420" y1="520" x2="420" y2="540" stroke="black" />
-<line x1="440" y1="520" x2="440" y2="540" stroke="black" />
-<circle cx="520" cy="540" r="2" fill="black" />
-<circle cx="540" cy="520" r="2" fill="black" />
-<circle cx="540" cy="540" r="2" fill="black" />
-<circle cx="520" cy="520" r="2" fill="black" />
-<line x1="520" y1="520" x2="540" y2="520" stroke="black" />
-<line x1="520" y1="520" x2="520" y2="540" stroke="black" />
-<line x1="540" y1="520" x2="540" y2="540" stroke="black" />
-<circle cx="620" cy="540" r="2" fill="black" />
-<circle cx="640" cy="520" r="2" fill="black" />
-<circle cx="640" cy="540" r="2" fill="black" />
-<circle cx="620" cy="520" r="2" fill="black" />
-<line x1="620" y1="520" x2="640" y2="520" stroke="black" />
-<line x1="620" y1="520" x2="620" y2="540" stroke="black" />
-<line x1="640" y1="520" x2="640" y2="540" stroke="black" />
-<circle cx="720" cy="540" r="2" fill="black" />
-<circle cx="740" cy="520" r="2" fill="black" />
-<circle cx="740" cy="540" r="2" fill="black" />
-<circle cx="720" cy="520" r="2" fill="black" />
-<line x1="720" y1="520" x2="740" y2="520" stroke="black" />
-<line x1="720" y1="520" x2="720" y2="540" stroke="black" />
-<line x1="740" y1="520" x2="740" y2="540" stroke="black" />
-<circle cx="820" cy="540" r="2" fill="black" />
-<circle cx="840" cy="520" r="2" fill="black" />
-<circle cx="840" cy="540" r="2" fill="black" />
-<circle cx="820" cy="520" r="2" fill="black" />
-<line x1="820" y1="520" x2="840" y2="520" stroke="black" />
-<line x1="820" y1="520" x2="820" y2="540" stroke="black" />
-<line x1="840" y1="520" x2="840" y2="540" stroke="black" />
-<circle cx="920" cy="540" r="2" fill="black" />
-<circle cx="940" cy="520" r="2" fill="black" />
-<circle cx="940" cy="540" r="2" fill="black" />
-<circle cx="920" cy="520" r="2" fill="black" />
-<line x1="920" y1="520" x2="940" y2="520" stroke="black" />
-<line x1="920" y1="520" x2="920" y2="540" stroke="black" />
-<line x1="940" y1="520" x2="940" y2="540" stroke="black" />
+<circle cx="360" cy="540" r="2" fill="black" />
+<circle cx="380" cy="520" r="2" fill="black" />
+<circle cx="340" cy="540" r="2" fill="black" />
+<line x1="320" y1="520" x2="380" y2="520" stroke="black" />
+<line x1="320" y1="520" x2="320" y2="580" stroke="black" />
+<line x1="340" y1="540" x2="360" y2="540" stroke="black" />
+<line x1="360" y1="540" x2="360" y2="560" stroke="black" />
+<line x1="340" y1="560" x2="320" y2="580" stroke="black" />
+<line x1="360" y1="560" x2="380" y2="580" stroke="black" />
+<line x1="320" y1="580" x2="380" y2="580" stroke="black" />
 
 
 </svg>

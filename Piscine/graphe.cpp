@@ -473,36 +473,31 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     ///On recherche la frontière de Pareto et on l'affiche
     opti=rechercheOpti(couts);
     std::cout<<"opti"<<std::endl;
+
+    int n = 1;
+    int j = 0;
     for(auto elem : opti)
     {
-        std::vector<Arrete*> listeAretes;
         std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
         std::cout<<elem.first<<std::endl;
+
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
+        svg->addText(540 + 3*elem.second.first, 412 - 3*elem.second.second, n, "black");
 
-        std::string item;
-        item = elem.first;
-        for(int i=0; i<item.size(); i++)
+        for(s : m_sommets)
         {
-            if(item[i]=='1')
-            {
-                listeAretes.push_back(m_arretesDessin[i]);
-            }
-        }
-        for(int j = 0; j<1000; j+=100)
-        {
-            for(s : m_sommets)
-            {
-                s.second->dessinerPareto(svg, (0+j)*5, 500*5);
-            }
-            ///tu récupères l'arete d'indice 1 avec m_arreteDessin[i]
-
-            for(auto l : listeAretes)
-            {
-                l->dessinerArretePrime(svg, j*5, 500*5);
-            }
+            s.second->dessinerPareto(svg, (0+j)*5, 500*5);
         }
 
+        for(int i=0; i<elem.first.size(); i++)
+        {
+            if(elem.first[i]=='1')
+            {
+                m_arretesDessin[i]->dessinerArretePrime(svg, j*5, 500*5);
+            }
+        }
+        j+=100;
+        n+=1;
     }
 }
 
