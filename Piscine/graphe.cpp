@@ -475,6 +475,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     std::cout<<"opti"<<std::endl;
     for(auto elem : opti)
     {
+        std::vector<Arrete*> listeAretes;
         std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
         std::cout<<elem.first<<std::endl;
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
@@ -485,20 +486,18 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         {
             if(item[i]=='1')
             {
-                for(int j = 0; j<1000; j+=100)
-                {
-
-                   for(s : m_sommets)
-                    {
-                        s.second->dessinerPareto(svg, (0+j)*5, 500*5);
-                    }
-                    ///tu récupères l'arete d'indice 1 avec m_arreteDessin[i]
-
-                    m_arretesDessin[i]->dessinerArretePrime(svg, (0+j)*5, 500*5);
-                }
-
-
+                listeAretes.push_back(m_arretesDessin[i]);
             }
+        }
+        for(int j = 0; j<1000; j+=100)
+        {
+            for(s : m_sommets)
+            {
+                s.second->dessinerPareto(svg, (0+j)*5, 500*5);
+            }
+            ///tu récupères l'arete d'indice 1 avec m_arreteDessin[i]
+
+            listeAretes->dessinerArretePrime(svg, (0+j)*5, 500*5);
         }
 
     }
