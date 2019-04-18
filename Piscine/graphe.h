@@ -16,11 +16,11 @@ class Graphe
         void afficherPrime(SvgFile* svg);
 
         std::string rechercheIndice(Sommet*, Sommet*);
-        std::vector<std::pair<std::string, std::pair<float, float>>> rechercheOpti(std::vector<std::pair<float, float>>);
+        std::vector<std::pair<std::vector<int>, std::pair<float, float>>> rechercheOpti(std::vector<std::pair<float, float>>);
 
         ///PARTIE 2
         void codePareto();
-        int rechercheCC(std::string);
+        int rechercheCC(std::vector<int> suit);
         void dessinerGrapheChargementPareto(SvgFile* svg);
         void dessinCalculGraphePareto(SvgFile* svg);
 
@@ -41,7 +41,7 @@ class Graphe
         float m_poid2;
         int m_ordre;
         int m_taille;
-        std::vector<std::string> m_solPossibles;
+        std::vector<std::vector<int>> m_solPossibles;
         std::pair<float, float> m_resultPrim1;
         std::pair<float, float> m_resultPrim2;
 

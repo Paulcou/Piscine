@@ -311,11 +311,11 @@ void Graphe::codePareto()
     for(int count = depart; count < arrivee; count++)
     {
         ///On va transformer le binaire (int) en chaine de caractère
-        std::string suit="";
+        std::vector<int> suit;
+
         for(int offset = m_taille-1; offset >= 0; offset--)
         {
-            std::string s = std::to_string(((count & (1 << offset)) >> offset));
-            suit += s;
+            suit.push_back((count & (1 << offset)) >> offset);
         }
         //std::cout<<suit<<std::endl;
 
@@ -323,7 +323,7 @@ void Graphe::codePareto()
         int counter1 = 0;
         for(char elem : suit)
         {
-            if(elem == '1')
+            if(elem == 1)
             {
                 counter1 += 1;
             }
@@ -428,15 +428,15 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
     ///on affiche avant puis points
     std::vector<std::pair<float, float>> couts;
-    std::vector<std::pair<std::string, std::pair<float, float>>> opti;
+    std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
     for(int j=0; j<m_solPossibles.size(); j++)
     {
         float cout1=0;
         float cout2=0;
-        std::string elem = m_solPossibles[j];
+        std::vector<int> elem = m_solPossibles[j];
         for(size_t i=0; i<elem.size(); i++)
         {
-            if(elem[i]=='1')
+            if(elem[i]==1)
             {
                 cout1 += 3*m_arretesDessin[i]->getP1();
                 cout2 += 3*m_arretesDessin[i]->getP2();
@@ -457,7 +457,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     for(auto elem : opti)
     {
         std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
-        std::cout<<elem.first<<std::endl;
+        //std::cout<<elem.first<<std::endl;
 
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
         svg->addText(540 + 3*elem.second.first, 412 - 3*elem.second.second, n, "black");
@@ -476,7 +476,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
         for(int i=0; i<elem.first.size(); i++)
         {
-            if(elem.first[i]=='1')
+            if(elem.first[i]==1)
             {
                 m_arretesDessin[i]->dessinerArretePrime(svg, j*5, 500*5);
             }
@@ -486,9 +486,9 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     }
 }
 
-std::vector<std::pair<std::string, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
+std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
 {
-    std::vector<std::pair<std::string, std::pair<float, float>>> opti;
+    std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
     std::vector<std::pair<float, float>> coutsComparaison;
     coutsComparaison = couts;
 
@@ -514,12 +514,12 @@ std::vector<std::pair<std::string, std::pair<float, float>>> Graphe::rechercheOp
     return opti;
 }
 
-int Graphe::rechercheCC(std::string suit)
+int Graphe::rechercheCC(std::vector<int> suit)
 {
     std::vector<std::pair<std::string,std::string>> paires;
     for(int i = 0; i<suit.size(); i++)
     {
-        if(suit[i]=='1')
+        if(suit[i]==1)
         {
             paires.push_back({m_arretesDessin[i]->getDep()->getId(),m_arretesDessin[i]->getFin()->getId()});
         }
