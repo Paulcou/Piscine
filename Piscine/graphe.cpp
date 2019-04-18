@@ -447,7 +447,8 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     svg->addText(915, 405, "Cout 1");
 
     ///on affiche avant puis points
-    for(auto elem: m_solPossibles)
+    std::vector<std::pair<float, float>> couts;
+    for(auto elem : m_solPossibles)
     {
         float cout1=0;
         float cout2=0;
@@ -457,12 +458,32 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
             {
                 cout1 += 3*m_arretesDessin[i]->getP1();
                 cout2 += 3*m_arretesDessin[i]->getP2();
+
             }
         }
+        couts.push_back({cout1/3, cout2/3});
         //std::cout << "(" << cout1/3 << "," << cout2/3 << ")" << std::endl;
         ///dessin avec cout1 et cout2
 
         svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
+    }
+
+    for(size_t i=0; i<couts.size(); ++i)
+    {
+        for(size_t j=0; j<couts.size(); ++j)
+        {
+            if((couts[i].first <= couts[j].first) && (couts[i].second <= couts[j].second))
+            {
+                couts[j].first = couts[i].first;
+                couts[j].second = couts[i].second;
+
+            }
+        }
+    }
+     for(size_t i=0; i<couts.size(); ++i)
+    {
+        //std::cout << "solutions optimales: " << couts[i].first << " " <<couts[i].second << std::endl;
+        svg->addDisk(550 + 3*couts[i].first, 400 - 3*couts[i].second, 2, "red");
     }
 
 }
