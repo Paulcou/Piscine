@@ -10,7 +10,7 @@ constexpr char defcol[] = "black";
 class SvgFile
 {
     public:
-        SvgFile(std::string _filename = "output.svg", int _width=1000, int _height=800);
+        SvgFile(std::string _filename = "output.svg", int _width=2000, int _height=1000);
         ~SvgFile();
 
         void addDisk(double x, double y, double r, std::string color=defcol);

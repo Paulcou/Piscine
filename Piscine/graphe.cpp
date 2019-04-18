@@ -461,6 +461,13 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
         svg->addText(540 + 3*elem.second.first, 412 - 3*elem.second.second, n, "black");
+        svg->addText(0 + j, 600, n);
+        svg->addText(5 + j, 600, ". (");
+        svg->addText(20 + j, 600, elem.second.first);
+        svg->addText(35+ j, 600, ",");
+        svg->addText(45+ j, 600, elem.second.second);
+        svg->addText(63 + j, 600, ")");
+
 
         for(s : m_sommets)
         {
