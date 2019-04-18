@@ -20,6 +20,7 @@ class Graphe
 
         ///PARTIE 2
         void codePareto();
+        int rechercheCC(std::string);
         void dessinerGrapheChargementPareto(SvgFile* svg);
         void dessinCalculGraphePareto(SvgFile* svg);
 

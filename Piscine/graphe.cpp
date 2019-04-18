@@ -297,7 +297,7 @@ void Graphe::codePrimC2(std::string id)
 
 void Graphe::codePareto()
 {
-    std::vector<std::string> liste1;
+    //std::vector<std::string> liste1;
 
     ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
     int depart = pow(2, m_ordre-1) -1;
@@ -329,43 +329,21 @@ void Graphe::codePareto()
             }
         }
         ///Nous tirons donc notre première liste composées d'éléments comprenants ordre-1 arêtes
-        bool ok = true;
+        //bool ok = true;
+
         if(counter1 == m_ordre-1)
         {
-            std::unordered_set<std::string> marque;
-            for(size_t i=0; i<suit.size(); i++)
+            //std::cout<<suit<<std::endl;
+            //std::cout<<std::endl;
+            int cc = rechercheCC(suit);
+            if(cc == 1)
             {
-                if(suit[i] == '1')
-                {
-                    if( marque.find((m_arretesDessin[i]->getDep()->getId())) == marque.end() )
-                    {
-                        marque.insert((m_arretesDessin[i]->getDep()->getId()));
-                    }
-                    if( marque.find((m_arretesDessin[i]->getFin()->getId())) == marque.end() )
-                    {
-                        marque.insert((m_arretesDessin[i]->getFin()->getId()));
-                    }
-                }
-            }
-            for(int j=0; j<m_ordre; j++)
-            {
-                if(marque.find(std::to_string(j))==marque.end())
-                {
-                    ok = false;
-                }
-            }
-            if(ok)
-            {
-                liste1.push_back(suit);
+                //std::cout<<suit<<std::endl;
+                m_solPossibles.push_back(suit);
             }
         }
     }
-    m_solPossibles = liste1;
     //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
-    /**for(auto elem : liste1)
-    {
-        std::cout<<elem<<std::endl;
-    }**/
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
@@ -527,6 +505,53 @@ std::vector<std::pair<std::string, std::pair<float, float>>> Graphe::rechercheOp
     }
 
     return opti;
+}
+
+int Graphe::rechercheCC(std::string suit)
+{
+    std::vector<std::pair<std::string,std::string>> paires;
+    for(int i = 0; i<suit.size(); i++)
+    {
+        if(suit[i]=='1')
+        {
+            paires.push_back({m_arretesDessin[i]->getDep()->getId(),m_arretesDessin[i]->getFin()->getId()});
+        }
+    }
+    std::unordered_set<std::string> pairesComp;
+    pairesComp.insert(paires[0].first);
+    pairesComp.insert(paires[0].second);
+    for(int j=0; j<m_ordre-1; j++)
+    {
+        for(int i = 1; i<paires.size(); i++)
+        {
+            for(auto elem : pairesComp)
+            {
+                if((paires[i].first==elem)||(paires[i].second==elem))
+                {
+                    pairesComp.insert(paires[i].first);
+                    pairesComp.insert(paires[i].second);
+                }
+            }
+        }
+    }
+    bool ok = true;
+    for(int i=0; i<m_ordre; i++)
+    {
+        if(pairesComp.find(std::to_string(i))==pairesComp.end())
+        {
+            ok = false;
+        }
+    }
+    if(ok)
+    {
+        return 1;
+    }
+    else
+    {
+        return 2;
+    }
+
+
 }
 
 Graphe::~Graphe()
