@@ -676,9 +676,11 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             distanceTotale += tmp2.second.second;
             tmp = tmp2;
         }
+        ///on ajoute la distance suiveuse à toutes les autres
         distances.push_back(distanceSuiveuse);
     }
 
+    ///on évalue quelle distance suiveuse est la plus faible
     float distMin = 1000;
     for(auto elem : distances)
     {
