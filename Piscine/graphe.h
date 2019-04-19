@@ -25,7 +25,7 @@ class Graphe
         void dessinCalculGraphePareto(SvgFile* svg);
 
         ///PARTIE 3
-        void codeDjikstra();
+        void codeDjikstra(std::vector<int>);
         void compteurDjikstra();
 
 

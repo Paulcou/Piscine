@@ -559,12 +559,35 @@ int Graphe::rechercheCC(std::vector<int> suit)
 }
 void Graphe::compteurDjikstra()
 {
+    int depart = pow(2, m_ordre-1) -1;
+    int arrivee = pow(2, m_taille);
+    for(int count = depart; count < arrivee; count++)
+    {
+        std::vector<int> suit;
+        for(int offset = m_taille-1; offset >= 0; offset--)
+        {
+            suit.push_back((count & (1 << offset)) >> offset);
+        }
 
+        int cc = rechercheCC(suit);
+        if(cc == 1)
+        {
+            codeDjikstra(suit);
+        }
+
+    }
 }
 
-void Graphe::codeDjikstra()
+void Graphe::codeDjikstra(std::vector<int> suit)
 {
-
+    std::vector<Arrete *> listeAretes;
+    for(int = 0; i<suit.size(); i++)
+    {
+        if(suit[i] == 1)
+        {
+            listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
+        }
+    }
 }
 
 Graphe::~Graphe()
