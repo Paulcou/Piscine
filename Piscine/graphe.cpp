@@ -295,10 +295,9 @@ void Graphe::codePrimC2(std::string id)
     m_resultPrim2 = {poids2, poids};
 }
 
-void Graphe::codePareto()
+void Graphe::codePareto(SvgFile* svg)
 {
     //std::vector<std::string> liste1;
-
     ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
     int depart = pow(2, m_ordre-1) -1;
     int arrivee = 1;
@@ -338,11 +337,27 @@ void Graphe::codePareto()
             int cc = rechercheCC(suit);
             if(cc == 1)
             {
-                //std::cout<<suit<<std::endl;
                 m_solPossibles.push_back(suit);
+                /**for(auto elem : suit)
+                std::cout<<elem;
+                std::cout<<std::endl;**/
+                float cout1=0;
+                float cout2=0;
+                for(size_t i=0; i<suit.size(); i++)
+                {
+                    if(suit[i]==1)
+                    {
+                        cout1 += 3*m_arretesDessin[i]->getP1();
+                        cout2 += 3*m_arretesDessin[i]->getP2();
+                    }
+                }
+                svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
+                m_couts.push_back({cout1/3, cout2/3});
             }
         }
     }
+    /**std::cout<<m_couts.size()<<std::endl;
+    std::cout<<"fin c1"<<std::endl;**/
     //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
 }
 
@@ -387,10 +402,6 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
 
     for(auto a : m_arretesDessin)
         a->dessinerArreteChargementPareto(svg);
-}
-
-void Graphe::dessinCalculGraphePareto(SvgFile* svg)
-{
 
     ///pointilles
     for(int i = 550; i < 900; i += 30)
@@ -425,38 +436,23 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     ///Text
     svg->addText(565, 50, "Cout 2");
     svg->addText(915, 405, "Cout 1");
+}
 
-    ///on affiche avant puis points
-    std::vector<std::pair<float, float>> couts;
+void Graphe::dessinCalculGraphePareto(SvgFile* svg)
+{
+    /**std::cout<<"ohé"<<std::endl;**/
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
-    for(size_t j=0; j<m_solPossibles.size(); j++)
-    {
-        float cout1=0;
-        float cout2=0;
-        std::vector<int> elem = m_solPossibles[j];
-        for(size_t i=0; i<elem.size(); i++)
-        {
-            if(elem[i]==1)
-            {
-                cout1 += 3*m_arretesDessin[i]->getP1();
-                cout2 += 3*m_arretesDessin[i]->getP2();
-            }
-        }
-
-        svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
-
-        couts.push_back({cout1/3, cout2/3});
-    }
 
     ///On recherche la frontière de Pareto et on l'affiche
-    opti=rechercheOpti(couts);
-    std::cout<<"opti"<<std::endl;
+    opti=rechercheOpti(m_couts);
+
+    //std::cout<<"opti"<<std::endl;
 
     int n = 1;
     int j = 0;
     for(auto elem : opti)
     {
-        std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
+        //std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
         //std::cout<<elem.first<<std::endl;
 
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
@@ -484,6 +480,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         j+=100;
         n+=1;
     }
+    //std::cout<<"fin c2"<<std::endl;
 }
 
 std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
@@ -558,6 +555,10 @@ int Graphe::rechercheCC(std::vector<int> suit)
         return 2;
     }
 
+
+}
+void Graphe::compteurDjikstra()
+{
 
 }
 

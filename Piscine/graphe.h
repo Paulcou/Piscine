@@ -19,13 +19,14 @@ class Graphe
         std::vector<std::pair<std::vector<int>, std::pair<float, float>>> rechercheOpti(std::vector<std::pair<float, float>>);
 
         ///PARTIE 2
-        void codePareto();
+        void codePareto(SvgFile* svg);
         int rechercheCC(std::vector<int> suit);
         void dessinerGrapheChargementPareto(SvgFile* svg);
         void dessinCalculGraphePareto(SvgFile* svg);
 
         ///PARTIE 3
         void codeDjikstra();
+        void compteurDjikstra();
 
 
         ~Graphe();
@@ -47,6 +48,7 @@ class Graphe
         std::vector<std::vector<int>> m_solPossibles;
         std::pair<float, float> m_resultPrim1;
         std::pair<float, float> m_resultPrim2;
+        std::vector<std::pair<float, float>> m_couts;
 
 };
 
