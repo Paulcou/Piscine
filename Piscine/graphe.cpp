@@ -300,7 +300,8 @@ void Graphe::codePareto()
     //std::vector<std::string> liste1;
 
     ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
-    int depart = pow(2, m_ordre-1) -1;
+    int m = m_ordre - 1;
+    int depart = pow(2, m) -1;
     int arrivee = 1;
     int n = m_taille - 1;
     while(n != (m_taille-m_ordre))
@@ -308,43 +309,92 @@ void Graphe::codePareto()
         arrivee+=pow(2,n);
         n -= 1;
     }
-    for(int count = depart; count < arrivee; count++)
+    int counter = depart;
+    while(counter < arrivee)
     {
-        ///On va transformer le binaire (int) en chaine de caractère
         std::vector<int> suit;
 
-        for(int offset = m_taille-1; offset >= 0; offset--)
-        {
-            suit.push_back((count & (1 << offset)) >> offset);
-        }
-        //std::cout<<suit<<std::endl;
-
-        ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
-        int counter1 = 0;
-        for(char elem : suit)
-        {
-            if(elem == 1)
+            for(int offset = m_taille-1; offset >= 0; offset--)
             {
-                counter1 += 1;
+                suit.push_back((counter & (1 << offset)) >> offset);
             }
-        }
-        ///Nous tirons donc notre première liste composées d'éléments comprenants ordre-1 arêtes
-        //bool ok = true;
+            for(auto item : suit)
+            std::cout<<item;
+            std::cout<<std::endl;
 
-        if(counter1 == m_ordre-1)
-        {
-            //std::cout<<suit<<std::endl;
-            //std::cout<<std::endl;
-            int cc = rechercheCC(suit);
-            if(cc == 1)
+            //std::cout<<counter<<std::endl;
+
+            if(counter > 0 && !(counter & (counter - 1)))
             {
-                //std::cout<<suit<<std::endl;
-                m_solPossibles.push_back(suit);
+                //std::cout<<"yes"<<std::endl;
+                counter = counter + (pow(2, m-1)-1);
+            }
+            else
+            {
+                counter ++;
+            }
+
+            ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
+            int counter1 = 0;
+            for(char elem : suit)
+            {
+                if(elem == 1)
+                {
+                    counter1 += 1;
+                }
+            }
+            ///Nous tirons donc notre première liste composées d'éléments comprenants ordre-1 arêtes
+            if(counter1 == m_ordre-1)
+            {
+                int cc = rechercheCC(suit);
+                if(cc == 1)
+                {
+                    m_solPossibles.push_back(suit);
+                }
             }
         }
     }
-    //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
-}
+    /**for(int counter = depart; counter < arrivee; counter++)
+    {
+        ///On va transformer le binaire (int) en chaine de caractère
+        if((counter< pow(2,m))|| (counter > (pow(2,m)+pow(2, m-1)-2)))
+        {
+            std::vector<int> suit;
+
+            for(int offset = m_taille-1; offset >= 0; offset--)
+            {
+                suit.push_back((counter & (1 << offset)) >> offset);
+            }
+            for(auto item : suit)
+            std::cout<<item;
+            std::cout<<std::endl;
+
+            if(counter = pow(2,m+1))
+            {
+                m+=1;
+            }
+
+            ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
+            int counter1 = 0;
+            for(char elem : suit)
+            {
+                if(elem == 1)
+                {
+                    counter1 += 1;
+                }
+            }
+            ///Nous tirons donc notre première liste composées d'éléments comprenants ordre-1 arêtes
+            if(counter1 == m_ordre-1)
+            {
+                int cc = rechercheCC(suit);
+                if(cc == 1)
+                {
+                    m_solPossibles.push_back(suit);
+                }
+            }
+        }
+    }
+}**/
 
 void Graphe::afficherPrime(SvgFile* svg)
 {
@@ -450,13 +500,13 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
     ///On recherche la frontière de Pareto et on l'affiche
     opti=rechercheOpti(couts);
-    std::cout<<"opti"<<std::endl;
+    //std::cout<<"opti"<<std::endl;
 
     int n = 1;
     int j = 0;
     for(auto elem : opti)
     {
-        std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
+        //std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
         //std::cout<<elem.first<<std::endl;
 
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
