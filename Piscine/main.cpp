@@ -25,6 +25,8 @@ int main()
     g.codePareto();
     g.dessinCalculGraphePareto(&svgout);
 
+    ///PARTIE 3
+
 
 
     return 0;

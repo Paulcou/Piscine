@@ -478,7 +478,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
         {
             if(elem.first[i]==1)
             {
-                m_arretesDessin[i]->dessinerArretePrime(svg, j*5, 500*5);
+                m_arretesDessin[i]->dessinerArretePareto(svg, j*5, 500*5);
             }
         }
         j+=100;

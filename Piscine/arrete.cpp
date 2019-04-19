@@ -35,7 +35,7 @@ void Arrete::dessinerArreteChargementPareto(SvgFile* svg)
 
 }
 
-void Arrete::dessinerArretePrime(SvgFile* svg, int decx, int decy)
+void Arrete::dessinerArretePareto(SvgFile* svg, int decx, int decy)
 {
     svg->addLine((m_dep->getX() + decx)/5, (m_dep->getY()+ decy)/5, (m_fin->getX()+decx)/5, (m_fin->getY()+ decy)/5);
 }

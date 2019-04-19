@@ -14,7 +14,7 @@ class Arrete
         void dessinerArrete(SvgFile* svg);
         void dessinerPrime(SvgFile* svg);
         void dessinerArreteChargementPareto(SvgFile* svg);
-        void dessinerArretePrime(SvgFile* svg, int decx, int decy);
+        void dessinerArretePareto(SvgFile* svg, int decx, int decy);
 
         float getP1();
         float getP2();
