@@ -34,6 +34,8 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
             throw std::runtime_error("Probleme lecture données sommet");
 
         m_sommets.insert({id,new Sommet{id,x,y}});
+
+        m_sommmetsDijs.push_back(new Sommet{id, x,y});
     }
 
     int taille;
@@ -338,9 +340,9 @@ void Graphe::codePareto(SvgFile* svg)
             if(cc == 1)
             {
                 m_solPossibles.push_back(suit);
-                /**for(auto elem : suit)
+                for(auto elem : suit)
                 std::cout<<elem;
-                std::cout<<std::endl;**/
+                std::cout<<std::endl;
                 float cout1=0;
                 float cout2=0;
                 for(size_t i=0; i<suit.size(); i++)
@@ -580,14 +582,17 @@ void Graphe::compteurDjikstra()
 
 void Graphe::codeDjikstra(std::vector<int> suit)
 {
+
     std::vector<Arrete *> listeAretes;
-    for(int = 0; i<suit.size(); i++)
+    for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i] == 1)
         {
             listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
         }
     }
+
+
 }
 
 Graphe::~Graphe()

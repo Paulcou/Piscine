@@ -2,6 +2,7 @@
 #define GRAPHE_H_INCLUDED
 #include "sommet.h"
 #include "arrete.h"
+#include <queue>
 
 class Graphe
 {
@@ -25,8 +26,8 @@ class Graphe
         void dessinCalculGraphePareto(SvgFile* svg);
 
         ///PARTIE 3
-        void codeDjikstra(std::vector<int>);
         void compteurDjikstra();
+        void codeDjikstra(std::vector<int>);
 
 
         ~Graphe();
@@ -49,6 +50,9 @@ class Graphe
         std::pair<float, float> m_resultPrim1;
         std::pair<float, float> m_resultPrim2;
         std::vector<std::pair<float, float>> m_couts;
+
+        ///PARTIE 3
+        std::vector<Sommet*> m_sommmetsDijs;
 
 };
 
