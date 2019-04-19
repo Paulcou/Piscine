@@ -592,6 +592,14 @@ void Graphe::codeDjikstra(std::vector<int> suit)
         }
     }
 
+    std::vector<std::vector<std::pair<int, std::pair<float, float>>>> som(m_ordre);
+    for(auto elem : listeAretes)
+    {
+        //std::cout<<"début :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
+        som(elem->getDep()->getIdInt()).push_back({elem->getFin()->getIdInt(),{elem->getP1(), elem->getP2()}});
+        som(elem->getFin()->getIdInt()).push_back({elem->getDep()->getIdInt(),{elem->getP1(), elem->getP2()}});
+    }
+
 
 }
 

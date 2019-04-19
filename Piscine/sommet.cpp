@@ -56,6 +56,11 @@ std::vector<std::pair<Sommet*, std::pair<float, float>>> Sommet::getVoisins(){
     return m_voisins;
 }
 
+int Sommet::getIdInt()
+{
+    return std::stoi(m_id);
+}
+
 Sommet::~Sommet()
 {
     //dtor

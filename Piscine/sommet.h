@@ -2,6 +2,7 @@
 #define SOMMET_H_INCLUDED
 #include "SvgFile.h"
 #include <vector>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -21,6 +22,7 @@ class Sommet
         double getX();
         double getY();
         std::string getId();
+        int getIdInt();
         std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
 
 

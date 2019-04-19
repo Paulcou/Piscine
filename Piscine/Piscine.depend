@@ -1,19 +1,21 @@
 # depslib dependency file v1.0
-1555671631 source:c:\users\paulc\desktop\piscine\piscine\main.cpp
+1555680070 source:c:\users\paulc\desktop\piscine\piscine\main.cpp
 	<iostream>
 	"graphe.h"
 
-1555671226 c:\users\paulc\desktop\piscine\piscine\graphe.h
+1555680070 c:\users\paulc\desktop\piscine\piscine\graphe.h
 	"sommet.h"
 	"arrete.h"
+	<queue>
 
-1555605388 c:\users\paulc\desktop\piscine\piscine\sommet.h
+1555680576 c:\users\paulc\desktop\piscine\piscine\sommet.h
 	"SvgFile.h"
 	<vector>
+	<string>
 	<unordered_map>
 	<unordered_set>
 
-1555671903 source:c:\users\paulc\desktop\piscine\piscine\graphe.cpp
+1555680959 source:c:\users\paulc\desktop\piscine\piscine\graphe.cpp
 	<fstream>
 	<iostream>
 	<vector>
@@ -22,7 +24,7 @@
 	"graphe.h"
 	"math.h"
 
-1555605388 source:c:\users\paulc\desktop\piscine\piscine\sommet.cpp
+1555680576 source:c:\users\paulc\desktop\piscine\piscine\sommet.cpp
 	<iostream>
 	"sommet.h"
 
