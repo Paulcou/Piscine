@@ -561,6 +561,11 @@ int Graphe::rechercheCC(std::vector<int> suit)
 
 }
 
+void Graphe::codeDjikstra()
+{
+
+}
+
 Graphe::~Graphe()
 {
     //dtor

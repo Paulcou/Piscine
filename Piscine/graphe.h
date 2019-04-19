@@ -24,6 +24,9 @@ class Graphe
         void dessinerGrapheChargementPareto(SvgFile* svg);
         void dessinCalculGraphePareto(SvgFile* svg);
 
+        ///PARTIE 3
+        void codeDjikstra();
+
 
         ~Graphe();
 
