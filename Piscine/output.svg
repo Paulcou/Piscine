@@ -367,4 +367,8 @@
 <text x="515" y="375" fill="black" >10</text>
 <line x1="545" y1="400" x2="550" y2="400" stroke="black" />
 <text x="515" y="405" fill="black" >0</text>
-<text 
+<text x="565" y="50" fill="black" >Cout 2</text>
+<text x="915" y="405" fill="black" >Cout 1</text>
+
+
+</svg>

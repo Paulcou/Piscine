@@ -21,13 +21,13 @@ int main()
     //g.afficherPrime(&svgout);
 
     ///PARTIE 2
-    //g.dessinerGrapheChargementPareto(&svgout);
-    //g.codePareto(&svgout);
-    //g.dessinCalculGraphePareto(&svgout);
+    g.dessinerGrapheChargementPareto(&svgout);
+    g.codePareto(&svgout);
+    g.dessinCalculGraphePareto(&svgout);
 
     ///PARTIE 3
-    g.dessinerGrapheChargementPareto(&svgout);
-    g.compteurDjikstra();
+    //g.dessinerGrapheChargementPareto(&svgout);
+    //g.compteurDjikstra();
 
 
     return 0;

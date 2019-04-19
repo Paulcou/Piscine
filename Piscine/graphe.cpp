@@ -599,7 +599,7 @@ void Graphe::codeDjikstra(std::vector<int> suit)
     std::cout<<"a"<<std::endl;
 
     ///On crée les voisins
-    std::vector<std::vector<std::pair<std::pair<int,int>, std::pair<float, float>>>> som; /// id_v, id_pred, cout1, cout2
+    std::vector<std::vector<std::pair<std::pair<int,int>, std::pair<float, float>>>> som(m_ordre); /// id_v, id_pred, cout1, cout2
     for(auto elem : listeAretes)
     {
         //std::cout<<"début :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
@@ -615,7 +615,7 @@ void Graphe::codeDjikstra(std::vector<int> suit)
     std::vector<float> distances;
 
     ///Il faut réaliser un djikstra pour tous les sommets du graphe
-    for(int i = 0; i<m_ordre; i++)
+    for(int i = 0; i<m_ordre; ++i)
     {
         std::cout<<"c"<<std::endl;
         std::unordered_set<int> marque;
@@ -641,9 +641,10 @@ void Graphe::codeDjikstra(std::vector<int> suit)
         ///On cherche toutes les autres possibilités
         for(auto elem : som[i])
         {
-            if(marque.find(elem.first.first)==marque.end())
+            if(marque.find(elem.first.first) == marque.end())
             {
-                possibilites.push_back({{elem.first.first, tmp.first.first},{elem.second.first,elem.second.second}});
+                possibilites.push_back({{elem.first.first, tmp.first.first},
+                                       {elem.second.first,elem.second.second}});
             }
         }
         std::cout<<"d"<<std::endl;
@@ -655,10 +656,10 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             ///On ajoute les nouvelles possibilités depuis le deuxième sommet et pour les futurs
             for(auto item : som[tmp.first.first])
             {
-                if(marque.find(item.first.first)==marque.end())
+                if(marque.find(item.first.first) == marque.end())
                 {
                     possibilites.push_back({{item.first.first, tmp.first.first},
-                                           {item.second.first+distanceSuiveuse, item.second.second}});
+                                           {item.second.first + distanceSuiveuse, item.second.second}});
                 }
             }
             ///On parcourt les possibilités pour trouver le prochain sommet à traiter
@@ -675,7 +676,10 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             distanceSuiveuse += tmp2.second.first;
             distanceTotale += tmp2.second.second;
             tmp = tmp2;
+
         }
+
+        std::cout<<"e"<<std::endl;
         ///on ajoute la distance suiveuse à toutes les autres
         distances.push_back(distanceSuiveuse);
     }
