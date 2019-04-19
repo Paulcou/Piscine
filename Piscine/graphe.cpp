@@ -114,7 +114,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
                 (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
             }
         }
-        for(int i=0; i<m_arretesDessin.size(); i++)
+        for(size_t i=0; i<m_arretesDessin.size(); i++)
         {
             if(std::to_string(i) == indice2)
             {
@@ -193,7 +193,7 @@ void Graphe::codePrim(std::string id)
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0,0.0}}); ///elem predecesseur ///tmp en cours de traitement
-                    for(int i=0; i<m_arretesDessin.size(); i++)
+                    for(size_t i=0; i<m_arretesDessin.size(); i++)
                     {
                         if(std::to_string(i) == indice)
                         {
@@ -274,7 +274,7 @@ void Graphe::codePrimC2(std::string id)
                     std::cout<<"pred : "<<elem.first->getId()<<", "<<std::endl;
                     indice = rechercheIndice(elem.first, tmp.first);
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0, 0.0}});
-                    for(int i=0; i<m_arretesDessin.size(); i++)
+                    for(size_t i=0; i<m_arretesDessin.size(); i++)
                     {
                         if(std::to_string(i) == indice)
                         {
@@ -303,7 +303,7 @@ void Graphe::codePareto()
     int depart = pow(2, m_ordre-1) -1;
     int arrivee = 1;
     int n = m_taille - 1;
-    while(n != (m_taille-m_ordre))
+    while(n != (m_taille - m_ordre))
     {
         arrivee+=pow(2,n);
         n -= 1;
@@ -429,7 +429,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
     ///on affiche avant puis points
     std::vector<std::pair<float, float>> couts;
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
-    for(int j=0; j<m_solPossibles.size(); j++)
+    for(size_t j=0; j<m_solPossibles.size(); j++)
     {
         float cout1=0;
         float cout2=0;
@@ -474,7 +474,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
             s.second->dessinerPareto(svg, (0+j)*5, 500*5);
         }
 
-        for(int i=0; i<elem.first.size(); i++)
+        for(size_t i=0; i<elem.first.size(); i++)
         {
             if(elem.first[i]==1)
             {
@@ -492,7 +492,7 @@ std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::recher
     std::vector<std::pair<float, float>> coutsComparaison;
     coutsComparaison = couts;
 
-    for(int i = 0; i<couts.size(); i++)
+    for(size_t i = 0; i<couts.size(); i++)
     {
         bool ok = true;
         for(auto item : coutsComparaison)
@@ -517,7 +517,7 @@ std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::recher
 int Graphe::rechercheCC(std::vector<int> suit)
 {
     std::vector<std::pair<std::string,std::string>> paires;
-    for(int i = 0; i<suit.size(); i++)
+    for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i]==1)
         {
@@ -529,7 +529,7 @@ int Graphe::rechercheCC(std::vector<int> suit)
     pairesComp.insert(paires[0].second);
     for(int j=0; j<m_ordre-2; j++)
     {
-        for(int i = 1; i<paires.size(); i++)
+        for(size_t i = 1; i<paires.size(); i++)
         {
             for(auto elem : pairesComp)
             {
