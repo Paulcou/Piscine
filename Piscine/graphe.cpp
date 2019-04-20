@@ -578,8 +578,10 @@ void Graphe::compteurDjikstra()
             {
                 std::cout<<elem;
             }*/
+            m_solPossibles.push_back(suit);
             std::cout<<std::endl;
             codeDjikstra(suit);
+
         }
 
     }
@@ -587,13 +589,16 @@ void Graphe::compteurDjikstra()
 
 void Graphe::codeDjikstra(std::vector<int> suit)
 {
+    //SvgFile *svg;
     int poidstotaltout = 0;
+    int poids1Graphe = 0;
     std::vector<Arrete*> listeAretes;
     for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i] == 1)
         {
             listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
+            poids1Graphe+=m_arretesDessin[i]->getP1();
         }
     }
      std::cout << "graphe :" << std::endl;
@@ -669,8 +674,70 @@ void Graphe::codeDjikstra(std::vector<int> suit)
         std::cout << "poidstot" << poidstot<< std::endl << std::endl;
         poidstotaltout += poidstot;
     }
-
+    std::cout<<"total poids 1:"<< poids1Graphe<<std::endl;
     std::cout << "poidstotaltoutgraphe :" << poidstotaltout << std::endl;
+    m_poidsDji.push_back({poids1Graphe, poidstotaltout});
+    //svg->addDisk(550 + poids1Graphe, 400 - 4*poidstotaltout, 1.25, "green");
+
+}
+
+void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
+{
+    for(auto s : m_sommets)
+        s.second->dessinerSommetChargementPareto(svg);
+
+    for(auto a : m_arretesDessin)
+        a->dessinerArreteChargementPareto(svg);
+
+    ///pointilles
+    for(int i = 550; i < 900; i += 30)
+        for(int j = 70; j < 430; j += 30)
+        {
+            svg->addLine(i-5, j, i + 5, j, "grey");
+            svg->addLine(i, j-5, i, j+5, "grey");
+        }
+
+    svg->addLine(550, 400, 550, 50);
+    svg->addLine(550, 400, 900, 400);
+    ///fleches du graphe
+    svg->addLine(550, 50, 545, 55);
+    svg->addLine(550, 50, 555, 55);
+    svg->addLine(900, 400, 895, 395);
+    svg->addLine(900, 400, 895, 405);
+
+    int grad = -10;
+    for(int i = 550; i < 900; i +=30)
+    {
+        svg->addLine(i, 400, i, 405);
+        svg->addText(i - 5, 420, grad + 10);
+        grad+=10;
+    }
+    int grad2 = 100;
+    for(int i = 70; i < 420; i +=30)
+    {
+        svg->addLine(545, i, 550, i);
+        svg->addText(515, i + 5, 4*(grad2 +10));
+        grad2-=10;
+    }
+    ///Text
+    svg->addText(565, 50, "Somme des Djikstra");
+    svg->addText(915, 405, "Poids 1 total");
+
+    for(auto elem : m_poidsDji)
+    {
+        svg->addDisk(550 + 3*elem.first, 400 - 0.75*elem.second, 1.25, "green");
+    }
+    std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
+
+    opti = rechercheOpti(m_poidsDji);
+
+    int n = 0;
+    for(auto elem : opti)
+    {
+        svg->addDisk(550 + 3*elem.second.first, 400 - 0.75*elem.second.second, 2, "red");
+        svg->addText(540 + 3*elem.second.first, 412 - 0.75*elem.second.second, n, "black");
+        n+=1;
+    }
 
 }
 

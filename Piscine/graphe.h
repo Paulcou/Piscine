@@ -34,7 +34,7 @@ class Graphe
         ///PARTIE 3
         void compteurDjikstra();
         void codeDjikstra(std::vector<int>);
-
+        void dessinerGrapheChargementDjikstra(SvgFile* svg);
 
         ~Graphe();
 
@@ -59,6 +59,7 @@ class Graphe
 
         ///PARTIE 3
         std::vector<Sommet*> m_sommmetsDijs;
+        std::vector<std::pair<float, float>> m_poidsDji;
 
 };
 

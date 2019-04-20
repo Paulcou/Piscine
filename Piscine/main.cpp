@@ -26,8 +26,8 @@ int main()
     //g.dessinCalculGraphePareto(&svgout);
 
     ///PARTIE 3
-    g.dessinerGrapheChargementPareto(&svgout);
     g.compteurDjikstra();
+    g.dessinerGrapheChargementDjikstra(&svgout);
 
 
     return 0;
