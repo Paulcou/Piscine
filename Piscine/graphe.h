@@ -30,6 +30,7 @@ class Graphe
         int rechercheCC(std::vector<int> suit);
         void dessinerGrapheChargementPareto(SvgFile* svg);
         void dessinCalculGraphePareto(SvgFile* svg);
+        int countSetBits(int n);
 
         ///PARTIE 3
         void compteurDjikstra();
