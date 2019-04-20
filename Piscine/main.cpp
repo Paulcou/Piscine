@@ -21,14 +21,19 @@ int main()
     //g.afficherPrime(&svgout);
 
     ///PARTIE 2
-    /**g.dessinerGrapheChargementPareto(&svgout);
+    g.dessinerGrapheChargementPareto(&svgout);
     g.codePareto(&svgout);
-    g.dessinCalculGraphePareto(&svgout);
-**/
+    //g.dessinCalculGraphePareto(&svgout);
+
     ///PARTIE 3
     /**g.compteurDjikstra();
     g.dessinerGrapheChargementDjikstra(&svgout);
 **/
+
+    ///PARTIE BONUS
+
+    ///  # Heuristique
+    g.dessinCalculHeuristique(&svgout);
 
     return 0;
 }

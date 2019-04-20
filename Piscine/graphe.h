@@ -37,6 +37,9 @@ class Graphe
         void codeDjikstra(std::vector<int>);
         void dessinerGrapheChargementDjikstra(SvgFile* svg);
 
+        ///PARTIE 4
+        void dessinCalculHeuristique(SvgFile* svg);
+
         ~Graphe();
 
     protected:
