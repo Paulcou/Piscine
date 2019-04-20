@@ -80,6 +80,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
             }
         }
         m_arretesDessin.push_back(new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0});
+        m_arretesDessinBonus.push_back(new Arrete{indice, new Sommet{id2,x1,y1}, new Sommet{id_voisin,x2, y2}, 0.0, 0.0});
     }
 
     std::ifstream ifs2{nomFichier2};
@@ -94,36 +95,78 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
     ifs2 >> nbre;
 
     int indice2;
-    float cout1, cout2;
+    float cout1, cout2, cout3;
 
-    for(int j=0; j<taille2; j++)
+    if(nbre == 2)
     {
-        ifs2 >> indice2;
-        if(ifs.fail())
-            throw std::runtime_error("Probleme lecture indice2 arete");
-        ifs2 >> cout1;
-        if(ifs.fail())
-            throw std::runtime_error("Probleme lecture cout1 arete");
-        ifs2 >> cout2;
-        if(ifs.fail())
-            throw std::runtime_error("Probleme lecture cout2 arete");
+        for(int j=0; j<taille2; j++)
+        {
+            ifs2 >> indice2;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture indice2 arete");
+            ifs2 >> cout1;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture cout1 arete");
+            ifs2 >> cout2;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture cout2 arete");
 
-        for(auto elem : m_aretes)
-        {
-            if(elem.first == indice2)
+            for(auto elem : m_aretes)
             {
-                (m_sommets.find(elem.second.first))->second->ajouterVoisin(m_sommets.find(elem.second.second)->second, cout1, cout2);
-                (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
+                if(elem.first == indice2)
+                {
+                    (m_sommets.find(elem.second.first))->second->ajouterVoisin(m_sommets.find(elem.second.second)->second, cout1, cout2);
+                    (m_sommets.find(elem.second.second))->second->ajouterVoisin(m_sommets.find(elem.second.first)->second, cout1, cout2);
+                }
             }
-        }
-        for(size_t i=0; i<m_arretesDessin.size(); i++)
-        {
-            if(i == indice2)
+            for(size_t i=0; i<m_arretesDessin.size(); i++)
             {
-                m_arretesDessin[i]->ajouterPoids(cout1, cout2);
+                if(i == indice2)
+                {
+                    m_arretesDessin[i]->ajouterPoids(cout1, cout2);
+
+                }
             }
         }
     }
+
+    if(nbre == 3)
+    {
+        for(int j=0; j<taille2; j++)
+        {
+            ifs2 >> indice2;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture indice2 arete");
+            ifs2 >> cout1;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture cout1 arete");
+            ifs2 >> cout2;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture cout2 arete");
+
+            ifs2 >> cout3;
+            if(ifs.fail())
+                throw std::runtime_error("Probleme lecture cout2 arete");
+
+            for(auto elem : m_aretes)
+            {
+                if(elem.first == indice2)
+                {
+                    (m_sommets.find(elem.second.first))->second->ajouterVoisinBonus(m_sommets.find(elem.second.second)->second, cout1, cout2, cout3);
+                    (m_sommets.find(elem.second.second))->second->ajouterVoisinBonus(m_sommets.find(elem.second.first)->second, cout1, cout2, cout3);
+                }
+            }
+            for(size_t i=0; i<m_arretesDessinBonus.size(); i++)
+            {
+                if(i == indice2)
+                {
+                    m_arretesDessinBonus[i]->ajouterPoidsBonus(cout1, cout2, cout3);
+
+                }
+            }
+        }
+    }
+
 }
 
 void Graphe::dessinerGrapheChargement(SvgFile* svg)
@@ -408,7 +451,7 @@ int Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
     for(auto elem : m_aretes)
     {
         if((s1->getId()==elem.second.first && s2->getId()==elem.second.second)||
-            (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
+                (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
         {
             return elem.first;
         }
@@ -571,6 +614,7 @@ int Graphe::rechercheCC(std::vector<int> suit)
         return 2;
     }
 }
+
 void Graphe::compteurDjikstra()
 {
     int depart = pow(2, m_ordre-1) -1;
@@ -614,10 +658,12 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             poids1Graphe+=m_arretesDessin[i]->getP1();
 
             som[m_arretesDessin[i]->getDep()->getId()].push_back({{m_arretesDessin[i]->getFin()->getId()},
-                                                                    {m_arretesDessin[i]->getP2()}});
+                {m_arretesDessin[i]->getP2()}
+            });
 
             som[m_arretesDessin[i]->getFin()->getId()].push_back({{m_arretesDessin[i]->getDep()->getId()},
-                                                                    {m_arretesDessin[i]->getP2()}});
+                {m_arretesDessin[i]->getP2()}
+            });
         }
     }
 
@@ -769,6 +815,236 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
     svg->addText(220, 670, opti.size());
 
 }
+
+///PARTIE BONUS
+void Graphe::dessinerGrapheChargementBonus(SvgFile* svg)
+{
+    for(auto s : m_sommets)
+        s.second->dessinerSommetChargementPareto(svg);
+
+    for(auto a : m_arretesDessinBonus)
+        a->dessinerArreteChargementBonus(svg);
+
+    ///pointilles
+    /*for(int i = 550; i < 900; i += 30)
+        for(int j = 70; j < 430; j += 30)
+            for(int z = 100; z < 150; z += 30)
+            {
+                svg->addLine(i-5, j, i + 5, j, "grey");
+                svg->addLine(i, j-5, i, j+5, "grey");
+                //svg->addLine(i, j, i - z, j + z, "grey");
+                svg->addLine(i+z, j-z, i, j, "grey");
+            }*/
+
+    ///CUBE
+    svg->addLine(550, 400, 550, 25);///cout2
+    svg->addLine(550, 400, 950, 400); ///cout 1
+    svg->addLine(550, 400, 400, 550);///cout 3
+    svg->addLine(425, 525, 775, 525);
+    svg->addLine(425, 525, 425, 175);
+    svg->addLine(425, 175, 550, 50);
+    svg->addLine(775, 525, 900, 400);
+    svg->addLine(775, 525, 775, 175);
+    svg->addLine(775, 175, 425, 175);
+    svg->addLine(775, 175, 900, 50);
+    svg->addLine(550, 50, 900, 50);
+    svg->addLine(900, 400, 900, 50);
+
+
+
+    ///fleches du graphe
+    /*svg->addLine(550, 50, 545, 55);
+    svg->addLine(550, 50, 555, 55);
+    svg->addLine(900, 400, 895, 395);
+    svg->addLine(900, 400, 895, 405);*/
+
+    /*int grad = -10;
+    for(int i = 550; i < 900; i +=30)
+    {
+        svg->addLine(i, 400, i, 405);
+        svg->addText(i - 5, 420, grad + 10);
+        grad+=10;
+    }
+    int grad2 = 100;
+    for(int i = 70; i < 420; i +=30)
+    {
+        svg->addLine(545, i, 550, i);
+        svg->addText(515, i + 5, grad2 +10);
+        grad2-=10;
+    }*/
+    ///Text
+    svg->addText(560, 40, "Cout 2");
+    svg->addText(915, 415, "Cout 1");
+    svg->addText(425, 550, "Cout 3");
+}
+
+void Graphe::codeBonus(SvgFile* svg)
+{
+    ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
+    int depart = pow(2, m_ordre-1) -1;
+    int arrivee = 0;
+    int n = m_taille - 1;
+    while(n != (m_taille - m_ordre))
+    {
+        arrivee+=pow(2,n);
+        n -= 1;
+    }
+    while(depart <= arrivee)
+    {
+        std::vector<int> suit;
+
+        for(int offset = m_taille-1; offset >= 0; offset--)
+        {
+            suit.push_back((depart & (1 << offset)) >> offset);
+        }
+        /**for(auto elem : suit)
+                    std::cout<<elem;
+                std::cout<<std::endl;**/
+
+        int cc = rechercheCCBonus(suit);
+        if(cc == 1)
+        {
+            m_solPossibles.push_back(suit);
+            /*for(auto elem : suit)
+                std::cout<<elem;
+            std::cout<<std::endl;*/
+            float cout1=0;
+            float cout2=0;
+            float cout3=0;
+            for(size_t i=0; i<suit.size(); i++)
+            {
+                if(suit[i]==1)
+                {
+                    cout1 += 3*m_arretesDessinBonus[i]->getP1();
+                    cout2 += 3*m_arretesDessinBonus[i]->getP2();
+                    cout3 += 3*m_arretesDessinBonus[i]->getP3();
+                }
+            }
+            svg->addDisk(550 + cout1 - cout3, 400 - cout2 + cout3, 1.25, "green");
+            m_coutsB.push_back({cout1/3, {cout2/3, cout3/3}});
+        }
+        depart = snoob(depart);
+    }
+}
+
+void Graphe::dessinCalculGrapheBonus(SvgFile* svg)
+{
+    std::vector<std::pair<std::vector<int>, std::pair<float, std::pair<float, float>>>> opti;
+
+    ///On recherche la frontière de Pareto et on l'affiche
+    opti=rechercheOptiBonus(m_coutsB);
+
+    int n = 1;
+    int j = 50;
+    for(auto elem : opti)
+    {
+        svg->addDisk(550 + 3*elem.second.first - 3*elem.second.second.second,
+                     400 - 3*elem.second.second.first + 3*elem.second.second.second,
+                      2, "red");
+
+        if(n <9)
+        {
+            svg->addLine(550 + 3*elem.second.first - 3*elem.second.second.second,
+                          400 - 3*elem.second.second.first + 3*elem.second.second.second,
+                          50+j, 600);
+            svg->addDisk(50+j, 600, 2);
+
+            svg->addText(10 + j, 700, "(");
+            svg->addText(20 + j, 700, elem.second.first);
+            svg->addText(35+ j, 700, ",");
+            svg->addText(45+ j, 700, elem.second.second.first);
+            svg->addText(60+ j, 700, ",");
+            svg->addText(75+ j, 700, elem.second.second.second);
+            svg->addText(93 + j, 700, ")");
+
+
+            for(s : m_sommets)
+            {
+                s.second->dessinerPareto(svg, (0+j)*5, 600*5);
+            }
+
+            for(size_t i=0; i<elem.first.size(); i++)
+            {
+                if(elem.first[i]==1)
+                {
+                    m_arretesDessinBonus[i]->dessinerArretePareto(svg, j*5, 600*5);
+                }
+            }
+        }
+        j+=150;
+        n+=1;
+    }
+    svg->addText(50, 770, "Nombre de solutions : ");
+    svg->addText(220, 770, opti.size());
+}
+
+std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>>> Graphe::rechercheOptiBonus(std::vector<std::pair<float, std::pair<float, float>>> couts)
+{
+    std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>>> opti;
+    std::vector<std::pair<float,std::pair<float, float>>> coutsComparaison;
+    coutsComparaison = couts;
+
+    for(size_t i = 0; i<couts.size(); i++)
+    {
+        bool ok = true;
+        for(auto item : coutsComparaison)
+        {
+            if(couts[i]!=item)
+            {
+                if((item.first <= couts[i].first)&&(item.second <= couts[i].second))
+                {
+                    ok = false;
+                }
+            }
+        }
+        if(ok)
+        {
+            opti.push_back({m_solPossibles[i],couts[i]});
+        }
+    }
+
+    return opti;
+}
+
+int Graphe::rechercheCCBonus(std::vector<int> suit)
+{
+    std::vector<std::vector<int>> som(m_ordre);
+    for(size_t i = 0; i<suit.size(); i++)
+    {
+        if(suit[i] == 1)
+        {
+            som[m_arretesDessinBonus[i]->getDep()->getId()].push_back(m_arretesDessinBonus[i]->getFin()->getId());
+            som[m_arretesDessinBonus[i]->getFin()->getId()].push_back(m_arretesDessinBonus[i]->getDep()->getId());
+        }
+    }
+    std::queue<int> file;
+    std::unordered_set<int> marque;
+
+    file.push(0);
+    marque.insert(0);
+    while(!file.empty())
+    {
+        int s = file.front();
+        file.pop();
+        for(auto elem : som[s])
+        {
+            if ( marque.find(elem) == marque.end() )
+            {
+                file.push(elem);
+                marque.insert(elem);
+            }
+        }
+    }
+    if(marque.size()==m_ordre)
+    {
+        return 1;
+    }
+    else
+    {
+        return 2;
+    }
+}
+
 
 Graphe::~Graphe()
 {

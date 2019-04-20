@@ -37,6 +37,13 @@ class Graphe
         void codeDjikstra(std::vector<int>);
         void dessinerGrapheChargementDjikstra(SvgFile* svg);
 
+        ///PARTIE BONUS
+        void dessinerGrapheChargementBonus(SvgFile* svg);
+        void dessinCalculGrapheBonus(SvgFile* svg);
+        std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>>> rechercheOptiBonus(std::vector<std::pair<float, std::pair<float, float>>> couts);
+        int rechercheCCBonus(std::vector<int> suit);
+        void codeBonus(SvgFile* svg);
+
         ~Graphe();
 
     protected:
@@ -61,6 +68,10 @@ class Graphe
         ///PARTIE 3
         std::vector<Sommet*> m_sommmetsDijs;
         std::vector<std::pair<float, float>> m_poidsDji;
+
+        ///PARTIE BONUS
+        std::vector<Arrete*> m_arretesDessinBonus;
+        std::vector<std::pair<float,std::pair<float, float>>> m_coutsB;
 
 };
 
