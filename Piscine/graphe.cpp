@@ -456,53 +456,53 @@ void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
         grad2-=10;
     }
     ///Text
-    svg->addText(565, 50, "Cout 2");
+    svg->addText(530, 40, "Cout 2");
     svg->addText(915, 405, "Cout 1");
 }
 
 void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 {
-    /**std::cout<<"ohé"<<std::endl;**/
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
 
     ///On recherche la frontière de Pareto et on l'affiche
     opti=rechercheOpti(m_couts);
 
-    //std::cout<<"opti"<<std::endl;
-
     int n = 1;
-    int j = 0;
+    int j = 50;
     for(auto elem : opti)
     {
-        //std::cout<<elem.second.first<<" , "<<elem.second.second<<std::endl;
-        //std::cout<<elem.first<<std::endl;
-
         svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
-        svg->addText(540 + 3*elem.second.first, 412 - 3*elem.second.second, n, "black");
-        svg->addText(0 + j, 600, n);
-        svg->addText(5 + j, 600, ". (");
-        svg->addText(20 + j, 600, elem.second.first);
-        svg->addText(35+ j, 600, ",");
-        svg->addText(45+ j, 600, elem.second.second);
-        svg->addText(63 + j, 600, ")");
 
-
-        for(s : m_sommets)
+        if(n <9)
         {
-            s.second->dessinerPareto(svg, (0+j)*5, 500*5);
-        }
+            svg->addLine(550 + 3*elem.second.first, 400 - 3*elem.second.second, 50+j, 500);
+            svg->addDisk(50+j, 500, 2);
 
-        for(size_t i=0; i<elem.first.size(); i++)
-        {
-            if(elem.first[i]==1)
+            svg->addText(10 + j, 600, "(");
+            svg->addText(20 + j, 600, elem.second.first);
+            svg->addText(35+ j, 600, ",");
+            svg->addText(45+ j, 600, elem.second.second);
+            svg->addText(63 + j, 600, ")");
+
+
+            for(s : m_sommets)
             {
-                m_arretesDessin[i]->dessinerArretePareto(svg, j*5, 500*5);
+                s.second->dessinerPareto(svg, (0+j)*5, 500*5);
+            }
+
+            for(size_t i=0; i<elem.first.size(); i++)
+            {
+                if(elem.first[i]==1)
+                {
+                    m_arretesDessin[i]->dessinerArretePareto(svg, j*5, 500*5);
+                }
             }
         }
         j+=100;
         n+=1;
     }
-    //std::cout<<"fin c2"<<std::endl;
+    svg->addText(50, 670, "Nombre de solutions : ");
+    svg->addText(220, 670, opti.size());
 }
 
 std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
@@ -604,45 +604,25 @@ void Graphe::codeDjikstra(std::vector<int> suit)
     //SvgFile *svg;
     int poidstotaltout = 0;
     int poids1Graphe = 0;
-    //std::vector<Arrete*> listeAretes;
+
     std::vector<std::vector<std::pair<int,float >>> som(m_ordre);
     for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i] == 1)
         {
-            //listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
+
             poids1Graphe+=m_arretesDessin[i]->getP1();
 
             som[m_arretesDessin[i]->getDep()->getIdInt()].push_back({{m_arretesDessin[i]->getFin()->getIdInt()},
-                {m_arretesDessin[i]->getP2()}
-                });
+                                                                    {m_arretesDessin[i]->getP2()}});
 
             som[m_arretesDessin[i]->getFin()->getIdInt()].push_back({{m_arretesDessin[i]->getDep()->getIdInt()},
-                {m_arretesDessin[i]->getP2()}
-                });
+                                                                    {m_arretesDessin[i]->getP2()}});
         }
     }
-     //std::cout << "graphe :" << std::endl;
-    ///On crée les voisins
-    //std::vector<std::vector<std::pair<int,float >>> som(m_ordre); ///
-    /**for(auto elem : listeAretes)
-    {
-        //std::cout<<"debut :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
-        som[elem->getDep()->getIdInt()].push_back({{elem->getFin()->getIdInt()},
-            {elem->getP2()}
-        });
-
-        som[elem->getFin()->getIdInt()].push_back({{elem->getDep()->getIdInt()},
-            {elem->getP2()}
-        });
-    }**/
 
     for(int starNode = 0; starNode < m_ordre; ++starNode)
     {
-        //std::cout << "cas :" << starNode << std::endl;
-
-
-
         std::vector<int> Distance(m_ordre, std::numeric_limits<int>::max());
 
         Distance[starNode] = 0;
@@ -741,7 +721,7 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
         grad2-=200;
     }
     ///Text
-    svg->addText(550, 45, "Somme des Djikstra");
+    svg->addText(485, 40, "Somme des Dijkstra");
     svg->addText(915, 405, "Poids 1 total");
 
     for(auto elem : m_poidsDji)
@@ -753,35 +733,40 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
     opti = rechercheOpti(m_poidsDji);
 
     int n = 1;
-    int j = 0;
+    int j = 50;
     for(auto elem : opti)
     {
         svg->addDisk(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 2, "red");
         //svg->addText(540 + 3*elem.second.first, 412 - 0.15*elem.second.second, n, "black");
-        svg->addLine(550 + 3*elem.second.first, 400 - 0.15*elem.second.second,
-                     50+j, 500);
-
-        //svg->addText(0 + j, 600, n);
-        svg->addText(15 + j, 600, elem.second.first);
-        svg->addText(36+ j, 600, ";");
-        svg->addText(50+ j, 600, elem.second.second);
-
-        for(s : m_sommets)
+        if(n<9)
         {
-            s.second->dessinerPareto(svg, (0+j)*5, 500*5);
-        }
+            svg->addLine(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 50+j, 500);
+            svg->addDisk(50+j, 500, 2);
 
-        for(size_t i=0; i<elem.first.size(); i++)
-        {
-            if(elem.first[i]==1)
+            //svg->addText(0 + j, 600, n);
+            svg->addText(15 + j, 600, elem.second.first);
+            svg->addText(36+ j, 600, ";");
+            svg->addText(50+ j, 600, elem.second.second);
+
+            for(s : m_sommets)
             {
-                m_arretesDessin[i]->dessinerArretePareto(svg, j*5, 500*5);
+                s.second->dessinerPareto(svg, (0+j)*5, 500*5);
+            }
+
+            for(size_t i=0; i<elem.first.size(); i++)
+            {
+                if(elem.first[i]==1)
+                {
+                    m_arretesDessin[i]->dessinerArretePareto(svg, j*5, 500*5);
+                }
             }
         }
-
         j+=100;
         n+=1;
     }
+
+    svg->addText(50, 670, "Nombre de solutions : ");
+    svg->addText(220, 670, opti.size());
 
 }
 
