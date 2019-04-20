@@ -340,9 +340,9 @@ void Graphe::codePareto(SvgFile* svg)
             if(cc == 1)
             {
                 m_solPossibles.push_back(suit);
-                for(auto elem : suit)
+                /*for(auto elem : suit)
                     std::cout<<elem;
-                std::cout<<std::endl;
+                std::cout<<std::endl;*/
                 float cout1=0;
                 float cout2=0;
                 for(size_t i=0; i<suit.size(); i++)
@@ -579,7 +579,7 @@ void Graphe::compteurDjikstra()
                 std::cout<<elem;
             }*/
             m_solPossibles.push_back(suit);
-            std::cout<<std::endl;
+            //std::cout<<std::endl;
             codeDjikstra(suit);
 
         }
@@ -601,12 +601,12 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             poids1Graphe+=m_arretesDessin[i]->getP1();
         }
     }
-     std::cout << "graphe :" << std::endl;
+     //std::cout << "graphe :" << std::endl;
     ///On crée les voisins
     std::vector<std::vector<std::pair<int,float >>> som(m_ordre); ///
     for(auto elem : listeAretes)
     {
-        std::cout<<"debut :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
+        //std::cout<<"debut :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
         som[elem->getDep()->getIdInt()].push_back({{elem->getFin()->getIdInt()},
             {elem->getP2()}
         });
@@ -618,7 +618,7 @@ void Graphe::codeDjikstra(std::vector<int> suit)
 
     for(int starNode = 0; starNode < m_ordre; ++starNode)
     {
-        std::cout << "cas :" << starNode << std::endl;
+        //std::cout << "cas :" << starNode << std::endl;
 
 
 
@@ -661,21 +661,21 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             if(Distance[i]> 20000)
                 Distance[i] = 0;
 
-            std::cout << "\nPath from node " << starNode << " to node " << i << " cost " << Distance[i] << std::endl;
+            //std::cout << "\nPath from node " << starNode << " to node " << i << " cost " << Distance[i] << std::endl;
             poidstot += Distance[i];
 
-            std::cout << i;
-            for (auto p = Parents[i]; p != -1; p = Parents[p])
+            //std::cout << i;
+            /*for (auto p = Parents[i]; p != -1; p = Parents[p])
                 std::cout << " <- " << p;
 
-            std::cout << std::endl;
+            std::cout << std::endl;*/
 
         }
-        std::cout << "poidstot" << poidstot<< std::endl << std::endl;
+        //std::cout << "poidstot" << poidstot<< std::endl << std::endl;
         poidstotaltout += poidstot;
     }
-    std::cout<<"total poids 1:"<< poids1Graphe<<std::endl;
-    std::cout << "poidstotaltoutgraphe :" << poidstotaltout << std::endl;
+    //std::cout<<"total poids 1:"<< poids1Graphe<<std::endl;
+    //std::cout << "poidstotaltoutgraphe :" << poidstotaltout << std::endl;
     m_poidsDji.push_back({poids1Graphe, poidstotaltout});
     //svg->addDisk(550 + poids1Graphe, 400 - 4*poidstotaltout, 1.25, "green");
 
@@ -716,16 +716,16 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
     for(int i = 70; i < 420; i +=30)
     {
         svg->addLine(545, i, 550, i);
-        svg->addText(515, i + 5, 4*(grad2 +10));
-        grad2-=10;
+        svg->addText(515, i + 5, (grad2 +2100));
+        grad2-=200;
     }
     ///Text
-    svg->addText(565, 50, "Somme des Djikstra");
+    svg->addText(550, 45, "Somme des Djikstra");
     svg->addText(915, 405, "Poids 1 total");
 
     for(auto elem : m_poidsDji)
     {
-        svg->addDisk(550 + 3*elem.first, 400 - 0.75*elem.second, 1.25, "green");
+        svg->addDisk(550 + 3*elem.first, 400 - 0.15*elem.second, 1, "green");
     }
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
 
@@ -735,15 +735,15 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
     int j = 0;
     for(auto elem : opti)
     {
-        svg->addDisk(550 + 3*elem.second.first, 400 - 0.75*elem.second.second, 2, "red");
-        svg->addText(540 + 3*elem.second.first, 412 - 0.75*elem.second.second, n, "black");
+        svg->addDisk(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 2, "red");
+        //svg->addText(540 + 3*elem.second.first, 412 - 0.15*elem.second.second, n, "black");
+        svg->addLine(550 + 3*elem.second.first, 400 - 0.15*elem.second.second,
+                     50+j, 500);
 
-        svg->addText(0 + j, 600, n);
-        svg->addText(5 + j, 600, ". (");
-        svg->addText(20 + j, 600, elem.second.first);
-        svg->addText(35+ j, 600, ",");
-        svg->addText(45+ j, 600, elem.second.second);
-        svg->addText(70 + j, 600, ")");
+        //svg->addText(0 + j, 600, n);
+        svg->addText(15 + j, 600, elem.second.first);
+        svg->addText(36+ j, 600, ";");
+        svg->addText(50+ j, 600, elem.second.second);
 
         for(s : m_sommets)
         {
