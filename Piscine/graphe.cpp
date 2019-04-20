@@ -535,40 +535,34 @@ std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::recher
 
 int Graphe::rechercheCC(std::vector<int> suit)
 {
-    std::vector<std::pair<std::string,std::string>> paires;
+    std::vector<std::vector<int>> som(m_ordre);
     for(size_t i = 0; i<suit.size(); i++)
     {
-        if(suit[i]==1)
+        if(suit[i] == 1)
         {
-            paires.push_back({m_arretesDessin[i]->getDep()->getId(),m_arretesDessin[i]->getFin()->getId()});
+            som[m_arretesDessin[i]->getDep()->getIdInt()].push_back(m_arretesDessin[i]->getFin()->getIdInt());
+            som[m_arretesDessin[i]->getFin()->getIdInt()].push_back(m_arretesDessin[i]->getDep()->getIdInt());
         }
     }
-    std::unordered_set<std::string> pairesComp;
-    pairesComp.insert(paires[0].first);
-    pairesComp.insert(paires[0].second);
-    for(int j=0; j<m_ordre-2; j++)
+    std::queue<int> file;
+    std::unordered_set<int> marque;
+
+    file.push(0);
+    marque.insert(0);
+    while(!file.empty())
     {
-        for(size_t i = 1; i<paires.size(); i++)
+        int s = file.front();
+        file.pop();
+        for(auto elem : som[s])
         {
-            for(auto elem : pairesComp)
+            if ( marque.find(elem) == marque.end() )
             {
-                if((paires[i].first==elem)||(paires[i].second==elem))
-                {
-                    pairesComp.insert(paires[i].first);
-                    pairesComp.insert(paires[i].second);
-                }
+                file.push(elem);
+                marque.insert(elem);
             }
         }
     }
-    bool ok = true;
-    for(int i=0; i<m_ordre; i++)
-    {
-        if(pairesComp.find(std::to_string(i))==pairesComp.end())
-        {
-            ok = false;
-        }
-    }
-    if(ok)
+    if(marque.size()==m_ordre)
     {
         return 1;
     }
@@ -576,8 +570,6 @@ int Graphe::rechercheCC(std::vector<int> suit)
     {
         return 2;
     }
-
-
 }
 void Graphe::compteurDjikstra()
 {
