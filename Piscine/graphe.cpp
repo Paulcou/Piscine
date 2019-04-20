@@ -604,19 +604,28 @@ void Graphe::codeDjikstra(std::vector<int> suit)
     //SvgFile *svg;
     int poidstotaltout = 0;
     int poids1Graphe = 0;
-    std::vector<Arrete*> listeAretes;
+    //std::vector<Arrete*> listeAretes;
+    std::vector<std::vector<std::pair<int,float >>> som(m_ordre);
     for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i] == 1)
         {
-            listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
+            //listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
             poids1Graphe+=m_arretesDessin[i]->getP1();
+
+            som[m_arretesDessin[i]->getDep()->getIdInt()].push_back({{m_arretesDessin[i]->getFin()->getIdInt()},
+                {m_arretesDessin[i]->getP2()}
+                });
+
+            som[m_arretesDessin[i]->getFin()->getIdInt()].push_back({{m_arretesDessin[i]->getDep()->getIdInt()},
+                {m_arretesDessin[i]->getP2()}
+                });
         }
     }
      //std::cout << "graphe :" << std::endl;
     ///On crée les voisins
-    std::vector<std::vector<std::pair<int,float >>> som(m_ordre); ///
-    for(auto elem : listeAretes)
+    //std::vector<std::vector<std::pair<int,float >>> som(m_ordre); ///
+    /**for(auto elem : listeAretes)
     {
         //std::cout<<"debut :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
         som[elem->getDep()->getIdInt()].push_back({{elem->getFin()->getIdInt()},
@@ -626,7 +635,7 @@ void Graphe::codeDjikstra(std::vector<int> suit)
         som[elem->getFin()->getIdInt()].push_back({{elem->getDep()->getIdInt()},
             {elem->getP2()}
         });
-    }
+    }**/
 
     for(int starNode = 0; starNode < m_ordre; ++starNode)
     {
