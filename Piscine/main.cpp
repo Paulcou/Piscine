@@ -12,13 +12,13 @@ int main()
     //svgout.addText(500, 45, "Couts totaux (prim) :");
 
 
-    ///modifier ici pour gerer l'affiche
-    g.dessinerGrapheChargement(&svgout);
+    ///Choisir quel prime
     //g.codePrim(0);
-    g.codePrimC2(0);
+    //g.codePrimC2(0);
 
     ///Affichage prime
-    g.afficherPrime(&svgout);
+    //g.dessinerGrapheChargement(&svgout);
+    //g.afficherPrime(&svgout);
 
     ///PARTIE 2
     /**g.dessinerGrapheChargementPareto(&svgout);
