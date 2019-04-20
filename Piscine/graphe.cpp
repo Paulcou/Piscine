@@ -991,7 +991,7 @@ std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>
         {
             if(couts[i]!=item)
             {
-                if((item.first <= couts[i].first)&&(item.second <= couts[i].second))
+                if((item.first <= couts[i].first)&&(item.second.first <= couts[i].second.first)&&(item.second.second <= couts[i].second.second))
                 {
                     ok = false;
                 }
