@@ -314,25 +314,56 @@ void Graphe::codePareto(SvgFile* svg)
         ///On va transformer le binaire (int) en chaine de caractère
         std::vector<int> suit;
 
-        for(int offset = m_taille-1; offset >= 0; offset--)
+        //bool ok = checkNumber(count);
+
+        if(checkNumber(count))
+        {
+            for(int offset = m_taille-1; offset >= 0; offset--)
+            {
+                suit.push_back((count & (1 << offset)) >> offset);
+            }
+
+            int cc = rechercheCC(suit);
+            if(cc == 1)
+            {
+                m_solPossibles.push_back(suit);
+                /**for(auto elem : suit)
+                std::cout<<elem;
+                std::cout<<std::endl;**/
+                float cout1=0;
+                float cout2=0;
+                for(size_t i=0; i<suit.size(); i++)
+                {
+                    if(suit[i]==1)
+                    {
+                        cout1 += 3*m_arretesDessin[i]->getP1();
+                        cout2 += 3*m_arretesDessin[i]->getP2();
+                    }
+                }
+                svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
+                m_couts.push_back({cout1/3, cout2/3});
+            }
+        }
+
+        /**for(int offset = m_taille-1; offset >= 0; offset--)
         {
             suit.push_back((count & (1 << offset)) >> offset);
-        }
+        }**/
         //std::cout<<suit<<std::endl;
 
         ///On compte ici le nombre de 1 dans tous les cas possibles pour éliminer une certaine partie
-        int counter1 = 0;
+        /**int counter1 = 0;
         for(char elem : suit)
         {
             if(elem == 1)
             {
                 counter1 += 1;
             }
-        }
+        }**/
         ///Nous tirons donc notre première liste composées d'éléments comprenants ordre-1 arêtes
         //bool ok = true;
 
-        if(counter1 == m_ordre-1)
+        /**if(counter1 == m_ordre-1)
         {
             //std::cout<<suit<<std::endl;
             //std::cout<<std::endl;
@@ -356,11 +387,33 @@ void Graphe::codePareto(SvgFile* svg)
                 svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
                 m_couts.push_back({cout1/3, cout2/3});
             }
-        }
+        }**/
     }
     /**std::cout<<m_couts.size()<<std::endl;
     std::cout<<"fin c1"<<std::endl;**/
     //std::cout<<"Liste1 size : "<<liste1.size()<<std::endl;
+}
+
+bool Graphe::checkNumber(int n)
+{
+    std::string r;
+    while(n!=0) {r=(n%2==0 ?"0":"1")+r; n/=2;}
+    int counter = 0;
+    for(auto elem : r)
+    {
+        if(elem == '1')
+        {
+            counter+=1;
+        }
+    }
+    if(counter == (m_ordre-1))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void Graphe::afficherPrime(SvgFile* svg)
@@ -587,16 +640,18 @@ void Graphe::compteurDjikstra()
 
 void Graphe::codeDjikstra(std::vector<int> suit)
 {
+    float distMin = 0;
     std::vector<Arrete *> listeAretes;
     for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i] == 1)
         {
             listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
+            distMin+=m_arretesDessin[i]->getP1();
         }
     }
 
-    std::cout<<"a"<<std::endl;
+    //std::cout<<"a"<<std::endl;
 
     ///On crée les voisins
     std::vector<std::vector<std::pair<std::pair<int,int>, std::pair<float, float>>>> som(m_ordre); /// id_v, id_pred, cout1, cout2
@@ -608,22 +663,23 @@ void Graphe::codeDjikstra(std::vector<int> suit)
         som[elem->getFin()->getIdInt()].push_back({{elem->getDep()->getIdInt(), elem->getFin()->getIdInt()},
                                                     {elem->getP1(), elem->getP2()}});
     }
-
-    std::cout<<"b"<<std::endl;
+    //std::cout<<"b"<<std::endl;
 
     float distanceTotale = 0;
-    std::vector<float> distances;
 
     ///Il faut réaliser un djikstra pour tous les sommets du graphe
     for(int i = 0; i<m_ordre; ++i)
     {
-        std::cout<<"c"<<std::endl;
+        int tour = 0;
+        //std::cout<<"c"<<std::endl;
         std::unordered_set<int> marque;
         marque.insert(i);
+        tour+=1;
         std::vector<std::pair<std::pair<int,int>, std::pair<float, float>>> possibilites;
         std::pair<std::pair<int,int>, std::pair<float, float>> tmp;
         float a = 100;
         float distanceSuiveuse = 0;
+
 
         ///On cherche le voisin du sommet i qui a la plus petite distance à celui-ci
         for(auto elem : som[i])
@@ -636,7 +692,8 @@ void Graphe::codeDjikstra(std::vector<int> suit)
         }
         ///On le marque et on actualise la distance totale
         marque.insert(tmp.first.first);
-        distanceSuiveuse += tmp.second.first;
+        tour+=1;
+        distanceSuiveuse += tmp.second.second;
         distanceTotale += tmp.second.second;
         ///On cherche toutes les autres possibilités
         for(auto elem : som[i])
@@ -647,10 +704,12 @@ void Graphe::codeDjikstra(std::vector<int> suit)
                                        {elem.second.first,elem.second.second}});
             }
         }
-        std::cout<<"d"<<std::endl;
+        //std::cout<<"d"<<std::endl;
+        //std::cout<<marque.size()<<std::endl;
         ///Maintenant, on va répéter l'opération jusqu'à ce que tous les sommets soient marqués
-        while(marque.size() < m_ordre)
+        while(tour < m_ordre)
         {
+
             std::pair<std::pair<int,int>, std::pair<float, float>> tmp2;
             float b = 1000;
             ///On ajoute les nouvelles possibilités depuis le deuxième sommet et pour les futurs
@@ -659,7 +718,7 @@ void Graphe::codeDjikstra(std::vector<int> suit)
                 if(marque.find(item.first.first) == marque.end())
                 {
                     possibilites.push_back({{item.first.first, tmp.first.first},
-                                           {item.second.first + distanceSuiveuse, item.second.second}});
+                                           {item.second.first, item.second.second+distanceSuiveuse}});
                 }
             }
             ///On parcourt les possibilités pour trouver le prochain sommet à traiter
@@ -673,26 +732,26 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             }
             ///tmp2 constitue la meilleure possibilitée
             marque.insert(tmp2.first.first);
-            distanceSuiveuse += tmp2.second.first;
+            distanceSuiveuse += tmp2.second.second;
             distanceTotale += tmp2.second.second;
             tmp = tmp2;
+            tour+=1;
 
         }
 
-        std::cout<<"e"<<std::endl;
+        //std::cout<<"e"<<std::endl;
         ///on ajoute la distance suiveuse à toutes les autres
-        distances.push_back(distanceSuiveuse);
     }
 
     ///on évalue quelle distance suiveuse est la plus faible
-    float distMin = 1000;
+    /**float distMin = 1000;
     for(auto elem : distances)
     {
         if(elem < distMin)
         {
             distMin = elem;
         }
-    }
+    }**/
 
     std::cout<<"Distmin :"<<distMin<<std::endl;
     std::cout<<"Distance totale :"<<distanceTotale<<std::endl;

@@ -24,6 +24,7 @@ class Graphe
         int rechercheCC(std::vector<int> suit);
         void dessinerGrapheChargementPareto(SvgFile* svg);
         void dessinCalculGraphePareto(SvgFile* svg);
+        bool checkNumber(int);
 
         ///PARTIE 3
         void compteurDjikstra();
