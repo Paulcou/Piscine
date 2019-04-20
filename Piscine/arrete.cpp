@@ -1,7 +1,7 @@
 #include <iostream>
 #include "arrete.h"
 
-Arrete::Arrete(std::string indice, Sommet* dep, Sommet* fin, float p1, float p2)
+Arrete::Arrete(int indice, Sommet* dep, Sommet* fin, float p1, float p2)
 : m_indice{indice}, m_dep{dep}, m_fin{fin}, m_p1{p1}, m_p2{p2}
 {
 

@@ -18,7 +18,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         throw std::runtime_error("Probleme lecture ordre du graphe");
     m_ordre = ordre;
 
-    std::string id;
+    int id;
     float x, y;
 
     for (int i=0; i<ordre; ++i)
@@ -44,9 +44,9 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
     if ( ifs.fail() )
         throw std::runtime_error("Probleme lecture taille du graphe");
 
-    std::string id_voisin;
-    std::string id2;
-    std::string indice;
+    int id_voisin;
+    int id2;
+    int indice;
 
     ///Pour dessin
     float x1, x2, y1, y2;
@@ -93,7 +93,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         throw std::runtime_error("Probleme lecture taille du graphe2");
     ifs2 >> nbre;
 
-    std::string indice2;
+    int indice2;
     float cout1, cout2;
 
     for(int j=0; j<taille2; j++)
@@ -118,7 +118,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
         }
         for(size_t i=0; i<m_arretesDessin.size(); i++)
         {
-            if(std::to_string(i) == indice2)
+            if(i == indice2)
             {
                 m_arretesDessin[i]->ajouterPoids(cout1, cout2);
             }
@@ -135,7 +135,7 @@ void Graphe::dessinerGrapheChargement(SvgFile* svg)
         a->dessinerArrete(svg);
 }
 
-void Graphe::codePrim(std::string id)
+void Graphe::codePrim(int id)
 {
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
@@ -180,7 +180,7 @@ void Graphe::codePrim(std::string id)
         poids+=tmp.second;
 
         x=0;
-        std::string indice= " "; ///a modifier si on veux afficher le poids des aretes
+        int indice; ///a modifier si on veux afficher le poids des aretes
 
         for(auto elem : tmp.first->getVoisins())
         {
@@ -197,7 +197,7 @@ void Graphe::codePrim(std::string id)
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0,0.0}}); ///elem predecesseur ///tmp en cours de traitement
                     for(size_t i=0; i<m_arretesDessin.size(); i++)
                     {
-                        if(std::to_string(i) == indice)
+                        if(i == indice)
                         {
                             (m_arretesDessinprime1.find(indice))->second->ajouterPoids(m_arretesDessin[i]->getP1(), m_arretesDessin[i]->getP2());
                             poids2+=m_arretesDessin[i]->getP2();
@@ -216,7 +216,7 @@ void Graphe::codePrim(std::string id)
     m_resultPrim1 = {poids, poids2};
 }
 
-void Graphe::codePrimC2(std::string id)
+void Graphe::codePrimC2(int id)
 {
     std::vector<std::pair<Sommet*, float>> liste;
     std::unordered_set<Sommet*> marque;
@@ -261,7 +261,7 @@ void Graphe::codePrimC2(std::string id)
         poids+=tmp.second;
 
         x=0;
-        std::string indice= " ";
+        int indice;
 
         for(auto elem : tmp.first->getVoisins())
         {
@@ -278,7 +278,7 @@ void Graphe::codePrimC2(std::string id)
                     m_arretesDessinprime1.insert({indice, new Arrete{indice, elem.first, tmp.first, 0.0, 0.0}});
                     for(size_t i=0; i<m_arretesDessin.size(); i++)
                     {
-                        if(std::to_string(i) == indice)
+                        if(i == indice)
                         {
                             (m_arretesDessinprime1.find(indice))->second->ajouterPoids(m_arretesDessin[i]->getP1(), m_arretesDessin[i]->getP2());
                             poids2+=m_arretesDessin[i]->getP1();
@@ -396,19 +396,19 @@ void Graphe::afficherPrime(SvgFile* svg)
         s.second->dessinerSommetPrime(svg);
     }
 
-    svg->addText(650, 45, "(");
-    svg->addText(660, 45, m_poid1);
-    svg->addText(695, 45, ";");
-    svg->addText(710, 45, m_poid2);
-    svg->addText(730, 45, ")");
+    svg->addText(660, 45, "(");
+    svg->addText(670, 45, m_poid1);
+    svg->addText(705, 45, ";");
+    svg->addText(720, 45, m_poid2);
+    svg->addText(740, 45, ")");
 }
 
-std::string Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
+int Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
 {
     for(auto elem : m_aretes)
     {
         if((s1->getId()==elem.second.first && s2->getId()==elem.second.second)||
-                (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
+            (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
         {
             return elem.first;
         }
@@ -540,8 +540,8 @@ int Graphe::rechercheCC(std::vector<int> suit)
     {
         if(suit[i] == 1)
         {
-            som[m_arretesDessin[i]->getDep()->getIdInt()].push_back(m_arretesDessin[i]->getFin()->getIdInt());
-            som[m_arretesDessin[i]->getFin()->getIdInt()].push_back(m_arretesDessin[i]->getDep()->getIdInt());
+            som[m_arretesDessin[i]->getDep()->getId()].push_back(m_arretesDessin[i]->getFin()->getId());
+            som[m_arretesDessin[i]->getFin()->getId()].push_back(m_arretesDessin[i]->getDep()->getId());
         }
     }
     std::queue<int> file;
@@ -613,10 +613,10 @@ void Graphe::codeDjikstra(std::vector<int> suit)
 
             poids1Graphe+=m_arretesDessin[i]->getP1();
 
-            som[m_arretesDessin[i]->getDep()->getIdInt()].push_back({{m_arretesDessin[i]->getFin()->getIdInt()},
+            som[m_arretesDessin[i]->getDep()->getId()].push_back({{m_arretesDessin[i]->getFin()->getId()},
                                                                     {m_arretesDessin[i]->getP2()}});
 
-            som[m_arretesDessin[i]->getFin()->getIdInt()].push_back({{m_arretesDessin[i]->getDep()->getIdInt()},
+            som[m_arretesDessin[i]->getFin()->getId()].push_back({{m_arretesDessin[i]->getDep()->getId()},
                                                                     {m_arretesDessin[i]->getP2()}});
         }
     }
