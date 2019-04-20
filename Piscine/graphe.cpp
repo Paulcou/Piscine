@@ -341,7 +341,7 @@ void Graphe::codePareto(SvgFile* svg)
             {
                 m_solPossibles.push_back(suit);
                 for(auto elem : suit)
-                std::cout<<elem;
+                    std::cout<<elem;
                 std::cout<<std::endl;
                 float cout1=0;
                 float cout2=0;
@@ -574,10 +574,10 @@ void Graphe::compteurDjikstra()
         int cc = rechercheCC(suit);
         if(cc == 1)
         {
-            for(auto elem : suit)
+            /*for(auto elem : suit)
             {
                 std::cout<<elem;
-            }
+            }*/
             std::cout<<std::endl;
             codeDjikstra(suit);
         }
@@ -587,7 +587,8 @@ void Graphe::compteurDjikstra()
 
 void Graphe::codeDjikstra(std::vector<int> suit)
 {
-    std::vector<Arrete *> listeAretes;
+    int poidstotaltout = 0;
+    std::vector<Arrete*> listeAretes;
     for(size_t i = 0; i<suit.size(); i++)
     {
         if(suit[i] == 1)
@@ -595,107 +596,81 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             listeAretes.push_back(m_arretesDessin[i]); ///On récup les aretes correspondantes à la solution possible
         }
     }
-
-    std::cout<<"a"<<std::endl;
-
+     std::cout << "graphe :" << std::endl;
     ///On crée les voisins
-    std::vector<std::vector<std::pair<std::pair<int,int>, std::pair<float, float>>>> som(m_ordre); /// id_v, id_pred, cout1, cout2
+    std::vector<std::vector<std::pair<int,float >>> som(m_ordre); ///
     for(auto elem : listeAretes)
     {
-        //std::cout<<"début :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
-        som[elem->getDep()->getIdInt()].push_back({{elem->getFin()->getIdInt(), elem->getDep()->getIdInt()},
-                                                    {elem->getP1(), elem->getP2()}});
-        som[elem->getFin()->getIdInt()].push_back({{elem->getDep()->getIdInt(), elem->getFin()->getIdInt()},
-                                                    {elem->getP1(), elem->getP2()}});
+        std::cout<<"debut :"<<elem->getDep()->getIdInt()<<" fin :"<<elem->getFin()->getIdInt()<<std::endl;
+        som[elem->getDep()->getIdInt()].push_back({{elem->getFin()->getIdInt()},
+            {elem->getP2()}
+        });
+
+        som[elem->getFin()->getIdInt()].push_back({{elem->getDep()->getIdInt()},
+            {elem->getP2()}
+        });
     }
 
-    std::cout<<"b"<<std::endl;
-
-    float distanceTotale = 0;
-    std::vector<float> distances;
-
-    ///Il faut réaliser un djikstra pour tous les sommets du graphe
-    for(int i = 0; i<m_ordre; ++i)
+    for(int starNode = 0; starNode < m_ordre; ++starNode)
     {
-        std::cout<<"c"<<std::endl;
-        std::unordered_set<int> marque;
-        marque.insert(i);
-        std::vector<std::pair<std::pair<int,int>, std::pair<float, float>>> possibilites;
-        std::pair<std::pair<int,int>, std::pair<float, float>> tmp;
-        float a = 100;
-        float distanceSuiveuse = 0;
+        std::cout << "cas :" << starNode << std::endl;
 
-        ///On cherche le voisin du sommet i qui a la plus petite distance à celui-ci
-        for(auto elem : som[i])
+
+
+        std::vector<int> Distance(m_ordre, std::numeric_limits<int>::max());
+
+        Distance[starNode] = 0;
+        std::vector<int> Parents(m_ordre, -1);
+
+        std::priority_queue<std::pair<int,float>, std::vector<std::pair<int,float>>, decltype(comp)> Q(comp);
+        Q.push(std::make_pair(starNode, 0));
+
+        while (!Q.empty())
         {
-            if(elem.second.first < a)
+            int v = Q.top().first;
+            float w = Q.top().second;
+            Q.pop();
+
+            if (w <= Distance[v])
             {
-                tmp = elem;
-                a = elem.second.first;
-            }
-        }
-        ///On le marque et on actualise la distance totale
-        marque.insert(tmp.first.first);
-        distanceSuiveuse += tmp.second.first;
-        distanceTotale += tmp.second.second;
-        ///On cherche toutes les autres possibilités
-        for(auto elem : som[i])
-        {
-            if(marque.find(elem.first.first) == marque.end())
-            {
-                possibilites.push_back({{elem.first.first, tmp.first.first},
-                                       {elem.second.first,elem.second.second}});
-            }
-        }
-        std::cout<<"d"<<std::endl;
-        ///Maintenant, on va répéter l'opération jusqu'à ce que tous les sommets soient marqués
-        while(marque.size() < m_ordre)
-        {
-            std::pair<std::pair<int,int>, std::pair<float, float>> tmp2;
-            float b = 1000;
-            ///On ajoute les nouvelles possibilités depuis le deuxième sommet et pour les futurs
-            for(auto item : som[tmp.first.first])
-            {
-                if(marque.find(item.first.first) == marque.end())
+                // It can be removed, however, it avoid duplicated work
+
+                for (const auto& i : som[v])
                 {
-                    possibilites.push_back({{item.first.first, tmp.first.first},
-                                           {item.second.first + distanceSuiveuse, item.second.second}});
+                    auto v2 = i.first;
+                    auto w2 = i.second;
+
+                    if (Distance[v] + w2 < Distance[v2])
+                    {
+                        Distance[v2] = Distance[v] + w2;
+                        Parents[v2] = v;
+                        Q.push(std::make_pair(v2, Distance[v2]));
+                    }
                 }
             }
-            ///On parcourt les possibilités pour trouver le prochain sommet à traiter
-            for(auto item : possibilites)
-            {
-                if(item.second.first < b)
-                {
-                    tmp2 = item;
-                    b = item.second.first;
-                }
-            }
-            ///tmp2 constitue la meilleure possibilitée
-            marque.insert(tmp2.first.first);
-            distanceSuiveuse += tmp2.second.first;
-            distanceTotale += tmp2.second.second;
-            tmp = tmp2;
-
         }
-
-        std::cout<<"e"<<std::endl;
-        ///on ajoute la distance suiveuse à toutes les autres
-        distances.push_back(distanceSuiveuse);
-    }
-
-    ///on évalue quelle distance suiveuse est la plus faible
-    float distMin = 1000;
-    for(auto elem : distances)
-    {
-        if(elem < distMin)
+        int poidstot=0;
+        for (auto i = 0; i != m_ordre; ++i)
         {
-            distMin = elem;
+
+            if(Distance[i]> 20000)
+                Distance[i] = 0;
+
+            std::cout << "\nPath from node " << starNode << " to node " << i << " cost " << Distance[i] << std::endl;
+            poidstot += Distance[i];
+
+            std::cout << i;
+            for (auto p = Parents[i]; p != -1; p = Parents[p])
+                std::cout << " <- " << p;
+
+            std::cout << std::endl;
+
         }
+        std::cout << "poidstot" << poidstot<< std::endl << std::endl;
+        poidstotaltout += poidstot;
     }
 
-    std::cout<<"Distmin :"<<distMin<<std::endl;
-    std::cout<<"Distance totale :"<<distanceTotale<<std::endl;
+    std::cout << "poidstotaltoutgraphe :" << poidstotaltout << std::endl;
 
 }
 

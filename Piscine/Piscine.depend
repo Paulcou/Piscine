@@ -28,7 +28,7 @@
 	<iostream>
 	"sommet.h"
 
-1555707726 source:c:\users\deshours\desktop\piscine\piscine\graphe.cpp
+1555758912 source:c:\users\deshours\desktop\piscine\piscine\graphe.cpp
 	<fstream>
 	<iostream>
 	<vector>
@@ -37,10 +37,11 @@
 	"graphe.h"
 	"math.h"
 
-1555679811 c:\users\deshours\desktop\piscine\piscine\graphe.h
+1555755243 c:\users\deshours\desktop\piscine\piscine\graphe.h
 	"sommet.h"
 	"arrete.h"
 	<queue>
+	<limits>
 
 1555681395 c:\users\deshours\desktop\piscine\piscine\sommet.h
 	"SvgFile.h"
@@ -49,11 +50,11 @@
 	<unordered_map>
 	<unordered_set>
 
-1555707726 source:c:\users\deshours\desktop\piscine\piscine\main.cpp
+1555755839 source:c:\users\deshours\desktop\piscine\piscine\main.cpp
 	<iostream>
 	"graphe.h"
 
-1555681395 source:c:\users\deshours\desktop\piscine\piscine\sommet.cpp
+1555708401 source:c:\users\deshours\desktop\piscine\piscine\sommet.cpp
 	<iostream>
 	"sommet.h"
 

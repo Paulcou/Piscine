@@ -3,6 +3,12 @@
 #include "sommet.h"
 #include "arrete.h"
 #include <queue>
+#include <limits>
+
+auto comp = [] (const std::pair<int,float> &a, const std::pair<int,float> &b)
+{
+    return a.second > b.second;
+};
 
 class Graphe
 {
