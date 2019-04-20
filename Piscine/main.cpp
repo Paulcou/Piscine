@@ -5,7 +5,7 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/manhattan.txt", "files/manhattan_weights_0.txt"};
+    Graphe g{"files/triville.txt", "files/triville_weights_0.txt"};
 
     ///PARTIE 1
     //svgout.addText(75, 45, "Chargement du graphe");
@@ -21,10 +21,11 @@ int main()
     //g.afficherPrime(&svgout);
 
     ///PARTIE 2
-    /**g.dessinerGrapheChargementPareto(&svgout);
+    g.dessinerGrapheChargementPareto(&svgout);
     g.codePareto(&svgout);
     g.dessinCalculGraphePareto(&svgout);
-**/
+
+
     ///PARTIE 3
     /**g.compteurDjikstra();
     g.dessinerGrapheChargementDjikstra(&svgout);
