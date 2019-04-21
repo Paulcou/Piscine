@@ -6,6 +6,8 @@
 #include "graphe.h"
 #include "math.h"
 
+/// Chargement des fichiers reçus
+
 Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
 {
     std::ifstream ifs{nomFichier};
@@ -169,6 +171,8 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
 
 }
 
+/// Affiche le graphe chargé précédemment
+
 void Graphe::dessinerGrapheChargement(SvgFile* svg)
 {
     for(auto s : m_sommets)
@@ -177,6 +181,13 @@ void Graphe::dessinerGrapheChargement(SvgFile* svg)
     for(auto a : m_arretesDessin)
         a->dessinerArrete(svg);
 }
+
+
+/// PARTIE 1
+
+
+/// Code pour Prim avec les couts 1
+/// reçoit l'id du sommet à partir duquel nous commençons l'algo
 
 void Graphe::codePrim(int id)
 {
@@ -258,6 +269,9 @@ void Graphe::codePrim(int id)
     std::cout<<"Poids : "<<poids<<", "<<poids2<<std::endl;
     m_resultPrim1 = {poids, poids2};
 }
+
+/// Code pour Prim avec les couts 2
+/// reçoit l'id du sommet à partir duquel nous commençons l'algo
 
 void Graphe::codePrimC2(int id)
 {
@@ -342,8 +356,11 @@ void Graphe::codePrimC2(int id)
 
 void Graphe::codePareto(SvgFile* svg)
 {
-    ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
+    /// Pour un graphe à 4 sommets, la première valeur qui comprend 3 arêtes est : pow(2, m_ordre-1) -1
+    /// Par exemple, pour 4 sommets, la première sera 7 : 00111
     int depart = pow(2, m_ordre-1) -1;
+    /// Pour l'arrivée nous avons également pu établir une règle basée sur une somme de puissances de 2
+    /// Par exemple, pour 4 sommets, la dernière sera 28 : 11100
     int arrivee = 0;
     int n = m_taille - 1;
     while(n != (m_taille - m_ordre))
@@ -351,6 +368,11 @@ void Graphe::codePareto(SvgFile* svg)
         arrivee+=pow(2,n);
         n -= 1;
     }
+    /// Pour le compteur ci-dessous, nous nous sommes légèrement inspiré du 3ème topic du lien suivant
+    /// http://www.cplusplus.com/forum/general/15355/
+    /// Au lieu de parcourir toutes les valeurs possibles, nous avons préféré partir de la valeur de départ
+    /// et la remplacer à chaque tour par la valeur suivante ayant le même nombre de bits
+    /// Par exemple, la prochaine valeur de 00111 est 01011.
     while(depart <= arrivee)
     {
         std::vector<int> suit;
@@ -359,17 +381,18 @@ void Graphe::codePareto(SvgFile* svg)
         {
             suit.push_back((depart & (1 << offset)) >> offset);
         }
-        /**for(auto elem : suit)
-                    std::cout<<elem;
-                std::cout<<std::endl;**/
+
+        /// On regarde si les arêtes du vector constituent une ou plusieurs composantes connexes
 
         int cc = rechercheCC(suit);
         if(cc == 1)
         {
+            /// Si 1 seule composante, on l'ajoute à solutions possibles
+
             m_solPossibles.push_back(suit);
-            /*for(auto elem : suit)
-                std::cout<<elem;
-            std::cout<<std::endl;*/
+
+            /// Et on dessine le point correspondant
+
             float cout1=0;
             float cout2=0;
             for(size_t i=0; i<suit.size(); i++)
@@ -380,12 +403,15 @@ void Graphe::codePareto(SvgFile* svg)
                     cout2 += 3*m_arretesDessin[i]->getP2();
                 }
             }
-            svg->addDisk(550 + cout1, 400 - cout2, 1.75, "green");
+            svg->addDisk(550 + cout1, 400 - cout2, 1.5, "green");
             m_couts.push_back({cout1/3, cout2/3});
         }
         depart = snoob(depart);
     }
 }
+
+/// Ceci est la fonction qui nous permet de trouver la valeur suivante avec le même nombre de bits
+/// que la valeur passée en paramètre
 
 int Graphe::snoob(int x)
 {
@@ -446,12 +472,14 @@ void Graphe::afficherPrime(SvgFile* svg)
     svg->addText(740, 45, ")");
 }
 
+/// rechercheIndice retourne l'indice de l'arête entre les deux sommets reçus en paramètres
+
 int Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
 {
     for(auto elem : m_aretes)
     {
         if((s1->getId()==elem.second.first && s2->getId()==elem.second.second)||
-                (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
+            (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
         {
             return elem.first;
         }
@@ -460,6 +488,8 @@ int Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
 
 
 ///PARTIE 2
+
+
 void Graphe::dessinerGrapheChargementPareto(SvgFile* svg)
 {
     for(auto s : m_sommets)
@@ -551,7 +581,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
 std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
 {
-    ///Double boucle pour récupérer les solutions optimales de Pareto
+    ///Double boucle pour récupérer les solutions optimales de Pareto en comparant les couts
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
     std::vector<std::pair<float, float>> coutsComparaison;
     coutsComparaison = couts;
@@ -577,6 +607,8 @@ std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::recher
 
     return opti;
 }
+
+/// BFS qui retourne 1 si on trouve une seule composante connexe et 2 sinon
 
 int Graphe::rechercheCC(std::vector<int> suit)
 {
@@ -617,6 +649,10 @@ int Graphe::rechercheCC(std::vector<int> suit)
     }
 }
 
+
+/// PARTIE 3
+
+
 void Graphe::compteurDijkstra()
 {
     ///Sur la même base que le compteur de Pareto sauf qu'ici nous ne cherchons pas seulement les valeurs
@@ -646,6 +682,8 @@ void Graphe::codeDijkstra(std::vector<int> suit)
     //SvgFile *svg;
     int poidstotaltout = 0;
     int poids1Graphe = 0;
+
+    /// Nous récupérons les voisins temporaires (pour chaque combinaison binaire) des sommets sous forme de vector de vector
 
     std::vector<std::vector<std::pair<int,float >>> som(m_ordre);
     for(size_t i = 0; i<suit.size(); i++)
@@ -706,24 +744,12 @@ void Graphe::codeDijkstra(std::vector<int> suit)
             if(Distance[i]> 20000)
                 Distance[i] = 0;
 
-            //std::cout << "\nPath from node " << starNode << " to node " << i << " cost " << Distance[i] << std::endl;
             poidstot += Distance[i];
 
-            //std::cout << i;
-            /*for (auto p = Parents[i]; p != -1; p = Parents[p])
-                std::cout << " <- " << p;
-
-            std::cout << std::endl;*/
-
         }
-        //std::cout << "poidstot" << poidstot<< std::endl << std::endl;
         poidstotaltout += poidstot;
     }
-    //std::cout<<"total poids 1:"<< poids1Graphe<<std::endl;
-    //std::cout << "poidstotaltoutgraphe :" << poidstotaltout << std::endl;
     m_poidsDji.push_back({poids1Graphe, poidstotaltout});
-    //svg->addDisk(550 + poids1Graphe, 400 - 4*poidstotaltout, 1.25, "green");
-
 }
 
 /// Tout ce qui est du chargement lorsque nous appliquons Dijkstra
@@ -818,7 +844,9 @@ void Graphe::dessinerGrapheChargementDijkstra(SvgFile* svg)
 
 }
 
+
 ///PARTIE BONUS
+
 
 /// Affichage du Cube pour le représentation 3D due à 3 couts différents
 
