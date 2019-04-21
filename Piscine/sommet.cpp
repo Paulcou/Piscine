@@ -15,6 +15,11 @@ void Sommet::ajouterVoisin(Sommet *voisin, float cout1, float cout2)
     m_voisins.push_back({voisin, {cout1, cout2}});
 }
 
+void Sommet::ajouterVoisinBonus(Sommet* voisin, float cout1, float cout2, float cout3)
+{
+    m_voisinsBonus.push_back({voisin, {cout1, {cout2, cout3}}});
+}
+
 void Sommet::dessinerSommet(SvgFile* svg)
 {
     svg->addDisk(m_x, m_y, 5);
@@ -54,6 +59,11 @@ int Sommet::getId()
 
 std::vector<std::pair<Sommet*, std::pair<float, float>>> Sommet::getVoisins(){
     return m_voisins;
+}
+
+std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> Sommet::getVoisinsBonus()
+{
+    return m_voisinsBonus;
 }
 
 /**int Sommet::getIdInt()

@@ -7,6 +7,12 @@ Arrete::Arrete(int indice, Sommet* dep, Sommet* fin, float p1, float p2)
 
 }
 
+Arrete::Arrete(int indice, Sommet* dep, Sommet* fin, float p1, float p2, float p3)
+: m_indice{indice}, m_dep{dep}, m_fin{fin}, m_p1{p1}, m_p2{p2}, m_p3{p3}
+{
+
+}
+
 void Arrete::dessinerArrete(SvgFile* svg)
 {
  svg->addLine(m_dep->getX(), m_dep->getY(), m_fin->getX(), m_fin->getY());
@@ -35,6 +41,17 @@ void Arrete::dessinerArreteChargementPareto(SvgFile* svg)
 
 }
 
+void Arrete::dessinerArreteChargementBonus(SvgFile* svg)
+{
+ svg->addLine(m_dep->getX(), m_dep->getY(), m_fin->getX(), m_fin->getY());
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 2, (m_fin->getY() + m_dep->getY())/2 - 5, m_p1, "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 11, (m_fin->getY() + m_dep->getY())/2 - 5, ";", "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 16, (m_fin->getY() + m_dep->getY())/2 - 5, m_p2, "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 25, (m_fin->getY() + m_dep->getY())/2 - 5, ";", "red");
+ svg->addText((m_fin->getX() + m_dep->getX())/2 + 29, (m_fin->getY() + m_dep->getY())/2 - 5, m_p3, "red");
+
+}
+
 void Arrete::dessinerArretePareto(SvgFile* svg, int decx, int decy)
 {
     svg->addLine((m_dep->getX() + decx)/5, (m_dep->getY()+ decy)/5, (m_fin->getX()+decx)/5, (m_fin->getY()+ decy)/5);
@@ -50,10 +67,22 @@ float Arrete::getP2()
  return m_p2;
 }
 
+float Arrete::getP3()
+{
+ return m_p3;
+}
+
 void Arrete::ajouterPoids(float poids1, float poids2)
 {
     m_p1 = poids1;
     m_p2 = poids2;
+}
+
+void Arrete::ajouterPoidsBonus(float poids1, float poids2, float poids3)
+{
+    m_p1 = poids1;
+    m_p2 = poids2;
+    m_p3 = poids3;
 }
 
 Sommet* Arrete::getDep()
