@@ -33,9 +33,9 @@ class Graphe
         int snoob(int x);
 
         ///PARTIE 3
-        void compteurDjikstra();
-        void codeDjikstra(std::vector<int>);
-        void dessinerGrapheChargementDjikstra(SvgFile* svg);
+        void compteurDijkstra();
+        void codeDijkstra(std::vector<int>);
+        void dessinerGrapheChargementDijkstra(SvgFile* svg);
 
         ///PARTIE BONUS
         void dessinerGrapheChargementBonus(SvgFile* svg);
@@ -45,6 +45,8 @@ class Graphe
         void codeBonus(SvgFile* svg);
 
         void dessinCalculHeuristique(SvgFile* svg);
+
+        void vecteurInter(SvgFile* svg);
 
         ~Graphe();
 
@@ -74,6 +76,8 @@ class Graphe
         ///PARTIE BONUS
         std::vector<Arrete*> m_arretesDessinBonus;
         std::vector<std::pair<float,std::pair<float, float>>> m_coutsB;
+
+        std::vector<std::pair<std::vector<int>, std::pair<float, float>>> m_opti;
 
 };
 

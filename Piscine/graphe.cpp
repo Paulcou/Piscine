@@ -380,7 +380,7 @@ void Graphe::codePareto(SvgFile* svg)
                     cout2 += 3*m_arretesDessin[i]->getP2();
                 }
             }
-            svg->addDisk(550 + cout1, 400 - cout2, 1.25, "green");
+            svg->addDisk(550 + cout1, 400 - cout2, 1.75, "green");
             m_couts.push_back({cout1/3, cout2/3});
         }
         depart = snoob(depart);
@@ -509,12 +509,13 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
     ///On recherche la frontière de Pareto et on l'affiche
     opti=rechercheOpti(m_couts);
+    m_opti = opti;
 
     int n = 1;
     int j = 50;
     for(auto elem : opti)
     {
-        svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 2, "red");
+        svg->addDisk(550 + 3*elem.second.first, 400 - 3*elem.second.second, 4, "red");
 
         if(n <9)
         {
@@ -550,6 +551,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
 
 std::vector<std::pair<std::vector<int>, std::pair<float, float>>> Graphe::rechercheOpti(std::vector<std::pair<float, float>> couts)
 {
+    ///Double boucle pour récupérer les solutions optimales de Pareto
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
     std::vector<std::pair<float, float>> coutsComparaison;
     coutsComparaison = couts;
@@ -615,8 +617,10 @@ int Graphe::rechercheCC(std::vector<int> suit)
     }
 }
 
-void Graphe::compteurDjikstra()
+void Graphe::compteurDijkstra()
 {
+    ///Sur la même base que le compteur de Pareto sauf qu'ici nous ne cherchons pas seulement les valeurs
+    ///possédant m_ordre - 1 bits.
     int depart = pow(2, m_ordre-1) -1;
     int arrivee = pow(2, m_taille);
     for(int count = depart; count < arrivee; count++)
@@ -630,20 +634,14 @@ void Graphe::compteurDjikstra()
         int cc = rechercheCC(suit);
         if(cc == 1)
         {
-            /*for(auto elem : suit)
-            {
-                std::cout<<elem;
-            }*/
             m_solPossibles.push_back(suit);
-            //std::cout<<std::endl;
-            codeDjikstra(suit);
-
+            codeDijkstra(suit);
         }
 
     }
 }
 
-void Graphe::codeDjikstra(std::vector<int> suit)
+void Graphe::codeDijkstra(std::vector<int> suit)
 {
     //SvgFile *svg;
     int poidstotaltout = 0;
@@ -728,7 +726,9 @@ void Graphe::codeDjikstra(std::vector<int> suit)
 
 }
 
-void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
+/// Tout ce qui est du chargement lorsque nous appliquons Dijkstra
+
+void Graphe::dessinerGrapheChargementDijkstra(SvgFile* svg)
 {
     for(auto s : m_sommets)
         s.second->dessinerSommetChargementPareto(svg);
@@ -776,6 +776,8 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
     }
     std::vector<std::pair<std::vector<int>, std::pair<float, float>>> opti;
 
+    /// Nous recherchons les solutions optimales et nous les affichons
+
     opti = rechercheOpti(m_poidsDji);
 
     int n = 1;
@@ -783,13 +785,13 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
     for(auto elem : opti)
     {
         svg->addDisk(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 2, "red");
-        //svg->addText(540 + 3*elem.second.first, 412 - 0.15*elem.second.second, n, "black");
+
+    /// Nous avons décidé de n'afficher que 8 des solutions trouvées sous forme de graphe (en dessous)
         if(n<9)
         {
             svg->addLine(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 50+j, 500);
             svg->addDisk(50+j, 500, 2);
 
-            //svg->addText(0 + j, 600, n);
             svg->addText(15 + j, 600, elem.second.first);
             svg->addText(36+ j, 600, ";");
             svg->addText(50+ j, 600, elem.second.second);
@@ -817,6 +819,9 @@ void Graphe::dessinerGrapheChargementDjikstra(SvgFile* svg)
 }
 
 ///PARTIE BONUS
+
+/// Affichage du Cube pour le représentation 3D due à 3 couts différents
+
 void Graphe::dessinerGrapheChargementBonus(SvgFile* svg)
 {
     for(auto s : m_sommets)
@@ -824,17 +829,6 @@ void Graphe::dessinerGrapheChargementBonus(SvgFile* svg)
 
     for(auto a : m_arretesDessinBonus)
         a->dessinerArreteChargementBonus(svg);
-
-    ///pointilles
-    /*for(int i = 550; i < 900; i += 30)
-        for(int j = 70; j < 430; j += 30)
-            for(int z = 100; z < 150; z += 30)
-            {
-                svg->addLine(i-5, j, i + 5, j, "grey");
-                svg->addLine(i, j-5, i, j+5, "grey");
-                //svg->addLine(i, j, i - z, j + z, "grey");
-                svg->addLine(i+z, j-z, i, j, "grey");
-            }*/
 
     ///CUBE
     svg->addLine(550, 400, 550, 25);///cout2
@@ -850,37 +844,16 @@ void Graphe::dessinerGrapheChargementBonus(SvgFile* svg)
     svg->addLine(550, 50, 900, 50);
     svg->addLine(900, 400, 900, 50);
 
-
-
-    ///fleches du graphe
-    /*svg->addLine(550, 50, 545, 55);
-    svg->addLine(550, 50, 555, 55);
-    svg->addLine(900, 400, 895, 395);
-    svg->addLine(900, 400, 895, 405);*/
-
-    /*int grad = -10;
-    for(int i = 550; i < 900; i +=30)
-    {
-        svg->addLine(i, 400, i, 405);
-        svg->addText(i - 5, 420, grad + 10);
-        grad+=10;
-    }
-    int grad2 = 100;
-    for(int i = 70; i < 420; i +=30)
-    {
-        svg->addLine(545, i, 550, i);
-        svg->addText(515, i + 5, grad2 +10);
-        grad2-=10;
-    }*/
     ///Text
     svg->addText(560, 40, "Cout 2");
     svg->addText(915, 415, "Cout 1");
     svg->addText(425, 550, "Cout 3");
 }
 
+/// Même compteur que pour Pareto 2D mais cette fois avec 3 couts
+
 void Graphe::codeBonus(SvgFile* svg)
 {
-    ///Nous savons qu'il y a 2^(nbre d'arêtes) cas possibles :
     int depart = pow(2, m_ordre-1) -1;
     int arrivee = 0;
     int n = m_taille - 1;
@@ -897,17 +870,12 @@ void Graphe::codeBonus(SvgFile* svg)
         {
             suit.push_back((depart & (1 << offset)) >> offset);
         }
-        /**for(auto elem : suit)
-                    std::cout<<elem;
-                std::cout<<std::endl;**/
 
         int cc = rechercheCCBonus(suit);
         if(cc == 1)
         {
             m_solPossibles.push_back(suit);
-            /*for(auto elem : suit)
-                std::cout<<elem;
-            std::cout<<std::endl;*/
+
             float cout1=0;
             float cout2=0;
             float cout3=0;
@@ -927,6 +895,8 @@ void Graphe::codeBonus(SvgFile* svg)
     }
 }
 
+/// Affichage de la frontière de Pareto en 3D pour 3 couts
+
 void Graphe::dessinCalculGrapheBonus(SvgFile* svg)
 {
     std::vector<std::pair<std::vector<int>, std::pair<float, std::pair<float, float>>>> opti;
@@ -941,7 +911,7 @@ void Graphe::dessinCalculGrapheBonus(SvgFile* svg)
         svg->addDisk(550 + 3*elem.second.first - 3*elem.second.second.second,
                      400 - 3*elem.second.second.first + 3*elem.second.second.second,
                       2, "red");
-
+    /// Nous avons décidé de n'afficher que 8 des solutions trouvées sous forme de graphe (en dessous)
         if(n <9)
         {
             svg->addLine(550 + 3*elem.second.first - 3*elem.second.second.second,
@@ -978,6 +948,8 @@ void Graphe::dessinCalculGrapheBonus(SvgFile* svg)
     svg->addText(220, 770, opti.size());
 }
 
+/// Recherche des extremums de Pareto pour 3 couts
+
 std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>>> Graphe::rechercheOptiBonus(std::vector<std::pair<float, std::pair<float, float>>> couts)
 {
     std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>>> opti;
@@ -1005,6 +977,8 @@ std::vector<std::pair<std::vector<int>, std::pair<float,std::pair<float, float>>
 
     return opti;
 }
+
+///BFS pour trouver si il y a une ou plusieurs composantes connexes comme pour Pareto
 
 int Graphe::rechercheCCBonus(std::vector<int> suit)
 {
@@ -1045,6 +1019,8 @@ int Graphe::rechercheCCBonus(std::vector<int> suit)
     }
 }
 
+///La fonction dessinCalculHeuristique calcule et affiche la valeur la plus proche de l'origine
+
 void Graphe::dessinCalculHeuristique(SvgFile* svg)
 {
     float moyenne = 1000;
@@ -1083,8 +1059,135 @@ void Graphe::dessinCalculHeuristique(SvgFile* svg)
     svg->addText(680, 620, ",");
     svg->addText(690, 620, couts.second);
     svg->addText(708, 620, ")");
+}
 
+///La prochaine fonction est pour l'extension "Interpoler les vecteurs solutions extrêmes"
 
+void Graphe::vecteurInter(SvgFile* svg)
+{
+    std::vector<std::pair<std::vector<int>, std::pair<float, float>>> optiComp;
+    std::unordered_map<float, std::vector<int>> inter;
+    optiComp = m_opti;
+
+    ///Nous déterminons les vector intermédiaires en comparant les solutions optimales de Pareto entre elles.
+    for(int i = 0; i<m_opti.size(); i++)
+    {
+        for(int j = 0; j<optiComp.size(); j++)
+        {
+            if(i!=j)
+            {
+                std::vector<int> tmp;
+                for(int k = 0; k<m_opti[i].first.size(); k++)
+                {
+                    if(((m_opti[i].first)[k] == (optiComp[j].first)[k]))
+                    {
+                        tmp.push_back((m_opti[i].first)[k]);
+                    }
+                    else
+                    {
+                        tmp.push_back(2);
+                    }
+                }
+                if(inter.find(m_opti[i].second.first + optiComp[j].second.first)==inter.end())
+                {
+                    inter.insert({m_opti[i].second.first + optiComp[j].second.first, tmp});
+                }
+            }
+        }
+    }
+
+    std::vector<std::vector<int>> solutions;
+
+    ///Pour chaque vector intermédiaire
+    for(auto elem : inter)
+    {
+        int compteur2 = 0;
+        std::vector<std::vector<int>> combinaisons;
+
+        ///On compte le nombre de 2 (X dans l'énoncé)
+        for(auto item : elem.second)
+        {
+            if(item==2)
+            {
+                compteur2 +=1;
+            }
+
+        }
+
+        ///Nous créeons en conséquence un nombre de possibilités correspondantes
+        ///Par exemple, compteur = 3, on aura (000, 001,...,111)
+        int arrivee = pow(2, compteur2);
+        int count = 0;
+        while(count!=arrivee)
+        {
+            std::vector<int> suit;
+            for(int offset = (compteur2-1); offset >= 0; offset--)
+            {
+                suit.push_back((count & (1 << offset)) >> offset);
+            }
+            combinaisons.push_back(suit);
+            count++;
+        }
+
+        ///Nous changeons les 2 par ces combinaisons et envoyons toutes les possibilités si elles sont
+        ///acceptables dans un vector.
+
+        for(int i = 0; i<combinaisons.size(); i++)
+        {
+            int j = 0;
+            std::vector<int> suit;
+            for(auto item : elem.second)
+            {
+                if(item==2)
+                {
+                    suit.push_back((combinaisons[i])[j]);
+                    j += 1;
+                }
+                else
+                {
+                    suit.push_back(item);
+                }
+            }
+
+            int compteur1 = 0;
+            for(auto x : suit)
+            {
+                if(x==1)
+                {
+                    compteur1+=1;
+                }
+            }
+            if(compteur1==m_ordre-1)
+            {
+                solutions.push_back(suit);
+            }
+
+        }
+    }
+
+    ///Nous stockons ici les couts des solutions retenues
+    std::vector<std::pair<float, float>> couts;
+
+    for(auto elem : solutions)
+    {
+        float poids1=0;
+        float poids2=0;
+        for(int i = 0; i<elem.size(); i++)
+        {
+            if(elem[i] == 1)
+            {
+                poids1 += m_arretesDessin[i]->getP1();
+                poids2 += m_arretesDessin[i]->getP2();
+            }
+        }
+        couts.push_back({poids1, poids2});
+    }
+
+    ///Puis nous affichons le résultat
+    for(auto elem : couts)
+    {
+        svg->addDisk(550 + 3*elem.first, 400 - 3*elem.second, 1.6, "yellow");
+    }
 }
 
 

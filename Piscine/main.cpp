@@ -4,14 +4,14 @@
 int main()
 {
     std::cout<<"Chargement..."<< std::endl;
-    std::string nom, weight;
+    /**std::string nom, weight;
     std::cout<<"choisir nom fichier"<< std::endl;
     std::cin >>nom;
     std::cout << "choisir weight fichier"<< std::endl;
-    std::cin >> weight;
+    std::cin >> weight;**/
 
-    Graphe g{"files/"+nom+".txt", "files/"+nom+"_weights_"+weight+".txt"};
-
+    //Graphe g{"files/"+nom+".txt", "files/"+nom+"_weights_"+weight+".txt"};
+    Graphe g{"files/manhattan.txt", "files/manhattan_weights_0.txt"};
     int choix;
 
     do
@@ -52,6 +52,8 @@ int main()
             g.dessinerGrapheChargementPareto(&svgout);
             g.codePareto(&svgout);
             g.dessinCalculGraphePareto(&svgout);
+
+            g.vecteurInter(&svgout);
         }
 
         else if(choix == 4)
@@ -59,8 +61,8 @@ int main()
             std::cout<<"dijstra..."<<std::endl;
             SvgFile svgout;
             ///PARTIE 3
-            g.compteurDjikstra();
-            g.dessinerGrapheChargementDjikstra(&svgout);
+            g.compteurDijkstra();
+            g.dessinerGrapheChargementDijkstra(&svgout);
 
         }
 
