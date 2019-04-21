@@ -666,7 +666,7 @@ void Graphe::codeDjikstra(std::vector<int> suit)
             });
         }
     }
-
+    ///Source qui a aidé a realiser dijstra: https://www.40tude.fr/blog/algorithme-de-dijkstra-en-c/?fbclid=IwAR2OIVCXB-Ld0DBj2NJ56zVaMFbeejDOcKXBsi7yP9IWojVZawGTtmDyJsI
     for(int starNode = 0; starNode < m_ordre; ++starNode)
     {
         std::vector<int> Distance(m_ordre, std::numeric_limits<int>::max());
