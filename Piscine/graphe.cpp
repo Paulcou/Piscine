@@ -49,7 +49,7 @@ Graphe::Graphe(std::string nomFichier, std::string nomFichier2)
     int indice;
 
     ///Pour dessin
-    float x1, x2, y1, y2;
+    float x1=0, x2=0, y1=0, y2=0;
 
     for (int i=0; i<taille; ++i)
     {
@@ -529,7 +529,7 @@ void Graphe::dessinCalculGraphePareto(SvgFile* svg)
             svg->addText(63 + j, 600, ")");
 
 
-            for(s : m_sommets)
+            for(auto s : m_sommets)
             {
                 s.second->dessinerPareto(svg, (0+j)*5, 500*5);
             }
@@ -607,7 +607,7 @@ int Graphe::rechercheCC(std::vector<int> suit)
             }
         }
     }
-    if(marque.size()==m_ordre)
+    if(marque.size() == m_ordre)
     {
         return 1;
     }
@@ -796,7 +796,7 @@ void Graphe::dessinerGrapheChargementDijkstra(SvgFile* svg)
             svg->addText(36+ j, 600, ";");
             svg->addText(50+ j, 600, elem.second.second);
 
-            for(s : m_sommets)
+            for(auto s : m_sommets)
             {
                 s.second->dessinerPareto(svg, (0+j)*5, 500*5);
             }
@@ -928,7 +928,7 @@ void Graphe::dessinCalculGrapheBonus(SvgFile* svg)
             svg->addText(93 + j, 700, ")");
 
 
-            for(s : m_sommets)
+            for(auto s : m_sommets)
             {
                 s.second->dessinerPareto(svg, (0+j)*5, 600*5);
             }
@@ -1009,7 +1009,7 @@ int Graphe::rechercheCCBonus(std::vector<int> suit)
             }
         }
     }
-    if(marque.size()==m_ordre)
+    if(marque.size() == m_ordre)
     {
         return 1;
     }
@@ -1026,7 +1026,7 @@ void Graphe::dessinCalculHeuristique(SvgFile* svg)
     float moyenne = 1000;
     std::pair<float, float> couts;
     std::vector<int> pPetite;
-    for(int i=0; i<m_couts.size(); i++)
+    for(size_t i=0; i<m_couts.size(); i++)
     {
         if((m_couts[i].first + m_couts[i].second)/2 < moyenne)
         {
@@ -1038,7 +1038,7 @@ void Graphe::dessinCalculHeuristique(SvgFile* svg)
 
     svg->addDisk(550 + 3*couts.first, 400 - 3*couts.second, 2.5, "blue");
 
-    for(int j = 0; j<pPetite.size(); j++)
+    for(size_t j = 0; j<pPetite.size(); j++)
     {
         if(pPetite[j] == 1)
         {
@@ -1046,7 +1046,7 @@ void Graphe::dessinCalculHeuristique(SvgFile* svg)
         }
     }
 
-    for(s : m_sommets)
+    for(auto s : m_sommets)
     {
         s.second->dessinerPareto(svg, 3200, 2550);
     }
@@ -1070,14 +1070,14 @@ void Graphe::vecteurInter(SvgFile* svg)
     optiComp = m_opti;
 
     ///Nous déterminons les vector intermédiaires en comparant les solutions optimales de Pareto entre elles.
-    for(int i = 0; i<m_opti.size(); i++)
+    for(size_t i = 0; i<m_opti.size(); i++)
     {
-        for(int j = 0; j<optiComp.size(); j++)
+        for(size_t j = 0; j<optiComp.size(); j++)
         {
             if(i!=j)
             {
                 std::vector<int> tmp;
-                for(int k = 0; k<m_opti[i].first.size(); k++)
+                for(size_t k = 0; k<m_opti[i].first.size(); k++)
                 {
                     if(((m_opti[i].first)[k] == (optiComp[j].first)[k]))
                     {
@@ -1132,7 +1132,7 @@ void Graphe::vecteurInter(SvgFile* svg)
         ///Nous changeons les 2 par ces combinaisons et envoyons toutes les possibilités si elles sont
         ///acceptables dans un vector.
 
-        for(int i = 0; i<combinaisons.size(); i++)
+        for(size_t i = 0; i<combinaisons.size(); i++)
         {
             int j = 0;
             std::vector<int> suit;
@@ -1172,7 +1172,7 @@ void Graphe::vecteurInter(SvgFile* svg)
     {
         float poids1=0;
         float poids2=0;
-        for(int i = 0; i<elem.size(); i++)
+        for(size_t i = 0; i<elem.size(); i++)
         {
             if(elem[i] == 1)
             {
