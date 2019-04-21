@@ -5,7 +5,7 @@ int main()
 {
     SvgFile svgout;
 
-    Graphe g{"files/manhattan.txt", "files/manhattan_weights_bonus.txt"};
+    Graphe g{"files/triville.txt", "files/triville_weights_0.txt"};
 
     ///PARTIE 1
     //svgout.addText(75, 45, "Chargement du graphe");
@@ -21,20 +21,23 @@ int main()
     //g.afficherPrime(&svgout);
 
     ///PARTIE 2
-    /*g.dessinerGrapheChargementPareto(&svgout);
+    g.dessinerGrapheChargementPareto(&svgout);
     g.codePareto(&svgout);
-    g.dessinCalculGraphePareto(&svgout);*/
+    //g.dessinCalculGraphePareto(&svgout);
 
 
     ///PARTIE 3
-    /**g.compteurDjikstra();
-    g.dessinerGrapheChargementDjikstra(&svgout);
-**/
+    //g.compteurDjikstra();
+    //g.dessinerGrapheChargementDjikstra(&svgout);
+
 
     ///PARTIE BONUS
-    g.dessinerGrapheChargementBonus(&svgout);
+    /**g.dessinerGrapheChargementBonus(&svgout);
     g.codeBonus(&svgout);
     g.dessinCalculGrapheBonus(&svgout);
+    */
+    ///Plus petite moyenne
+    g.dessinCalculHeuristique(&svgout);
 
     return 0;
 }

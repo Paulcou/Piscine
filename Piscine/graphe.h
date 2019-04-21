@@ -44,6 +44,8 @@ class Graphe
         int rechercheCCBonus(std::vector<int> suit);
         void codeBonus(SvgFile* svg);
 
+        void dessinCalculHeuristique(SvgFile* svg);
+
         ~Graphe();
 
     protected:

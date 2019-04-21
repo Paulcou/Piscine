@@ -1045,6 +1045,48 @@ int Graphe::rechercheCCBonus(std::vector<int> suit)
     }
 }
 
+void Graphe::dessinCalculHeuristique(SvgFile* svg)
+{
+    float moyenne = 1000;
+    std::pair<float, float> couts;
+    std::vector<int> pPetite;
+    for(int i=0; i<m_couts.size(); i++)
+    {
+        if((m_couts[i].first + m_couts[i].second)/2 < moyenne)
+        {
+            moyenne = (m_couts[i].first + m_couts[i].second)/2;
+            couts = {m_couts[i].first, m_couts[i].second};
+            pPetite = m_solPossibles[i];
+        }
+    }
+
+    svg->addDisk(550 + 3*couts.first, 400 - 3*couts.second, 2.5, "blue");
+
+    for(int j = 0; j<pPetite.size(); j++)
+    {
+        if(pPetite[j] == 1)
+        {
+            m_arretesDessin[j]->dessinerArretePareto(svg, 3200, 2550);
+        }
+    }
+
+    for(s : m_sommets)
+    {
+        s.second->dessinerPareto(svg, 3200, 2550);
+    }
+
+    svg->addLine(550 + 3*couts.first, 400 - 3*couts.second, 685, 500);
+    svg->addDisk(685, 500, 2);
+
+    svg->addText(655, 620, "(");
+    svg->addText(665, 620, couts.first);
+    svg->addText(680, 620, ",");
+    svg->addText(690, 620, couts.second);
+    svg->addText(708, 620, ")");
+
+
+}
+
 
 Graphe::~Graphe()
 {
