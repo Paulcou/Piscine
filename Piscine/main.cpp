@@ -11,7 +11,7 @@ int main()
     std::cin >> weight;
 
     //Graphe g{"files/"+nom+".txt", "files/"+nom+"_weights_"+weight+".txt"};**/
-    Graphe g{"files/triville.txt", "files/triville_weights_bonus.txt"};
+    Graphe g{"files/triville.txt", "files/triville_weights_0.txt"};
     int choix;
 
     std::cout<<std::endl;
