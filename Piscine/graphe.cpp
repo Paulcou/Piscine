@@ -479,7 +479,7 @@ int Graphe::rechercheIndice(Sommet*s1, Sommet*s2)
     for(auto elem : m_aretes)
     {
         if((s1->getId()==elem.second.first && s2->getId()==elem.second.second)||
-            (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
+                (s1->getId()==elem.second.second && s2->getId()==elem.second.first))
         {
             return elem.first;
         }
@@ -812,7 +812,7 @@ void Graphe::dessinerGrapheChargementDijkstra(SvgFile* svg)
     {
         svg->addDisk(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 2, "red");
 
-    /// Nous avons décidé de n'afficher que 8 des solutions trouvées sous forme de graphe (en dessous)
+        /// Nous avons décidé de n'afficher que 8 des solutions trouvées sous forme de graphe (en dessous)
         if(n<9)
         {
             svg->addLine(550 + 3*elem.second.first, 400 - 0.15*elem.second.second, 50+j, 500);
@@ -858,6 +858,23 @@ void Graphe::dessinerGrapheChargementBonus(SvgFile* svg)
     for(auto a : m_arretesDessinBonus)
         a->dessinerArreteChargementBonus(svg);
 
+    ///pointilles
+    for(int i = 550; i < 900; i += 30)
+        for(int j = 70; j < 430; j += 30)
+        {
+            svg->addLine(i-5, j, i + 5, j, "grey");
+            svg->addLine(i, j-5, i, j+5, "grey");
+
+
+        }
+
+    ///Fleches
+    svg->addLine(550, 25, 545, 35);
+    svg->addLine(550, 25, 555, 35);
+    svg->addLine(950, 400, 945, 395);
+    svg->addLine(950, 400, 945, 405);
+    svg->addLine(400, 550, 400, 540);
+    svg->addLine(400, 550, 410, 550);
     ///CUBE
     svg->addLine(550, 400, 550, 25);///cout2
     svg->addLine(550, 400, 950, 400); ///cout 1
@@ -938,13 +955,13 @@ void Graphe::dessinCalculGrapheBonus(SvgFile* svg)
     {
         svg->addDisk(550 + 3*elem.second.first - 3*elem.second.second.second,
                      400 - 3*elem.second.second.first + 3*elem.second.second.second,
-                      2, "red");
-    /// Nous avons décidé de n'afficher que 8 des solutions trouvées sous forme de graphe (en dessous)
+                     2, "red");
+        /// Nous avons décidé de n'afficher que 8 des solutions trouvées sous forme de graphe (en dessous)
         if(n <9)
         {
             svg->addLine(550 + 3*elem.second.first - 3*elem.second.second.second,
-                          400 - 3*elem.second.second.first + 3*elem.second.second.second,
-                          50+j, 600);
+                         400 - 3*elem.second.second.first + 3*elem.second.second.second,
+                         50+j, 600);
             svg->addDisk(50+j, 600, 2);
 
             svg->addText(10 + j, 700, "(");

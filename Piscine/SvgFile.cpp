@@ -155,7 +155,7 @@ void SvgFile::addCross(double x, double y, double span, std::string color)
 
 void SvgFile::addRect(double x, double y, double largeur, double hauteur, std::string color, double opacite)
 {
-     m_ostrm << "<rect "
+    m_ostrm << "<rect "
             << attrib("x", x)
             << attrib("y", y)
             << attrib("width", largeur)
@@ -169,7 +169,7 @@ void SvgFile::addRect2(double x1, double y1, double x2, double y2,
                        double x3, double y3,
                        double x4, double y4, std::string colorFill)
 {
-     m_ostrm << "<polygon points=\" "
+    m_ostrm << "<polygon points=\" "
             << x1 << "," << y1 << " "
             << x2 << "," << y2 << " "
             << x3 << "," << y3 << " "

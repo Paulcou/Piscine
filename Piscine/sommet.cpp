@@ -44,7 +44,7 @@ void Sommet::dessinerPareto(SvgFile* svg, int decx, int decy)
 
 double Sommet::getX()
 {
-   return m_x;
+    return m_x;
 }
 
 double Sommet::getY()
@@ -57,7 +57,8 @@ int Sommet::getId()
     return m_id;
 }
 
-std::vector<std::pair<Sommet*, std::pair<float, float>>> Sommet::getVoisins(){
+std::vector<std::pair<Sommet*, std::pair<float, float>>> Sommet::getVoisins()
+{
     return m_voisins;
 }
 

@@ -8,39 +8,39 @@
 
 class Sommet
 {
-    public:
+public:
 
-        Sommet(int, float, float);
-        //Sommet(int id2, float, float);
-        void ajouterVoisin(Sommet*, float, float);
-        void ajouterVoisinBonus(Sommet*, float, float, float);
+    Sommet(int, float, float);
+    //Sommet(int id2, float, float);
+    void ajouterVoisin(Sommet*, float, float);
+    void ajouterVoisinBonus(Sommet*, float, float, float);
 
-        void dessinerSommet(SvgFile* svg);
-        void dessinerSommetPrime(SvgFile* svg);
-        void dessinerSommetChargementPareto(SvgFile* svg);
-        void dessinerPareto(SvgFile* svg, int decx, int decy);
+    void dessinerSommet(SvgFile* svg);
+    void dessinerSommetPrime(SvgFile* svg);
+    void dessinerSommetChargementPareto(SvgFile* svg);
+    void dessinerPareto(SvgFile* svg, int decx, int decy);
 
-        double getX();
-        double getY();
-        int getId();
-        //int getIdInt();
-        std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
-        std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> getVoisinsBonus();
+    double getX();
+    double getY();
+    int getId();
+    //int getIdInt();
+    std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
+    std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> getVoisinsBonus();
 
 
-        ~Sommet();
+    ~Sommet();
 
-    protected:
+protected:
 
-    private:
+private:
 
-        std::vector<std::pair<Sommet*, std::pair<float, float>>> m_voisins;
-        std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> m_voisinsBonus;
+    std::vector<std::pair<Sommet*, std::pair<float, float>>> m_voisins;
+    std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> m_voisinsBonus;
 
-        int m_id; // Identifiant
-        //int m_id2;
-        float m_x;
-        float m_y;
+    int m_id; // Identifiant
+    //int m_id2;
+    float m_x;
+    float m_y;
 
 };
 

@@ -9,50 +9,50 @@ constexpr char defcol[] = "black";
 
 class SvgFile
 {
-    public:
-        SvgFile(std::string _filename = "output.svg", int _width=2000, int _height=1000);
-        ~SvgFile();
+public:
+    SvgFile(std::string _filename = "output.svg", int _width=2000, int _height=1000);
+    ~SvgFile();
 
-        void addDisk(double x, double y, double r, std::string color=defcol);
-        void addDisk(double x, double y, double z, double r, std::string color=defcol);
-        void addCircle(double x, double y, double r, double ep, std::string color=defcol);
-        void addEllipse(double x, double y, double rx, double ry, double opacity , std::string color= defcol);
-        void addTriangle(double x1, double y1, double x2, double y2,
-                         double x3, double y3, std::string colorFill,
-                          double thickness, std::string colorStroke);
-        void addTriangle(double x1, double y1, double x2, double y2,
-                         double x3, double y3, std::string colorFill=defcol);
+    void addDisk(double x, double y, double r, std::string color=defcol);
+    void addDisk(double x, double y, double z, double r, std::string color=defcol);
+    void addCircle(double x, double y, double r, double ep, std::string color=defcol);
+    void addEllipse(double x, double y, double rx, double ry, double opacity, std::string color= defcol);
+    void addTriangle(double x1, double y1, double x2, double y2,
+                     double x3, double y3, std::string colorFill,
+                     double thickness, std::string colorStroke);
+    void addTriangle(double x1, double y1, double x2, double y2,
+                     double x3, double y3, std::string colorFill=defcol);
 
-        void addLine(double x1, double y1, double x2, double y2, std::string color=defcol);
-        void addCross(double x, double y, double span, std::string color=defcol);
+    void addLine(double x1, double y1, double x2, double y2, std::string color=defcol);
+    void addCross(double x, double y, double span, std::string color=defcol);
 
-        void addRect(double x1, double y1, double largeur, double hauteur, std::string colorFill=defcol,
-                      double opacite = 1);
-        void addRect2(double x1, double y1, double x2, double y2,
-                       double x3, double y3,
-                       double x4, double y4, std::string colorFill=defcol);
+    void addRect(double x1, double y1, double largeur, double hauteur, std::string colorFill=defcol,
+                 double opacite = 1);
+    void addRect2(double x1, double y1, double x2, double y2,
+                  double x3, double y3,
+                  double x4, double y4, std::string colorFill=defcol);
 
-        void addText(double x, double y, std::string text, std::string color=defcol);
-        void addText(double x, double y, double val, std::string color=defcol);
+    void addText(double x, double y, std::string text, std::string color=defcol);
+    void addText(double x, double y, double val, std::string color=defcol);
 
-        void addGrid(double span=100.0, bool numbering=true, std::string color="lightgrey");
+    void addGrid(double span=100.0, bool numbering=true, std::string color="lightgrey");
 
-        static std::string makeRGB(int r, int g, int b);
+    static std::string makeRGB(int r, int g, int b);
 
-        /// Type non copiable
-        SvgFile(const SvgFile&) = delete;
-        SvgFile& operator=(const SvgFile&) = delete;
+    /// Type non copiable
+    SvgFile(const SvgFile&) = delete;
+    SvgFile& operator=(const SvgFile&) = delete;
 
-        static bool s_verbose;
+    static bool s_verbose;
 
-    private:
-        std::string m_filename;
-        std::ofstream m_ostrm;
-        int m_width;
-        int m_height;
+private:
+    std::string m_filename;
+    std::ofstream m_ostrm;
+    int m_width;
+    int m_height;
 
-        // Pour �viter les ouverture multiples
-        static std::set<std::string> s_openfiles;
+    // Pour �viter les ouverture multiples
+    static std::set<std::string> s_openfiles;
 };
 
 
