@@ -13,6 +13,7 @@ class Sommet
         Sommet(int, float, float);
         //Sommet(int id2, float, float);
         void ajouterVoisin(Sommet*, float, float);
+        void ajouterVoisinBonus(Sommet*, float, float, float);
 
         void dessinerSommet(SvgFile* svg);
         void dessinerSommetPrime(SvgFile* svg);
@@ -24,6 +25,7 @@ class Sommet
         int getId();
         //int getIdInt();
         std::vector<std::pair<Sommet*, std::pair<float, float>>> getVoisins();
+        std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> getVoisinsBonus();
 
 
         ~Sommet();
@@ -33,6 +35,7 @@ class Sommet
     private:
 
         std::vector<std::pair<Sommet*, std::pair<float, float>>> m_voisins;
+        std::vector<std::pair<Sommet*, std::pair<float, std::pair<float, float>>>> m_voisinsBonus;
 
         int m_id; // Identifiant
         //int m_id2;
